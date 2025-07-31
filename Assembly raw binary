@@ -1,0 +1,1745 @@
+Raw binary without starting address
+
+
+W0000:
+0000  F5         SEL    MB1                 
+0001  04 00      JMP    W0000               Cold Boot
+
+0003  D5         SEL    RB1                 
+0004  AA         MOV    R2,A                
+0005  24 3D      JMP    W013D               Get Keystroke
+
+0007  D5         SEL    RB1                 
+0008  AA         MOV    R2,A                
+0009  B8 6B      MOV    R0,#6Bh             
+000B  F0         MOV    A,@R0               
+000C  10         INC    @R0                 
+000D  C6 2A      JZ     W002A               
+000F  03 FC      ADD    A,#0FCh             
+0011  F6 55      JC     W0055               
+0013  03 02      ADD    A,#02h              
+0015  96 40      JNZ    W0040               
+0017  8A 40      ORL    P2,#40h             
+0019  B8 48      MOV    R0,#48h             
+001B  B0 D8      MOV    @R0,#0D8h           
+001D  B8 6C      MOV    R0,#6Ch             
+001F  F0         MOV    A,@R0               
+0020  F2 24      JB7    W0024               
+0022  04 45      JMP    W0045               
+
+W0024:
+0024  C5         SEL    RB0                 
+0025  FA         MOV    A,R2                
+0026  03 06      ADD    A,#06h              
+0028  04 47      JMP    W0047               
+
+W002A:
+002A  FF         MOV    A,R7                
+002B  C6 35      JZ     W0035               
+002D  23 01      MOV    A,#01h              
+W002F:
+002F  03 FF      ADD    A,#0FFh             
+0031  96 2F      JNZ    W002F               
+W0033:
+0033  EF 33      DJNZ   R7,W0033            
+W0035:
+0035  9A BF      ANL    P2,#0BFh            
+0037  FE         MOV    A,R6                
+0038  53 BF      ANL    A,#0BFh             
+003A  AE         MOV    R6,A                
+003B  B9 69      MOV    R1,#69h             
+003D  F1         MOV    A,@R1               
+003E  04 47      JMP    W0047               
+
+W0040:
+0040  17         INC    A                   
+0041  C6 45      JZ     W0045               
+0043  8A 40      ORL    P2,#40h             
+W0045:
+0045  C5         SEL    RB0                 
+0046  FA         MOV    A,R2                
+W0047:
+0047  37         CPL    A                   
+0048  17         INC    A                   
+0049  D5         SEL    RB1                 
+004A  A8         MOV    R0,A                
+004B  B4 9E      CALL   W059E               
+004D  42         MOV    A,T                 
+004E  68         ADD    A,R0                
+004F  62         MOV    T,A                 
+0050  F8         MOV    A,R0                
+0051  94 70      CALL   W0470               
+0053  84 00      JMP    W0400               Restart
+
+W0055:
+0055  86 5C      JNI    W005C               
+0057  FF         MOV    A,R7                
+0058  C6 5C      JZ     W005C               
+W005A:
+005A  EF 5A      DJNZ   R7,W005A            
+W005C:
+005C  9A BF      ANL    P2,#0BFh            
+005E  FA         MOV    A,R2                
+005F  93         RETR                       
+
+W0060:
+0060  C5         SEL    RB0                 
+0061  B8 76      MOV    R0,#76h             
+0063  B4 9E      CALL   W059E               
+0065  D5         SEL    RB1                 
+0066  FE         MOV    A,R6                
+0067  32 77      JB1    W0077               
+0069  43 02      ORL    A,#02h              
+006B  AE         MOV    R6,A                
+006C  C5         SEL    RB0                 
+006D  B9 67      MOV    R1,#67h             
+006F  F1         MOV    A,@R1               
+0070  60         ADD    A,@R0               
+0071  B9 78      MOV    R1,#78h             
+0073  61         ADD    A,@R1               
+0074  A0         MOV    @R0,A               
+0075  B1 00      MOV    @R1,#00h            
+W0077:
+0077  C5         SEL    RB0                 
+0078  42         MOV    A,T                 
+0079  60         ADD    A,@R0               
+007A  03 F6      ADD    A,#0F6h             
+007C  F6 8A      JC     W008A               
+007E  03 01      ADD    A,#01h              
+0080  F6 8A      JC     W008A               
+0082  03 03      ADD    A,#03h              
+0084  E6 88      JNC    W0088               
+0086  04 60      JMP    W0060               
+
+W0088:
+0088  C5         SEL    RB0                 
+0089  83         RET                        
+
+W008A:
+008A  B4 9E      CALL   W059E               
+008C  B8 76      MOV    R0,#76h             
+008E  F0         MOV    A,@R0               
+008F  03 F4      ADD    A,#0F4h             
+0091  A0         MOV    @R0,A               
+0092  B9 57      MOV    R1,#57h             
+0094  B1 FE      MOV    @R1,#0FEh           
+0096  B8 52      MOV    R0,#52h             
+0098  34 33      CALL   W0133               
+009A  94 A5      CALL   W04A5               
+009C  C5         SEL    RB0                 
+009D  FB         MOV    A,R3                
+009E  03 9B      ADD    A,#9Bh              
+00A0  F6 E7      JC     W00E7               Set up VDC Access
+00A2  97         CLR    C                   
+00A3  46 A6      JNT1   W00A6               
+00A5  A7         CPL    C                   
+W00A6:
+00A6  B9 34      MOV    R1,#34h             
+00A8  F1         MOV    A,@R1               
+00A9  F7         RLC    A                   
+00AA  A1         MOV    @R1,A               
+00AB  B8 3B      MOV    R0,#3Bh             
+00AD  86 D2      JNI    W00D2               
+00AF  F0         MOV    A,@R0               
+00B0  96 D7      JNZ    W00D7               
+00B2  37         CPL    A                   
+00B3  A0         MOV    @R0,A               
+00B4  B8 3D      MOV    R0,#3Dh             
+00B6  F1         MOV    A,@R1               
+00B7  53 0F      ANL    A,#0Fh              
+00B9  C6 C0      JZ     W00C0               
+00BB  D3 0F      XRL    A,#0Fh              
+00BD  96 C8      JNZ    W00C8               
+00BF  37         CPL    A                   
+W00C0:
+00C0  A1         MOV    @R1,A               
+00C1  D0         XRL    A,@R0               
+00C2  C6 C8      JZ     W00C8               
+00C4  F1         MOV    A,@R1               
+00C5  A0         MOV    @R0,A               
+00C6  04 CC      JMP    W00CC               
+
+W00C8:
+00C8  B9 38      MOV    R1,#38h             
+00CA  F0         MOV    A,@R0               
+00CB  A1         MOV    @R1,A               
+W00CC:
+00CC  FD         MOV    A,R5                
+00CD  C6 D7      JZ     W00D7               
+00CF  CD         DEC    R5                  
+00D0  04 D7      JMP    W00D7               
+
+W00D2:
+00D2  F0         MOV    A,@R0               
+00D3  C6 D7      JZ     W00D7               
+00D5  B0 00      MOV    @R0,#00h            
+W00D7:
+00D7  94 1E      CALL   W041E               
+00D9  B8 2F      MOV    R0,#2Fh             
+00DB  F0         MOV    A,@R0               
+00DC  07         DEC    A                   
+00DD  A0         MOV    @R0,A               
+00DE  C6 E5      JZ     W00E5               
+00E0  07         DEC    A                   
+00E1  F2 E5      JB7    W00E5               
+00E3  24 BE      JMP    W01BE               
+
+W00E5:
+00E5  24 00      JMP    W0100               
+
+W00E7:
+00E7  84 11      JMP    W0411               
+
+00E9  FF         MOV    A,R7                
+00EA  FF         MOV    A,R7                
+00EB  FF         MOV    A,R7                
+00EC  FF         MOV    A,R7                
+00ED  FF         MOV    A,R7                
+00EE  FF         MOV    A,R7                
+00EF  FF         MOV    A,R7                
+00F0  FF         MOV    A,R7                
+00F1  FF         MOV    A,R7                
+00F2  FF         MOV    A,R7                
+00F3  FF         MOV    A,R7                
+00F4  FF         MOV    A,R7                
+00F5  FF         MOV    A,R7                
+00F6  FF         MOV    A,R7                
+00F7  FF         MOV    A,R7                
+00F8  FF         MOV    A,R7                
+00F9  FF         MOV    A,R7                
+00FA  FF         MOV    A,R7                
+00FB  FF         MOV    A,R7                
+00FC  FF         MOV    A,R7                
+00FD  FF         MOV    A,R7                
+00FE  84 11      JMP    W0411               
+
+W0100:
+0100  03 05      ADD    A,#05h              
+0102  A0         MOV    @R0,A               
+0103  FA         MOV    A,R2                
+0104  03 EB      ADD    A,#0EBh             
+0106  E6 0C      JNC    W010C               
+0108  F5         SEL    MB1                 
+0109  B4 00      CALL   W0500               
+010B  E5         SEL    MB0                 
+W010C:
+010C  B9 2E      MOV    R1,#2Eh             
+010E  F1         MOV    A,@R1               
+010F  11         INC    @R1                 
+0110  12 16      JB0    W0116               
+0112  9A 7F      ANL    P2,#7Fh             
+0114  24 18      JMP    W0118               
+
+W0116:
+0116  8A 80      ORL    P2,#80h             
+W0118:
+0118  94 B4      CALL   W04B4               
+011A  C5         SEL    RB0                 
+011B  B9 57      MOV    R1,#57h             
+011D  B1 F9      MOV    @R1,#0F9h           
+011F  B8 43      MOV    R0,#43h             
+0121  34 33      CALL   W0133               
+0123  B8 30      MOV    R0,#30h             
+0125  F0         MOV    A,@R0               
+0126  07         DEC    A                   
+0127  A0         MOV    @R0,A               
+0128  96 31      JNZ    W0131               
+012A  B0 15      MOV    @R0,#15h            
+012C  D5         SEL    RB1                 
+012D  FE         MOV    A,R6                
+012E  43 08      ORL    A,#08h              
+0130  AE         MOV    R6,A                
+W0131:
+0131  24 BE      JMP    W01BE               
+
+W0133:
+0133  F0         MOV    A,@R0               
+0134  C6 37      JZ     W0137               
+0136  10         INC    @R0                 
+W0137:
+0137  18         INC    R0                  
+0138  11         INC    @R1                 
+0139  F1         MOV    A,@R1               
+013A  96 33      JNZ    W0133               
+013C  83         RET                        
+
+W013D:
+013D  B9 6C      MOV    R1,#6Ch             
+013F  F1         MOV    A,@R1               
+0140  F2 4F      JB7    W014F               
+0142  9A BF      ANL    P2,#0BFh            
+0144  55         STRT   T                   
+0145  42         MOV    A,T                 
+0146  B8 67      MOV    R0,#67h             
+0148  A0         MOV    @R0,A               
+0149  27         CLR    A                   
+014A  62         MOV    T,A                 
+014B  B4 20      CALL   W0520               
+014D  24 9B      JMP    W019B               
+
+W014F:
+014F  B8 67      MOV    R0,#67h             
+0151  55         STRT   T                   
+0152  42         MOV    A,T                 
+0153  A0         MOV    @R0,A               
+0154  B9 61      MOV    R1,#61h             
+0156  F1         MOV    A,@R1               
+0157  C6 7A      JZ     W017A               
+0159  03 F9      ADD    A,#0F9h             
+015B  E6 6F      JNC    W016F               
+015D  F1         MOV    A,@R1               
+015E  37         CPL    A                   
+015F  17         INC    A                   
+0160  62         MOV    T,A                 
+0161  FE         MOV    A,R6                
+0162  43 40      ORL    A,#40h              
+0164  AE         MOV    R6,A                
+0165  B4 20      CALL   W0520               
+0167  94 69      CALL   W0469               
+0169  B8 6B      MOV    R0,#6Bh             
+016B  B0 00      MOV    @R0,#00h            
+016D  24 A9      JMP    W01A9               
+
+W016F:
+016F  F1         MOV    A,@R1               
+0170  37         CPL    A                   
+0171  17         INC    A                   
+0172  16 74      JTF    W0174               
+W0174:
+0174  62         MOV    T,A                 
+0175  00         NOP                        
+W0176:
+0176  16 87      JTF    W0187               
+0178  24 76      JMP    W0176               Wait for Interrupt
+
+W017A:
+017A  27         CLR    A                   
+017B  62         MOV    T,A                 
+017C  FF         MOV    A,R7                
+017D  C6 91      JZ     W0191               
+017F  03 FD      ADD    A,#0FDh             
+0181  E6 91      JNC    W0191               
+0183  CF         DEC    R7                  
+0184  CF         DEC    R7                  
+0185  24 8F      JMP    W018F               
+
+W0187:
+0187  FF         MOV    A,R7                
+0188  C6 91      JZ     W0191               
+018A  23 03      MOV    A,#03h              
+W018C:
+018C  07         DEC    A                   
+018D  96 8C      JNZ    W018C               
+W018F:
+018F  EF 8F      DJNZ   R7,W018F            
+W0191:
+0191  9A BF      ANL    P2,#0BFh            
+0193  B4 20      CALL   W0520               
+0195  94 69      CALL   W0469               
+0197  B9 6B      MOV    R1,#6Bh             
+0199  B1 01      MOV    @R1,#01h            
+W019B:
+019B  B4 9E      CALL   W059E               
+019D  42         MOV    A,T                 
+019E  37         CPL    A                   
+019F  17         INC    A                   
+01A0  B8 69      MOV    R0,#69h             
+01A2  60         ADD    A,@R0               
+01A3  37         CPL    A                   
+01A4  17         INC    A                   
+01A5  62         MOV    T,A                 
+01A6  F0         MOV    A,@R0               
+01A7  94 76      CALL   W0476               
+W01A9:
+01A9  B9 47      MOV    R1,#47h             
+01AB  B1 D8      MOV    @R1,#0D8h           
+01AD  B9 79      MOV    R1,#79h             
+01AF  F1         MOV    A,@R1               
+01B0  53 7F      ANL    A,#7Fh              
+01B2  A1         MOV    @R1,A               
+01B3  FE         MOV    A,R6                
+01B4  53 F8      ANL    A,#0F8h             
+01B6  AE         MOV    R6,A                
+01B7  15         DIS    I                   
+01B8  16 BA      JTF    W01BA               
+W01BA:
+01BA  35         DIS    TCNTI               
+01BB  25         EN     TCNTI               
+01BC  84 0F      JMP    W040F               
+
+W01BE:
+01BE  D5         SEL    RB1                 
+01BF  FE         MOV    A,R6                
+01C0  D2 E0      JB6    W01E0               
+01C2  52 D2      JB2    W01D2               
+01C4  43 24      ORL    A,#24h              
+01C6  AE         MOV    R6,A                
+01C7  F5         SEL    MB1                 
+01C8  54 00      CALL   W0200               
+01CA  E5         SEL    MB0                 
+01CB  D5         SEL    RB1                 
+01CC  FE         MOV    A,R6                
+01CD  53 DF      ANL    A,#0DFh             
+01CF  AE         MOV    R6,A                
+01D0  24 E0      JMP    W01E0               
+
+W01D2:
+01D2  C5         SEL    RB0                 
+01D3  B8 79      MOV    R0,#79h             
+01D5  F0         MOV    A,@R0               
+01D6  F2 E0      JB7    W01E0               
+01D8  26 E0      JNT0   W01E0               
+01DA  B0 01      MOV    @R0,#01h            
+01DC  B8 4D      MOV    R0,#4Dh             
+01DE  B0 01      MOV    @R0,#01h            
+W01E0:
+01E0  D5         SEL    RB1                 
+01E1  FE         MOV    A,R6                
+01E2  12 EA      JB0    W01EA               
+01E4  86 EA      JNI    W01EA               
+01E6  05         EN     I                   
+01E7  43 01      ORL    A,#01h              
+01E9  AE         MOV    R6,A                
+W01EA:
+01EA  B2 F4      JB5    W01F4               
+01EC  C5         SEL    RB0                 
+01ED  FA         MOV    A,R2                
+01EE  03 EC      ADD    A,#0ECh             
+01F0  F6 F4      JC     W01F4               
+01F2  04 60      JMP    W0060               
+
+W01F4:
+01F4  C5         SEL    RB0                 
+01F5  83         RET                        
+
+01F6  FF         MOV    A,R7                
+01F7  FF         MOV    A,R7                
+01F8  FF         MOV    A,R7                
+01F9  FF         MOV    A,R7                
+01FA  FF         MOV    A,R7                
+01FB  FF         MOV    A,R7                
+01FC  FF         MOV    A,R7                
+01FD  FF         MOV    A,R7                
+01FE  84 11      JMP    W0411               
+
+W0200:
+0200  B8 41      MOV    R0,#41h             
+0202  F0         MOV    A,@R0               
+0203  96 0E      JNZ    W020E               
+0205  76 21      JF1    W0221               
+0207  B9 38      MOV    R1,#38h             
+0209  F1         MOV    A,@R1               
+020A  C6 2D      JZ     W022D               
+020C  44 C6      JMP    W02C6               
+
+W020E:
+020E  FC         MOV    A,R4                
+020F  43 2A      ORL    A,#2Ah              
+0211  AC         MOV    R4,A                
+0212  B8 31      MOV    R0,#31h             
+0214  F0         MOV    A,@R0               
+0215  52 1B      JB2    W021B               
+0217  B8 4A      MOV    R0,#4Ah             
+0219  44 1D      JMP    W021D               
+
+W021B:
+021B  B8 4B      MOV    R0,#4Bh             
+W021D:
+021D  F0         MOV    A,@R0               
+021E  AB         MOV    R3,A                
+021F  A5         CLR    F1                  
+0220  B5         CPL    F1                  
+W0221:
+0221  E4 00      JMP    W0700               
+
+W0223:
+0223  03 9C      ADD    A,#9Ch              
+0225  E6 28      JNC    W0228               
+0227  27         CLR    A                   
+W0228:
+0228  03 64      ADD    A,#64h              
+022A  AB         MOV    R3,A                
+022B  E4 00      JMP    W0700               
+
+W022D:
+022D  B8 73      MOV    R0,#73h             
+022F  FC         MOV    A,R4                
+0230  43 08      ORL    A,#08h              
+0232  AC         MOV    R4,A                
+0233  32 79      JB1    W0279               
+0235  F0         MOV    A,@R0               
+0236  96 3C      JNZ    W023C               
+0238  FC         MOV    A,R4                
+0239  43 40      ORL    A,#40h              
+023B  AC         MOV    R4,A                
+W023C:
+023C  FD         MOV    A,R5                
+023D  96 21      JNZ    W0221               
+023F  B8 53      MOV    R0,#53h             
+0241  F0         MOV    A,@R0               
+0242  96 21      JNZ    W0221               
+0244  B8 49      MOV    R0,#49h             
+0246  F0         MOV    A,@R0               
+0247  96 21      JNZ    W0221               
+0249  B8 40      MOV    R0,#40h             
+024B  F0         MOV    A,@R0               
+024C  96 AF      JNZ    W02AF               
+024E  B8 5F      MOV    R0,#5Fh             
+0250  F0         MOV    A,@R0               
+0251  B8 31      MOV    R0,#31h             
+0253  C6 5C      JZ     W025C               
+0255  F0         MOV    A,@R0               
+0256  53 2B      ANL    A,#2Bh              
+0258  D3 28      XRL    A,#28h              
+025A  C6 66      JZ     W0266               
+W025C:
+025C  FC         MOV    A,R4                
+025D  52 6F      JB2    W026F               
+025F  F0         MOV    A,@R0               
+0260  53 2F      ANL    A,#2Fh              
+0262  D3 2D      XRL    A,#2Dh              
+0264  96 6F      JNZ    W026F               
+W0266:
+0266  FB         MOV    A,R3                
+0267  C6 21      JZ     W0221               
+0269  07         DEC    A                   
+026A  B4 A5      CALL   W05A5               
+026C  AB         MOV    R3,A                
+026D  44 73      JMP    W0273               
+
+W026F:
+026F  FB         MOV    A,R3                
+0270  C6 21      JZ     W0221               
+0272  CB         DEC    R3                  
+W0273:
+0273  A5         CLR    F1                  
+0274  B5         CPL    F1                  
+0275  B4 BF      CALL   W05BF               
+0277  E4 00      JMP    W0700               
+
+W0279:
+0279  B0 EC      MOV    @R0,#0ECh           
+027B  B2 C1      JB5    W02C1               
+027D  B8 2C      MOV    R0,#2Ch             
+027F  FB         MOV    A,R3                
+0280  A0         MOV    @R0,A               
+0281  B8 31      MOV    R0,#31h             
+0283  F0         MOV    A,@R0               
+0284  53 0B      ANL    A,#0Bh              
+0286  D3 08      XRL    A,#08h              
+0288  96 8C      JNZ    W028C               
+028A  94 45      CALL   W0445               
+W028C:
+028C  FC         MOV    A,R4                
+028D  53 BD      ANL    A,#0BDh             
+028F  AC         MOV    R4,A                
+0290  B8 74      MOV    R0,#74h             
+0292  F0         MOV    A,@R0               
+0293  96 AF      JNZ    W02AF               
+0295  FC         MOV    A,R4                
+0296  37         CPL    A                   
+0297  92 AF      JB4    W02AF               
+0299  B8 49      MOV    R0,#49h             
+029B  0A         IN     A,P2                
+029C  72 A3      JB3    W02A3               
+029E  FA         MOV    A,R2                
+029F  03 D6      ADD    A,#0D6h             
+02A1  F6 A7      JC     W02A7               
+W02A3:
+02A3  B0 D8      MOV    @R0,#0D8h           
+02A5  44 A9      JMP    W02A9               
+
+W02A7:
+02A7  B0 88      MOV    @R0,#88h            
+W02A9:
+02A9  B8 40      MOV    R0,#40h             
+02AB  B0 FF      MOV    @R0,#0FFh           
+02AD  E4 00      JMP    W0700               
+
+W02AF:
+02AF  B8 40      MOV    R0,#40h             
+02B1  B0 00      MOV    @R0,#00h            
+02B3  B8 2C      MOV    R0,#2Ch             
+02B5  F0         MOV    A,@R0               
+02B6  B8 2D      MOV    R0,#2Dh             
+02B8  60         ADD    A,@R0               
+02B9  17         INC    A                   
+02BA  97         CLR    C                   
+02BB  67         RRC    A                   
+02BC  AB         MOV    R3,A                
+02BD  A5         CLR    F1                  
+02BE  B5         CPL    F1                  
+02BF  E4 00      JMP    W0700               
+
+W02C1:
+02C1  53 9D      ANL    A,#9Dh              
+02C3  AC         MOV    R4,A                
+02C4  E4 00      JMP    W0700               
+
+W02C6:
+02C6  FC         MOV    A,R4                
+02C7  43 02      ORL    A,#02h              
+02C9  AC         MOV    R4,A                
+02CA  72 DC      JB3    W02DC               
+02CC  FD         MOV    A,R5                
+02CD  96 21      JNZ    W0221               
+02CF  B8 53      MOV    R0,#53h             
+02D1  F0         MOV    A,@R0               
+02D2  96 21      JNZ    W0221               
+02D4  FB         MOV    A,R3                
+02D5  03 9C      ADD    A,#9Ch              
+02D7  F6 21      JC     W0221               
+02D9  1B         INC    R3                  
+02DA  44 73      JMP    W0273               
+
+W02DC:
+02DC  B2 E8      JB5    W02E8               
+02DE  B8 2D      MOV    R0,#2Dh             
+02E0  FB         MOV    A,R3                
+02E1  A0         MOV    @R0,A               
+02E2  FC         MOV    A,R4                
+02E3  53 B7      ANL    A,#0B7h             
+02E5  AC         MOV    R4,A                
+02E6  44 AF      JMP    W02AF               
+
+W02E8:
+02E8  53 97      ANL    A,#97h              
+02EA  AC         MOV    R4,A                
+02EB  E4 00      JMP    W0700               
+
+02ED  FF         MOV    A,R7                
+02EE  FF         MOV    A,R7                
+02EF  FF         MOV    A,R7                
+02F0  FF         MOV    A,R7                
+02F1  FF         MOV    A,R7                
+02F2  FF         MOV    A,R7                
+02F3  FF         MOV    A,R7                
+02F4  FF         MOV    A,R7                
+02F5  FF         MOV    A,R7                
+02F6  FF         MOV    A,R7                
+02F7  FF         MOV    A,R7                
+02F8  FF         MOV    A,R7                
+02F9  FF         MOV    A,R7                
+02FA  FF         MOV    A,R7                
+02FB  FF         MOV    A,R7                
+02FC  FF         MOV    A,R7                
+02FD  FF         MOV    A,R7                
+02FE  84 11      JMP    W0411               
+
+W0300:
+0300  0A         IN     A,P2                
+0301  52 C1      JB2    W03C1               
+W0303:
+0303  B6 09      JF0    W0309               
+W0305:
+0305  B4 00      CALL   W0500               
+0307  64 0B      JMP    W030B               
+
+W0309:
+0309  B4 1B      CALL   W051B               
+W030B:
+030B  23 32      MOV    A,#32h              
+030D  44 23      JMP    W0223               
+
+W030F:
+030F  B6 D9      JF0    W03D9               
+W0311:
+0311  B4 09      CALL   W0509               
+W0313:
+0313  44 00      JMP    W0200               
+
+W0315:
+0315  B6 D9      JF0    W03D9               
+0317  0A         IN     A,P2                
+0318  52 11      JB2    W0311               
+031A  08         INS    A,BUS               
+031B  D2 1F      JB6    W031F               
+031D  64 11      JMP    W0311               
+
+W031F:
+031F  B4 12      CALL   W0512               
+0321  44 00      JMP    W0200               
+
+W0323:
+0323  B4 00      CALL   W0500               
+0325  B6 D9      JF0    W03D9               
+0327  0A         IN     A,P2                
+0328  52 40      JB2    W0340               
+032A  72 36      JB3    W0336               
+032C  12 32      JB0    W0332               
+W032E:
+032E  23 28      MOV    A,#28h              
+0330  44 23      JMP    W0223               
+
+W0332:
+0332  23 32      MOV    A,#32h              
+0334  44 23      JMP    W0223               
+
+W0336:
+0336  12 3C      JB0    W033C               
+W0338:
+0338  23 23      MOV    A,#23h              
+033A  44 23      JMP    W0223               
+
+W033C:
+033C  23 2D      MOV    A,#2Dh              
+033E  44 23      JMP    W0223               
+
+W0340:
+0340  72 44      JB3    W0344               
+0342  64 36      JMP    W0336               
+
+W0344:
+0344  12 2E      JB0    W032E               
+0346  23 1E      MOV    A,#1Eh              
+0348  44 23      JMP    W0223               
+
+W034A:
+034A  B6 DD      JF0    W03DD               
+W034C:
+034C  B4 00      CALL   W0500               
+034E  44 00      JMP    W0200               
+
+W0350:
+0350  B6 DD      JF0    W03DD               
+0352  0A         IN     A,P2                
+0353  52 60      JB2    W0360               
+0355  32 59      JB1    W0359               
+0357  64 4C      JMP    W034C               
+
+W0359:
+0359  B4 00      CALL   W0500               
+W035B:
+035B  B8 4A      MOV    R0,#4Ah             
+035D  F0         MOV    A,@R0               
+035E  44 23      JMP    W0223               
+
+W0360:
+0360  32 66      JB1    W0366               
+0362  B4 12      CALL   W0512               
+0364  64 68      JMP    W0368               
+
+W0366:
+0366  B4 00      CALL   W0500               
+W0368:
+0368  0A         IN     A,P2                
+0369  37         CPL    A                   
+036A  72 13      JB3    W0313               
+036C  08         INS    A,BUS               
+036D  D2 5B      JB6    W035B               
+036F  44 00      JMP    W0200               
+
+W0371:
+0371  B6 05      JF0    W0305               
+0373  FC         MOV    A,R4                
+0374  52 11      JB2    W0311               
+0376  64 4C      JMP    W034C               
+
+W0378:
+0378  B6 91      JF0    W0391               
+037A  FC         MOV    A,R4                
+037B  37         CPL    A                   
+037C  52 89      JB2    W0389               
+037E  0A         IN     A,P2                
+037F  52 11      JB2    W0311               
+0381  08         INS    A,BUS               
+0382  37         CPL    A                   
+0383  D2 11      JB6    W0311               
+0385  B4 12      CALL   W0512               
+0387  44 00      JMP    W0200               
+
+W0389:
+0389  0A         IN     A,P2                
+038A  37         CPL    A                   
+038B  52 4C      JB2    W034C               
+038D  32 11      JB1    W0311               
+038F  64 4C      JMP    W034C               
+
+W0391:
+0391  B4 00      CALL   W0500               
+W0393:
+0393  23 3C      MOV    A,#3Ch              
+0395  44 23      JMP    W0223               
+
+W0397:
+0397  B6 A2      JF0    W03A2               
+0399  B4 00      CALL   W0500               
+039B  0A         IN     A,P2                
+039C  52 93      JB2    W0393               
+W039E:
+039E  23 46      MOV    A,#46h              
+03A0  44 23      JMP    W0223               
+
+W03A2:
+03A2  B4 1B      CALL   W051B               
+03A4  64 9E      JMP    W039E               
+
+W03A6:
+03A6  FC         MOV    A,R4                
+03A7  37         CPL    A                   
+03A8  52 05      JB2    W0305               
+03AA  0A         IN     A,P2                
+03AB  52 05      JB2    W0305               
+03AD  64 D9      JMP    W03D9               
+
+W03AF:
+03AF  B4 00      CALL   W0500               
+03B1  FC         MOV    A,R4                
+03B2  37         CPL    A                   
+03B3  52 93      JB2    W0393               
+03B5  0A         IN     A,P2                
+03B6  37         CPL    A                   
+03B7  52 3C      JB2    W033C               
+03B9  B6 38      JF0    W0338               
+03BB  64 3C      JMP    W033C               
+
+W03BD:
+03BD  B6 D0      JF0    W03D0               
+03BF  64 DD      JMP    W03DD               
+
+W03C1:
+03C1  B6 C7      JF0    W03C7               
+03C3  B4 00      CALL   W0500               
+03C5  64 C9      JMP    W03C9               
+
+W03C7:
+03C7  B4 1B      CALL   W051B               
+W03C9:
+03C9  B8 36      MOV    R0,#36h             
+03CB  F0         MOV    A,@R0               
+03CC  03 32      ADD    A,#32h              
+03CE  44 23      JMP    W0223               
+
+W03D0:
+03D0  B4 1B      CALL   W051B               
+03D2  B8 36      MOV    R0,#36h             
+03D4  F0         MOV    A,@R0               
+03D5  03 2A      ADD    A,#2Ah              
+03D7  44 23      JMP    W0223               
+
+W03D9:
+03D9  B4 00      CALL   W0500               
+03DB  64 DF      JMP    W03DF               
+
+W03DD:
+03DD  B4 1B      CALL   W051B               
+W03DF:
+03DF  B8 36      MOV    R0,#36h             
+03E1  F0         MOV    A,@R0               
+03E2  44 23      JMP    W0223               
+
+03E4  FF         MOV    A,R7                
+03E5  FF         MOV    A,R7                
+03E6  FF         MOV    A,R7                
+03E7  FF         MOV    A,R7                
+03E8  FF         MOV    A,R7                
+03E9  FF         MOV    A,R7                
+03EA  FF         MOV    A,R7                
+03EB  FF         MOV    A,R7                
+03EC  FF         MOV    A,R7                
+03ED  FF         MOV    A,R7                
+03EE  FF         MOV    A,R7                
+03EF  FF         MOV    A,R7                
+03F0  FF         MOV    A,R7                
+03F1  FF         MOV    A,R7                
+03F2  FF         MOV    A,R7                
+03F3  FF         MOV    A,R7                
+03F4  FF         MOV    A,R7                
+03F5  FF         MOV    A,R7                
+03F6  FF         MOV    A,R7                
+03F7  FF         MOV    A,R7                
+03F8  FF         MOV    A,R7                
+03F9  FF         MOV    A,R7                
+03FA  FF         MOV    A,R7                
+03FB  FF         MOV    A,R7                
+03FC  FF         MOV    A,R7                
+03FD  FF         MOV    A,R7                
+03FE  84 11      JMP    W0411               
+
+W0400:
+0400  C7         MOV    A,PSW               
+0401  07         DEC    A                   
+0402  53 07      ANL    A,#07h              
+0404  03 FA      ADD    A,#0FAh             
+0406  F6 11      JC     W0411               
+0408  86 0F      JNI    W040F               
+040A  05         EN     I                   
+040B  FE         MOV    A,R6                
+040C  43 01      ORL    A,#01h              
+040E  AE         MOV    R6,A                
+W040F:
+040F  FA         MOV    A,R2                
+W0410:
+0410  93         RETR                       
+
+W0411:
+0411  8A 20      ORL    P2,#20h             
+0413  35         DIS    TCNTI               
+0414  15         DIS    I                   
+0415  27         CLR    A                   
+0416  D7         MOV    PSW,A               
+0417  E5         SEL    MB0                 
+0418  94 10      CALL   W0410               
+041A  C5         SEL    RB0                 
+041B  80         MOVX   A,@R0               
+041C  04 00      JMP    W0000               Cold Boot
+
+W041E:
+041E  C5         SEL    RB0                 
+041F  B8 29      MOV    R0,#29h             
+0421  B9 28      MOV    R1,#28h             
+0423  08         INS    A,BUS               
+0424  53 3F      ANL    A,#3Fh              
+0426  20         XCH    A,@R0               
+0427  D0         XRL    A,@R0               
+0428  C6 2E      JZ     W042E               
+042A  B1 FD      MOV    @R1,#0FDh           
+042C  84 44      JMP    W0444               
+
+W042E:
+042E  11         INC    @R1                 
+042F  F1         MOV    A,@R1               
+0430  96 44      JNZ    W0444               
+0432  F0         MOV    A,@R0               
+0433  B8 2A      MOV    R0,#2Ah             
+0435  A0         MOV    @R0,A               
+0436  FC         MOV    A,R4                
+0437  F2 44      JB7    W0444               
+0439  F0         MOV    A,@R0               
+043A  32 44      JB1    W0444               
+043C  B8 5F      MOV    R0,#5Fh             
+043E  B0 10      MOV    @R0,#10h            
+0440  FC         MOV    A,R4                
+0441  43 80      ORL    A,#80h              
+0443  AC         MOV    R4,A                
+W0444:
+0444  83         RET                        
+
+W0445:
+0445  B9 31      MOV    R1,#31h             
+0447  F1         MOV    A,@R1               
+0448  B9 4B      MOV    R1,#4Bh             
+044A  52 4E      JB2    W044E               
+044C  B9 4A      MOV    R1,#4Ah             
+W044E:
+044E  B8 2C      MOV    R0,#2Ch             
+0450  F0         MOV    A,@R0               
+0451  B8 2D      MOV    R0,#2Dh             
+0453  60         ADD    A,@R0               
+0454  97         CLR    C                   
+0455  67         RRC    A                   
+0456  97         CLR    C                   
+0457  61         ADD    A,@R1               
+0458  61         ADD    A,@R1               
+0459  F6 5E      JC     W045E               
+045B  61         ADD    A,@R1               
+045C  84 61      JMP    W0461               
+
+W045E:
+045E  61         ADD    A,@R1               
+045F  97         CLR    C                   
+0460  A7         CPL    C                   
+W0461:
+0461  67         RRC    A                   
+0462  97         CLR    C                   
+0463  67         RRC    A                   
+0464  E6 67      JNC    W0467               
+0466  17         INC    A                   
+W0467:
+0467  A1         MOV    @R1,A               
+0468  83         RET                        
+
+W0469:
+0469  B8 61      MOV    R0,#61h             
+046B  F0         MOV    A,@R0               
+046C  C6 83      JZ     W0483               
+046E  84 76      JMP    W0476               
+
+W0470:
+0470  B9 76      MOV    R1,#76h             
+0472  37         CPL    A                   
+0473  17         INC    A                   
+0474  84 78      JMP    W0478               
+
+W0476:
+0476  B9 78      MOV    R1,#78h             
+W0478:
+0478  B8 77      MOV    R0,#77h             
+047A  A0         MOV    @R0,A               
+047B  61         ADD    A,@R1               
+047C  A1         MOV    @R1,A               
+047D  F0         MOV    A,@R0               
+047E  6C         ADD    A,R4                
+047F  E6 82      JNC    W0482               
+0481  1D         INC    R5                  
+W0482:
+0482  AC         MOV    R4,A                
+W0483:
+0483  83         RET                        
+
+W0484:
+0484  B9 66      MOV    R1,#66h             
+0486  B8 65      MOV    R0,#65h             
+0488  F0         MOV    A,@R0               
+0489  37         CPL    A                   
+048A  17         INC    A                   
+048B  6C         ADD    A,R4                
+048C  C6 9C      JZ     W049C               
+048E  07         DEC    A                   
+048F  C6 9C      JZ     W049C               
+0491  FC         MOV    A,R4                
+0492  A0         MOV    @R0,A               
+0493  B8 63      MOV    R0,#63h             
+0495  A0         MOV    @R0,A               
+0496  FD         MOV    A,R5                
+0497  A1         MOV    @R1,A               
+0498  B9 64      MOV    R1,#64h             
+049A  A1         MOV    @R1,A               
+049B  83         RET                        
+
+W049C:
+049C  F0         MOV    A,@R0               
+049D  B8 63      MOV    R0,#63h             
+049F  A0         MOV    @R0,A               
+04A0  F1         MOV    A,@R1               
+04A1  B9 64      MOV    R1,#64h             
+04A3  A1         MOV    @R1,A               
+04A4  83         RET                        
+
+W04A5:
+04A5  B8 3A      MOV    R0,#3Ah             
+04A7  F0         MOV    A,@R0               
+04A8  96 EA      JNZ    W04EA               
+04AA  B8 3E      MOV    R0,#3Eh             
+04AC  F0         MOV    A,@R0               
+04AD  10         INC    @R0                 
+04AE  96 EA      JNZ    W04EA               
+04B0  B0 F6      MOV    @R0,#0F6h           
+04B2  84 B9      JMP    W04B9               
+
+W04B4:
+04B4  B8 3A      MOV    R0,#3Ah             
+04B6  F0         MOV    A,@R0               
+04B7  C6 EA      JZ     W04EA               
+W04B9:
+04B9  C5         SEL    RB0                 
+04BA  FB         MOV    A,R3                
+04BB  D5         SEL    RB1                 
+04BC  37         CPL    A                   
+04BD  6B         ADD    A,R3                
+04BE  17         INC    A                   
+04BF  C6 E9      JZ     W04E9               
+04C1  E6 C6      JNC    W04C6               
+04C3  CB         DEC    R3                  
+04C4  84 C7      JMP    W04C7               
+
+W04C6:
+04C6  1B         INC    R3                  
+W04C7:
+04C7  FB         MOV    A,R3                
+04C8  53 03      ANL    A,#03h              
+04CA  03 CD      ADD    A,#0CDh             
+04CC  B3         JMPP   @A                  
+04CD  D1         XRL    A,@R1               
+04CE  D7         MOV    PSW,A               
+04CF  DD         XRL    A,R5                
+04D0  E3         MOVP3  A,@A                
+04D1  89 09      ORL    P1,#09h             
+04D3  99 F9      ANL    P1,#0F9h            
+04D5  84 EA      JMP    W04EA               
+
+04D7  89 0A      ORL    P1,#0Ah             
+04D9  99 FA      ANL    P1,#0FAh            
+04DB  84 EA      JMP    W04EA               
+
+04DD  89 06      ORL    P1,#06h             
+04DF  99 F6      ANL    P1,#0F6h            
+04E1  84 EA      JMP    W04EA               
+
+04E3  89 05      ORL    P1,#05h             
+04E5  99 F5      ANL    P1,#0F5h            
+04E7  84 EA      JMP    W04EA               
+
+W04E9:
+04E9  A5         CLR    F1                  
+W04EA:
+04EA  83         RET                        
+
+04EB  FF         MOV    A,R7                
+04EC  FF         MOV    A,R7                
+04ED  FF         MOV    A,R7                
+04EE  FF         MOV    A,R7                
+04EF  FF         MOV    A,R7                
+04F0  FF         MOV    A,R7                
+04F1  FF         MOV    A,R7                
+04F2  FF         MOV    A,R7                
+04F3  FF         MOV    A,R7                
+04F4  FF         MOV    A,R7                
+04F5  FF         MOV    A,R7                
+04F6  FF         MOV    A,R7                
+04F7  FF         MOV    A,R7                
+04F8  FF         MOV    A,R7                
+04F9  FF         MOV    A,R7                
+04FA  FF         MOV    A,R7                
+04FB  FF         MOV    A,R7                
+04FC  FF         MOV    A,R7                
+04FD  FF         MOV    A,R7                
+04FE  84 11      JMP    W0411               
+
+W0500:
+0500  B4 D5      CALL   W05D5               
+0502  C6 1B      JZ     W051B               
+W0504:
+0504  89 20      ORL    P1,#20h             
+0506  89 10      ORL    P1,#10h             
+0508  83         RET                        
+
+W0509:
+0509  B4 D5      CALL   W05D5               
+050B  C6 1B      JZ     W051B               
+W050D:
+050D  99 DF      ANL    P1,#0DFh            
+050F  89 10      ORL    P1,#10h             
+0511  83         RET                        
+
+W0512:
+0512  B4 D5      CALL   W05D5               
+0514  C6 1B      JZ     W051B               
+0516  FC         MOV    A,R4                
+0517  D2 04      JB6    W0504               
+0519  A4 0D      JMP    W050D               
+
+W051B:
+051B  99 DF      ANL    P1,#0DFh            
+051D  99 EF      ANL    P1,#0EFh            
+051F  83         RET                        
+
+W0520:
+0520  B8 6B      MOV    R0,#6Bh             
+0522  B9 67      MOV    R1,#67h             
+0524  F0         MOV    A,@R0               
+0525  03 FB      ADD    A,#0FBh             
+0527  E6 30      JNC    W0530               
+0529  F1         MOV    A,@R1               
+052A  6C         ADD    A,R4                
+052B  E6 37      JNC    W0537               
+052D  1D         INC    R5                  
+052E  A4 37      JMP    W0537               
+
+W0530:
+0530  F1         MOV    A,@R1               
+0531  C6 38      JZ     W0538               
+0533  6C         ADD    A,R4                
+0534  F6 37      JC     W0537               
+0536  CD         DEC    R5                  
+W0537:
+0537  AC         MOV    R4,A                
+W0538:
+0538  94 84      CALL   W0484               
+053A  BC 00      MOV    R0,#00h             
+053C  BD 00      MOV    R1,#00h             
+053E  B9 66      MOV    R1,#66h             
+0540  F1         MOV    A,@R1               
+0541  B8 65      MOV    R0,#65h             
+0543  C5         SEL    RB0                 
+0544  BA 00      MOV    R2,#00h             
+0546  97         CLR    C                   
+0547  C6 56      JZ     W0556               
+0549  07         DEC    A                   
+054A  C6 55      JZ     W0555               
+054C  07         DEC    A                   
+054D  BA 80      MOV    R2,#80h             
+054F  C6 56      JZ     W0556               
+0551  BA C0      MOV    R2,#0C0h            
+0553  A4 56      JMP    W0556               
+
+W0555:
+0555  A7         CPL    C                   
+W0556:
+0556  D5         SEL    RB1                 
+0557  F0         MOV    A,@R0               
+0558  B9 7B      MOV    R1,#7Bh             
+055A  B1 00      MOV    @R1,#00h            
+055C  67         RRC    A                   
+055D  E6 60      JNC    W0560               
+055F  11         INC    @R1                 
+W0560:
+0560  97         CLR    C                   
+0561  67         RRC    A                   
+0562  E6 66      JNC    W0566               
+0564  11         INC    @R1                 
+0565  11         INC    @R1                 
+W0566:
+0566  C5         SEL    RB0                 
+0567  6A         ADD    A,R2                
+0568  AA         MOV    R2,A                
+0569  E6 6F      JNC    W056F               
+056B  BA FF      MOV    R2,#0FFh            
+056D  D5         SEL    RB1                 
+056E  83         RET                        
+
+W056F:
+056F  FA         MOV    A,R2                
+0570  D5         SEL    RB1                 
+0571  B9 6B      MOV    R1,#6Bh             
+0573  B1 01      MOV    @R1,#01h            
+0575  B9 7B      MOV    R1,#7Bh             
+0577  61         ADD    A,@R1               
+0578  B8 69      MOV    R0,#69h             
+057A  F6 92      JC     W0592               
+057C  A0         MOV    @R0,A               
+057D  B9 6C      MOV    R1,#6Ch             
+057F  F1         MOV    A,@R1               
+0580  F2 9D      JB7    W059D               
+0582  B9 61      MOV    R1,#61h             
+0584  F1         MOV    A,@R1               
+0585  C6 9D      JZ     W059D               
+0587  37         CPL    A                   
+0588  17         INC    A                   
+0589  60         ADD    A,@R0               
+058A  A0         MOV    @R0,A               
+058B  E6 95      JNC    W0595               
+058D  03 F6      ADD    A,#0F6h             
+058F  E6 95      JNC    W0595               
+0591  83         RET                        
+
+W0592:
+0592  B0 FF      MOV    @R0,#0FFh           
+0594  83         RET                        
+
+W0595:
+0595  B9 6B      MOV    R1,#6Bh             
+0597  11         INC    @R1                 
+0598  C5         SEL    RB0                 
+0599  FA         MOV    A,R2                
+059A  D5         SEL    RB1                 
+059B  60         ADD    A,@R0               
+059C  A0         MOV    @R0,A               
+W059D:
+059D  83         RET                        
+
+W059E:
+059E  42         MOV    A,T                 
+059F  A9         MOV    R1,A                
+W05A0:
+05A0  42         MOV    A,T                 
+05A1  D9         XRL    A,R1                
+05A2  C6 A0      JZ     W05A0               
+05A4  83         RET                        
+
+W05A5:
+05A5  A8         MOV    R0,A                
+05A6  B9 36      MOV    R1,#36h             
+05A8  F1         MOV    A,@R1               
+05A9  03 E2      ADD    A,#0E2h             
+05AB  E6 BB      JNC    W05BB               
+05AD  C6 BB      JZ     W05BB               
+05AF  37         CPL    A                   
+05B0  17         INC    A                   
+05B1  97         CLR    C                   
+05B2  68         ADD    A,R0                
+05B3  F6 BB      JC     W05BB               
+05B5  F1         MOV    A,@R1               
+05B6  03 E2      ADD    A,#0E2h             
+05B8  F2 BD      JB7    W05BD               
+05BA  83         RET                        
+
+W05BB:
+05BB  F8         MOV    A,R0                
+05BC  83         RET                        
+
+W05BD:
+05BD  27         CLR    A                   
+05BE  83         RET                        
+
+W05BF:
+05BF  FA         MOV    A,R2                
+05C0  03 DF      ADD    A,#0DFh             
+05C2  E6 CC      JNC    W05CC               
+05C4  FA         MOV    A,R2                
+05C5  03 CF      ADD    A,#0CFh             
+05C7  E6 D0      JNC    W05D0               
+05C9  BD 08      MOV    R1,#08h             
+05CB  83         RET                        
+
+W05CC:
+05CC  23 0C      MOV    A,#0Ch              
+05CE  AD         MOV    R5,A                
+05CF  83         RET                        
+
+W05D0:
+05D0  B8 53      MOV    R0,#53h             
+05D2  B0 83      MOV    @R0,#83h            
+05D4  83         RET                        
+
+W05D5:
+05D5  B8 5D      MOV    R0,#5Dh             
+05D7  F0         MOV    A,@R0               
+05D8  C6 F0      JZ     W05F0               
+05DA  B8 5C      MOV    R0,#5Ch             
+05DC  F0         MOV    A,@R0               
+05DD  C6 F0      JZ     W05F0               
+05DF  B9 37      MOV    R1,#37h             
+05E1  FA         MOV    A,R2                
+05E2  03 DF      ADD    A,#0DFh             
+05E4  E6 EE      JNC    W05EE               
+05E6  FA         MOV    A,R2                
+05E7  03 DE      ADD    A,#0DEh             
+05E9  F6 F2      JC     W05F2               
+05EB  F1         MOV    A,@R1               
+05EC  C6 F4      JZ     W05F4               
+W05EE:
+05EE  B1 01      MOV    @R1,#01h            
+W05F0:
+05F0  27         CLR    A                   
+05F1  83         RET                        
+
+W05F2:
+05F2  B1 00      MOV    @R1,#00h            
+W05F4:
+05F4  23 FF      MOV    A,#0FFh             
+05F6  83         RET                        
+
+05F7  FF         MOV    A,R7                
+05F8  FF         MOV    A,R7                
+05F9  FF         MOV    A,R7                
+05FA  FF         MOV    A,R7                
+05FB  FF         MOV    A,R7                
+05FC  FF         MOV    A,R7                
+05FD  FF         MOV    A,R7                
+05FE  84 11      JMP    W0411               
+
+W0600:
+0600  B8 5B      MOV    R0,#5Bh             
+0602  B0 00      MOV    @R0,#00h            
+0604  B8 6E      MOV    R0,#6Eh             
+0606  B0 00      MOV    @R0,#00h            
+0608  B8 5E      MOV    R0,#5Eh             
+060A  B0 00      MOV    @R0,#00h            
+060C  64 DD      JMP    W03DD               
+
+W060E:
+060E  14 60      CALL   W0060               
+0610  85         CLR    F0                  
+0611  B8 5B      MOV    R0,#5Bh             
+0613  F0         MOV    A,@R0               
+0614  C6 17      JZ     W0617               
+0616  95         CPL    F0                  
+W0617:
+0617  B8 31      MOV    R0,#31h             
+0619  F0         MOV    A,@R0               
+061A  53 35      ANL    A,#35h              
+061C  D3 31      XRL    A,#31h              
+061E  C6 24      JZ     W0624               
+0620  B9 5C      MOV    R1,#5Ch             
+0622  B1 E2      MOV    @R1,#0E2h           
+W0624:
+0624  F0         MOV    A,@R0               
+0625  53 2D      ANL    A,#2Dh              
+0627  D3 2D      XRL    A,#2Dh              
+0629  C6 2F      JZ     W062F               
+062B  B9 5D      MOV    R1,#5Dh             
+062D  B1 88      MOV    @R1,#88h            
+W062F:
+062F  D4 31      CALL   W0631               
+W0631:
+0631  B8 31      MOV    R0,#31h             
+0633  F0         MOV    A,@R0               
+0634  53 3F      ANL    A,#3Fh              
+0636  E7         RL     A                   
+0637  03 3D      ADD    A,#3Dh              
+0639  B8 08      MOV    R0,#08h             
+063B  A0         MOV    @R0,A               
+063C  83         RET                        
+
+063D  E4 C7      JMP    W07C7               
+
+063F  64 C7      JMP    W03C7               
+
+0641  64 DD      JMP    W03DD               
+
+0643  64 C7      JMP    W03C7               
+
+0645  64 DD      JMP    W03DD               
+
+0647  64 DD      JMP    W03DD               
+
+0649  64 DD      JMP    W03DD               
+
+064B  64 DD      JMP    W03DD               
+
+064D  64 BD      JMP    W03BD               
+
+064F  64 C7      JMP    W03C7               
+
+0651  64 D0      JMP    W03D0               
+
+0653  64 D0      JMP    W03D0               
+
+0655  64 BD      JMP    W03BD               
+
+0657  64 D0      JMP    W03D0               
+
+0659  64 D0      JMP    W03D0               
+
+065B  64 D0      JMP    W03D0               
+
+065D  64 DD      JMP    W03DD               
+
+065F  64 C7      JMP    W03C7               
+
+0661  64 DD      JMP    W03DD               
+
+0663  64 C7      JMP    W03C7               
+
+0665  64 DD      JMP    W03DD               
+
+0667  64 DD      JMP    W03DD               
+
+0669  64 DD      JMP    W03DD               
+
+066B  64 DD      JMP    W03DD               
+
+066D  64 BD      JMP    W03BD               
+
+066F  64 C7      JMP    W03C7               
+
+0671  64 D0      JMP    W03D0               
+
+0673  64 D0      JMP    W03D0               
+
+0675  64 BD      JMP    W03BD               
+
+0677  64 D0      JMP    W03D0               
+
+0679  64 D0      JMP    W03D0               
+
+067B  64 D0      JMP    W03D0               
+
+067D  64 DD      JMP    W03DD               
+
+067F  64 00      JMP    W0300               Frequency Data
+
+0681  64 DD      JMP    W03DD               
+
+0683  64 C1      JMP    W03C1               
+
+0685  64 DD      JMP    W03DD               
+
+0687  64 DD      JMP    W03DD               
+
+0689  64 DD      JMP    W03DD               
+
+068B  64 DD      JMP    W03DD               
+
+068D  64 0F      JMP    W030F               
+
+068F  64 4A      JMP    W034A               Tune Data
+
+0691  64 D9      JMP    W03D9               
+
+0693  64 03      JMP    W0303               
+
+0695  64 0F      JMP    W030F               
+
+0697  64 71      JMP    W0371               
+
+0699  64 D9      JMP    W03D9               
+
+069B  64 A6      JMP    W03A6               
+
+069D  64 DD      JMP    W03DD               
+
+069F  64 C1      JMP    W03C1               
+
+06A1  64 DD      JMP    W03DD               
+
+06A3  64 C1      JMP    W03C1               
+
+06A5  64 DD      JMP    W03DD               
+
+06A7  64 DD      JMP    W03DD               
+
+06A9  64 DD      JMP    W03DD               
+
+06AB  64 DD      JMP    W03DD               
+
+06AD  64 15      JMP    W0315               
+
+06AF  64 50      JMP    W0350               
+
+06B1  64 D9      JMP    W03D9               
+
+06B3  64 97      JMP    W0397               
+
+06B5  64 15      JMP    W0315               
+
+06B7  64 78      JMP    W0378               
+
+06B9  64 23      JMP    W0323               
+
+06BB  64 AF      JMP    W03AF               
+
+06BD  FF         MOV    A,R7                
+06BE  FF         MOV    A,R7                
+06BF  FF         MOV    A,R7                
+06C0  FF         MOV    A,R7                
+06C1  FF         MOV    A,R7                
+06C2  FF         MOV    A,R7                
+06C3  FF         MOV    A,R7                
+06C4  FF         MOV    A,R7                
+06C5  FF         MOV    A,R7                
+06C6  FF         MOV    A,R7                
+06C7  FF         MOV    A,R7                
+06C8  FF         MOV    A,R7                
+06C9  FF         MOV    A,R7                
+06CA  FF         MOV    A,R7                
+06CB  FF         MOV    A,R7                
+06CC  FF         MOV    A,R7                
+06CD  FF         MOV    A,R7                
+06CE  FF         MOV    A,R7                
+06CF  FF         MOV    A,R7                
+06D0  FF         MOV    A,R7                
+06D1  FF         MOV    A,R7                
+06D2  FF         MOV    A,R7                
+06D3  FF         MOV    A,R7                
+06D4  FF         MOV    A,R7                
+06D5  FF         MOV    A,R7                
+06D6  FF         MOV    A,R7                
+06D7  FF         MOV    A,R7                
+06D8  FF         MOV    A,R7                
+06D9  FF         MOV    A,R7                
+06DA  FF         MOV    A,R7                
+06DB  FF         MOV    A,R7                
+06DC  FF         MOV    A,R7                
+06DD  FF         MOV    A,R7                
+06DE  FF         MOV    A,R7                
+06DF  FF         MOV    A,R7                
+06E0  FF         MOV    A,R7                
+06E1  FF         MOV    A,R7                
+06E2  FF         MOV    A,R7                
+06E3  FF         MOV    A,R7                
+06E4  FF         MOV    A,R7                
+06E5  FF         MOV    A,R7                
+06E6  FF         MOV    A,R7                
+06E7  FF         MOV    A,R7                
+06E8  FF         MOV    A,R7                
+06E9  FF         MOV    A,R7                
+06EA  FF         MOV    A,R7                
+06EB  FF         MOV    A,R7                
+06EC  FF         MOV    A,R7                
+06ED  FF         MOV    A,R7                
+06EE  FF         MOV    A,R7                
+06EF  FF         MOV    A,R7                
+06F0  FF         MOV    A,R7                
+06F1  FF         MOV    A,R7                
+06F2  FF         MOV    A,R7                
+06F3  FF         MOV    A,R7                
+06F4  FF         MOV    A,R7                
+06F5  FF         MOV    A,R7                
+06F6  FF         MOV    A,R7                
+06F7  FF         MOV    A,R7                
+06F8  FF         MOV    A,R7                
+06F9  FF         MOV    A,R7                
+06FA  FF         MOV    A,R7                
+06FB  FF         MOV    A,R7                
+06FC  FF         MOV    A,R7                
+06FD  FF         MOV    A,R7                
+06FE  84 11      JMP    W0411               
+
+W0700:
+0700  25         EN     TCNTI               
+0701  94 10      CALL   W0410               
+0703  B8 47      MOV    R0,#47h             
+0705  F0         MOV    A,@R0               
+0706  96 0A      JNZ    W070A               
+0708  84 11      JMP    W0411               
+
+W070A:
+070A  18         INC    R0                  
+070B  F0         MOV    A,@R0               
+070C  96 10      JNZ    W0710               
+070E  84 11      JMP    W0411               
+
+W0710:
+0710  F4 A4      CALL   W07A4               
+0712  14 60      CALL   W0060               
+0714  B8 31      MOV    R0,#31h             
+0716  F0         MOV    A,@R0               
+0717  53 0D      ANL    A,#0Dh              
+0719  D3 0D      XRL    A,#0Dh              
+071B  96 24      JNZ    W0724               
+071D  FC         MOV    A,R4                
+071E  52 24      JB2    W0724               
+0720  9A EF      ANL    P2,#0EFh            
+0722  E4 26      JMP    W0726               
+
+W0724:
+0724  8A 10      ORL    P2,#10h             
+W0726:
+0726  F5         SEL    MB1                 
+0727  B8 50      MOV    R0,#50h             
+0729  F0         MOV    A,@R0               
+072A  12 31      JB0    W0731               
+072C  34 00      CALL   W0100               
+072E  E5         SEL    MB0                 
+072F  E4 34      JMP    W0734               
+
+W0731:
+0731  D4 00      CALL   W0600               
+0733  E5         SEL    MB0                 
+W0734:
+0734  F4 A4      CALL   W07A4               
+0736  14 60      CALL   W0060               
+0738  C5         SEL    RB0                 
+0739  0A         IN     A,P2                
+073A  72 45      JB3    W0745               
+073C  23 A7      MOV    A,#0A7h             
+073E  6A         ADD    A,R2                
+073F  F6 59      JC     W0759               
+0741  23 BE      MOV    A,#0BEh             
+0743  E4 4C      JMP    W074C               
+
+W0745:
+0745  23 B2      MOV    A,#0B2h             
+0747  6A         ADD    A,R2                
+0748  F6 59      JC     W0759               
+074A  23 C4      MOV    A,#0C4h             
+W074C:
+074C  6A         ADD    A,R2                
+074D  E6 53      JNC    W0753               
+074F  FC         MOV    A,R4                
+0750  37         CPL    A                   
+0751  52 59      JB2    W0759               
+W0753:
+0753  FC         MOV    A,R4                
+0754  43 04      ORL    A,#04h              
+0756  AC         MOV    R4,A                
+0757  E4 5D      JMP    W075D               
+
+W0759:
+0759  FC         MOV    A,R4                
+075A  53 FB      ANL    A,#0FBh             
+075C  AC         MOV    R4,A                
+W075D:
+075D  B8 36      MOV    R0,#36h             
+075F  B0 32      MOV    @R0,#32h            
+0761  08         INS    A,BUS               
+0762  92 66      JB4    W0766               
+0764  B0 19      MOV    @R0,#19h            
+W0766:
+0766  B9 3C      MOV    R1,#3Ch             
+0768  B8 2A      MOV    R0,#2Ah             
+076A  F0         MOV    A,@R0               
+076B  B8 31      MOV    R0,#31h             
+076D  A0         MOV    @R0,A               
+076E  D1         XRL    A,@R1               
+076F  B8 41      MOV    R0,#41h             
+0771  B0 00      MOV    @R0,#00h            
+0773  C6 9E      JZ     W079E               
+0775  B0 FF      MOV    @R0,#0FFh           
+0777  0A         IN     A,P2                
+0778  37         CPL    A                   
+0779  52 9A      JB2    W079A               
+077B  08         INS    A,BUS               
+077C  F2 9A      JB7    W079A               
+077E  B8 31      MOV    R0,#31h             
+0780  F0         MOV    A,@R0               
+0781  53 3B      ANL    A,#3Bh              
+0783  D3 38      XRL    A,#38h              
+0785  C6 94      JZ     W0794               
+0787  F0         MOV    A,@R0               
+0788  D3 3D      XRL    A,#3Dh              
+078A  96 9A      JNZ    W079A               
+078C  FC         MOV    A,R4                
+078D  37         CPL    A                   
+078E  52 94      JB2    W0794               
+0790  B8 74      MOV    R0,#74h             
+0792  B0 CE      MOV    @R0,#0CEh           
+W0794:
+0794  FC         MOV    A,R4                
+0795  43 10      ORL    A,#10h              
+0797  AC         MOV    R4,A                
+0798  E4 9E      JMP    W079E               
+
+W079A:
+079A  FC         MOV    A,R4                
+079B  53 EF      ANL    A,#0EFh             
+079D  AC         MOV    R4,A                
+W079E:
+079E  B8 31      MOV    R0,#31h             
+07A0  F0         MOV    A,@R0               
+07A1  A1         MOV    @R1,A               
+07A2  C4 0E      JMP    W060E               
+
+W07A4:
+07A4  D5         SEL    RB1                 
+07A5  FE         MOV    A,R6                
+07A6  72 A9      JB3    W07A9               
+07A8  83         RET                        
+
+W07A9:
+07A9  53 F7      ANL    A,#0F7h             
+07AB  AE         MOV    R6,A                
+07AC  C5         SEL    RB0                 
+07AD  B9 57      MOV    R1,#57h             
+07AF  B1 F9      MOV    @R1,#0F9h           
+07B1  B8 6E      MOV    R0,#6Eh             
+07B3  34 33      CALL   W0133               
+07B5  B8 4E      MOV    R0,#4Eh             
+07B7  F0         MOV    A,@R0               
+07B8  C6 BC      JZ     W07BC               
+07BA  10         INC    @R0                 
+07BB  83         RET                        
+
+W07BC:
+07BC  B0 F7      MOV    @R0,#0F7h           
+07BE  B9 57      MOV    R1,#57h             
+07C0  B1 FA      MOV    @R1,#0FAh           
+07C2  B8 5A      MOV    R0,#5Ah             
+07C4  34 33      CALL   W0133               
+07C6  83         RET                        
+
+W07C7:
+07C7  B8 50      MOV    R0,#50h             
+07C9  F0         MOV    A,@R0               
+07CA  32 F6      JB1    W07F6               
+07CC  12 F4      JB0    W07F4               
+07CE  B9 41      MOV    R1,#41h             
+07D0  F1         MOV    A,@R1               
+07D1  C6 D7      JZ     W07D7               
+07D3  F0         MOV    A,@R0               
+07D4  43 04      ORL    A,#04h              
+07D6  A0         MOV    @R0,A               
+W07D7:
+07D7  F0         MOV    A,@R0               
+07D8  37         CPL    A                   
+07D9  52 F6      JB2    W07F6               
+07DB  FA         MOV    A,R2                
+07DC  03 D6      ADD    A,#0D6h             
+07DE  F6 F6      JC     W07F6               
+07E0  F0         MOV    A,@R0               
+07E1  53 FB      ANL    A,#0FBh             
+07E3  43 11      ORL    A,#11h              
+07E5  A0         MOV    @R0,A               
+07E6  B9 7C      MOV    R1,#7Ch             
+07E8  B1 06      MOV    @R1,#06h            
+07EA  B9 6F      MOV    R1,#6Fh             
+07EC  B1 FB      MOV    @R1,#0FBh           
+07EE  B9 4D      MOV    R1,#4Dh             
+07F0  B1 00      MOV    @R1,#00h            
+07F2  99 3F      ANL    P1,#3Fh             
+W07F4:
+07F4  64 DD      JMP    W03DD               
+
+W07F6:
+07F6  C4 00      JMP    W0600               
+
+07F8  FF         MOV    A,R7                
+07F9  FF         MOV    A,R7                
+07FA  FF         MOV    A,R7                
+07FB  FF         MOV    A,R7                
+07FC  FF         MOV    A,R7                
+07FD  FF         MOV    A,R7                
+07FE  84 11      JMP    W0411               
+
