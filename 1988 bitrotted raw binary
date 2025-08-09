@@ -1,0 +1,1703 @@
+Raw binary without starting address
+
+
+0000  E1         ???                        Illegal instruction
+0001  80         MOVX   A,@R0               
+0002  42         MOV    A,T                 
+0003  02         OUTL   BUS,A               
+0004  AC         MOV    R4,A                
+0005  C5         SEL    RB0                 
+0006  06         ???                        Illegal instruction
+0007  C7         MOV    A,PSW               
+0008  C8         DEC    R0                  
+0009  A8         MOV    R0,A                
+000A  42         MOV    A,T                 
+000B  AA         MOV    R2,A                
+000C  44 AC      JMP    02ACh               
+
+000E  46 AE      JNT1   00AEh               
+0010  F8         MOV    A,R0                
+0011  90         MOVX   @R0,A               
+0012  52 12      JB2    0012h               
+0014  BC D5      MOV    R0,#0D5h            
+0016  16 D7      JTF    00D7h               
+0018  D8         XRL    A,R0                
+0019  B8 52      MOV    R0,#52h             
+001B  BA 54      MOV    R2,#54h             
+001D  BC 56      MOV    R0,#56h             
+001F  BE E9      MOV    R2,#0E9h            
+0021  E8 AB      DJNZ   R0,00ABh            
+0023  EA AD      DJNZ   R2,00ADh            
+0025  EC AF      DJNZ   R4,00AFh            
+0027  EE 00      DJNZ   R6,0000h            Cold Boot
+0029  E1         ???                        Illegal instruction
+002A  43 AB      ORL    A,#0ABh             
+002C  45         STRT   CNT                 
+002D  AD         MOV    R5,A                
+002E  47         SWAP   A                   
+002F  AF         MOV    R7,A                
+0030  F9         MOV    A,R1                
+0031  F8         MOV    A,R0                
+0032  BB FA      MOV    R3,#0FAh            
+0034  BD FC      MOV    R1,#0FCh            
+0036  BF FE      MOV    R3,#0FEh            
+0038  10         INC    @R0                 
+0039  F1         MOV    A,@R1               
+003A  53 BB      ANL    A,#0BBh             
+003C  55         STRT   T                   
+003D  BD 57      MOV    R1,#57h             
+003F  BF E8      MOV    R3,#0E8h            
+0041  80         MOVX   A,@R0               
+0042  02         OUTL   BUS,A               
+0043  C2         ???                        Illegal instruction
+0044  EC 84      DJNZ   R4,0084h            
+0046  46 C6      JNT1   00C6h               
+0048  68         ADD    A,R0                
+0049  C1         ???                        Illegal instruction
+004A  8A 4A      ORL    P2,#4Ah             
+004C  ED 64      DJNZ   R5,0064h            
+004E  AE         MOV    R6,A                
+004F  C7         MOV    A,PSW               
+0050  10         INC    @R0                 
+0051  D0         XRL    A,@R0               
+0052  FA         MOV    A,R2                
+0053  92 54      JB4    0054h               
+0055  D4 FE      CALL   06FEh               
+0057  96 98      JNZ    0098h               
+0059  91         MOVX   @R1,A               
+005A  FB         MOV    A,R3                
+005B  72 7C      JB3    007Ch               
+005D  D5         SEL    RB1                 
+005E  9E         ANLD   P6,A                
+005F  5E         ANL    A,R6                
+0060  68         ADD    A,R0                
+0061  A9         MOV    R1,A                
+0062  62         MOV    T,A                 
+0063  AA         MOV    R2,A                
+W0064:
+0064  64 AC      JMP    03ACh               
+
+0066  66         ???                        Illegal instruction
+0067  AE         MOV    R6,A                
+0068  40         ORL    A,@R0               
+0069  E0         ???                        Illegal instruction
+006A  03 E2      ADD    A,#0E2h             
+006C  05         EN     I                   
+006D  E4 07      JMP    0707h               
+
+006F  E6 10      JNC    0010h               
+0071  B8 72      MOV    R0,#72h             
+0073  BA 74      MOV    R2,#74h             
+0075  BC 76      MOV    R0,#76h             
+0077  BE 50      MOV    R2,#50h             
+0079  F0         MOV    A,@R0               
+007A  13 F2      ADDC   A,#0F2h             
+W007C:
+007C  15         DIS    I                   
+007D  F4 17      CALL   0717h               
+007F  F6 A8      JC     00A8h               
+0081  A0         MOV    @R0,A               
+0082  E2         ???                        Illegal instruction
+0083  42         MOV    A,T                 
+W0084:
+0084  AD         MOV    R5,A                
+0085  A4 E6      JMP    05E6h               
+
+0087  46 80      JNT1   0080h               
+0089  E9 82      DJNZ   R1,0082h            
+008B  EB 84      DJNZ   R3,W0084            
+008D  ED 86      DJNZ   R5,0086h            
+008F  EF B9      DJNZ   R7,00B9h            
+0091  B0 F2      MOV    @R0,#0F2h           
+0093  52 BD      JB2    00BDh               
+0095  B4 F6      CALL   05F6h               
+0097  56 90      JT1    0090h               
+0099  F9         MOV    A,R1                
+009A  92 FB      JB4    00FBh               
+009C  94 FD      CALL   04FDh               
+009E  96 FF      JNZ    00FFh               
+00A0  21         XCH    A,@R1               
+00A1  41         ORL    A,@R1               
+00A2  23 43      MOV    A,#43h              
+00A4  25         EN     TCNTI               
+00A5  45         STRT   CNT                 
+00A6  27         CLR    A                   
+00A7  47         SWAP   A                   
+W00A8:
+00A8  C0         ???                        Illegal instruction
+00A9  C0         ???                        Illegal instruction
+00AA  CA         DEC    R2                  
+W00AB:
+00AB  E3         MOVP3  A,@A                
+00AC  CC         DEC    R4                  
+W00AD:
+00AD  E5         SEL    MB0                 
+W00AE:
+00AE  CE         DEC    R6                  
+W00AF:
+00AF  E7         RL     A                   
+00B0  F1         MOV    A,@R1               
+00B1  D1         XRL    A,@R1               
+00B2  F3         ???                        Illegal instruction
+00B3  D3 F5      XRL    A,#0F5h             
+00B5  D5         SEL    RB1                 
+00B6  F7         RLC    A                   
+00B7  D7         MOV    PSW,A               
+00B8  D8         XRL    A,R0                
+W00B9:
+00B9  F1         MOV    A,@R1               
+00BA  DA         XRL    A,R2                
+00BB  F3         ???                        Illegal instruction
+00BC  DC         XRL    A,R4                
+W00BD:
+00BD  F5         SEL    MB1                 
+00BE  DE         XRL    A,R6                
+00BF  F7         RLC    A                   
+00C0  00         NOP                        
+00C1  C0         ???                        Illegal instruction
+00C2  02         OUTL   BUS,A               
+00C3  A2         ???                        Illegal instruction
+00C4  A5         CLR    F1                  
+00C5  C4 06      JMP    0606h               
+
+00C7  A6         ???                        Illegal instruction
+00C8  A9         MOV    R1,A                
+00C9  A8         MOV    R0,A                
+00CA  0A         IN     A,P2                
+00CB  E3         MOVP3  A,@A                
+00CC  ED A4      DJNZ   R5,00A4h            
+00CE  AF         MOV    R7,A                
+00CF  AE         MOV    R6,A                
+00D0  10         INC    @R0                 
+00D1  B0 B3      MOV    @R0,#0B3h           
+00D3  D2 14      JB6    0014h               
+00D5  B4 B7      CALL   05B7h               
+W00D7:
+00D7  D6         ???                        Illegal instruction
+00D8  18         INC    R0                  
+00D9  F1         MOV    A,@R1               
+00DA  FB         MOV    A,R3                
+00DB  B2 FD      JB5    00FDh               
+00DD  B4 BF      CALL   05BFh               
+00DF  BE E9      MOV    R2,#0E9h            
+00E1  E9 EB      DJNZ   R1,00EBh            
+00E3  EB ED      DJNZ   R3,00EDh            
+00E5  ED EF      DJNZ   R5,00EFh            
+00E7  EF 80      DJNZ   R7,W0080            
+00E9  E9 82      DJNZ   R1,W0082            
+W00EB:
+00EB  EB 84      DJNZ   R3,W0084            
+W00ED:
+00ED  ED 86      DJNZ   R5,W0086            
+W00EF:
+00EF  EF F9      DJNZ   R7,00F9h            
+00F1  F9         MOV    A,R1                
+00F2  FB         MOV    A,R3                
+00F3  FB         MOV    A,R3                
+00F4  FD         MOV    A,R5                
+00F5  FD         MOV    A,R5                
+00F6  FF         MOV    A,R7                
+00F7  FF         MOV    A,R7                
+00F8  90         MOVX   @R0,A               
+W00F9:
+00F9  F9         MOV    A,R1                
+00FA  92 FB      JB4    W00FB               
+00FC  94 FD      CALL   W04FD               
+00FE  96 FF      JNZ    W00FF               
+0100  E0         ???                        Illegal instruction
+0101  08         INS    A,BUS               
+0102  03 EA      ADD    A,#0EAh             
+0104  8C         ORLD   P4,A                
+0105  6D         ADD    A,R5                
+0106  8E         ORLD   P6,A                
+0107  EE C1      DJNZ   R6,01C1h            
+0109  28         XCH    A,R0                
+010A  E3         MOVP3  A,@A                
+010B  A2         ???                        Illegal instruction
+010C  45         STRT   CNT                 
+010D  AC         MOV    R4,A                
+010E  86 A7      JNI    01A7h               
+0110  10         INC    @R0                 
+0111  79         ADDC   A,R1                
+0112  9A FA      ANL    P2,#0FAh            
+0114  9C         ANLD   P4,A                
+0115  7D         ADDC   A,R5                
+0116  9E         ANLD   P6,A                
+0117  FE         MOV    A,R6                
+0118  D1         XRL    A,@R1               
+0119  38         ???                        Illegal instruction
+011A  F3         ???                        Illegal instruction
+011B  B2 55      JB5    0155h               
+011D  BC 96      MOV    R0,#96h             
+011F  B7         ???                        Illegal instruction
+0120  A8         MOV    R0,A                
+0121  A0         MOV    @R0,A               
+0122  43 AA      ORL    A,#0AAh             
+0124  AC         MOV    R4,A                
+0125  A4 47      JMP    0547h               
+
+0127  AE         MOV    R6,A                
+0128  01         ID1                        Undocument instruction
+0129  E1         ???                        Illegal instruction
+012A  03 E3      ADD    A,#0E3h             
+012C  85         CLR    F0                  
+012D  25         EN     TCNTI               
+012E  86 E7      JNI    01E7h               
+0130  B8 B0      MOV    R0,#0B0h            
+0132  53 BA      ANL    A,#0BAh             
+0134  BC B4      MOV    R0,#0B4h            
+0136  57         DA     A                   
+0137  BE 11      MOV    R2,#11h             
+0139  F1         MOV    A,@R1               
+013A  13 F3      ADDC   A,#0F3h             
+013C  95         CPL    F0                  
+013D  35         DIS    TCNTI               
+013E  96 F7      JNZ    01F7h               
+0140  61         ADD    A,@R1               
+0141  61         ADD    A,@R1               
+0142  AA         MOV    R2,A                
+0143  43 AD      ORL    A,#0ADh             
+0145  45         STRT   CNT                 
+0146  AF         MOV    R7,A                
+0147  47         SWAP   A                   
+0148  69         ADD    A,R1                
+0149  A8         MOV    R0,A                
+014A  6A         ADD    A,R2                
+014B  E2         ???                        Illegal instruction
+014C  8D         ORLD   P5,A                
+014D  E4 8F      JMP    078Fh               
+
+014F  E6 B8      JNC    01B8h               
+0151  51         ANL    A,@R1               
+0152  BB 53      MOV    R3,#53h             
+0154  BD 55      MOV    R1,#55h             
+0156  BF 57      MOV    R3,#57h             
+0158  79         ADDC   A,R1                
+0159  B8 7A      MOV    R0,#7Ah             
+015B  F2 9D      JB7    019Dh               
+015D  F4 9F      CALL   079Fh               
+015F  F6 20      JC     0120h               
+0161  E8 02      DJNZ   R0,0102h            
+0163  83         RET                        
+
+0164  24 EC      JMP    01ECh               
+
+0166  06         ???                        Illegal instruction
+0167  87         ???                        Illegal instruction
+0168  81         MOVX   A,@R1               
+0169  60         ADD    A,@R0               
+016A  83         RET                        
+
+016B  62         MOV    T,A                 
+016C  85         CLR    F0                  
+016D  64 87      JMP    0387h               
+
+016F  66         ???                        Illegal instruction
+0170  10         INC    @R0                 
+0171  91         MOVX   @R1,A               
+0172  32 FA      JB1    01FAh               
+0174  14 95      CALL   0095h               
+0176  36 FE      JT0    01FEh               
+0178  91         MOVX   @R1,A               
+0179  70         ADDC   A,@R0               
+017A  93         RETR                       
+
+017B  72 95      JB3    0195h               
+017D  74 97      CALL   0397h               
+017F  76 69      JF1    0169h               
+0181  E0         ???                        Illegal instruction
+0182  8B         ???                        Illegal instruction
+0183  EB 6D      DJNZ   R3,016Dh            
+0185  E4 8F      JMP    W078F               
+
+0187  EF 21      DJNZ   R7,0121h            
+0189  01         ID1                        Undocument instruction
+018A  23 03      MOV    A,#03h              
+018C  25         EN     TCNTI               
+018D  05         EN     I                   
+018E  27         CLR    A                   
+018F  07         DEC    A                   
+0190  79         ADDC   A,R1                
+0191  F0         MOV    A,@R0               
+0192  9B         ???                        Illegal instruction
+0193  FB         MOV    A,R3                
+0194  7D         ADDC   A,R5                
+W0195:
+0195  F4 9F      CALL   W079F               
+0197  FF         MOV    A,R7                
+0198  31         XCHD   A,@R1               
+0199  11         INC    @R1                 
+019A  33         ???                        Illegal instruction
+019B  13 35      ADDC   A,#35h              
+W019D:
+019D  15         DIS    I                   
+019E  37         CPL    A                   
+019F  17         INC    A                   
+01A0  A8         MOV    R0,A                
+01A1  80         MOVX   A,@R0               
+01A2  43 EA      ORL    A,#0EAh             
+01A4  AC         MOV    R4,A                
+01A5  84 47      JMP    0447h               
+
+W01A7:
+01A7  EE C1      DJNZ   R6,W01C1            
+01A9  09         IN     A,P1                
+01AA  6B         ADD    A,R3                
+01AB  AA         MOV    R2,A                
+01AC  25         EN     TCNTI               
+01AD  0D         MOVD   A,P5                
+01AE  6F         ADD    A,R7                
+01AF  AE         MOV    R6,A                
+01B0  B1 79      MOV    @R1,#79h            
+01B2  BA 7B      MOV    R2,#7Bh             
+01B4  BC 94      MOV    R0,#94h             
+01B6  57         DA     A                   
+01B7  FE         MOV    A,R6                
+W01B8:
+01B8  D1         XRL    A,@R1               
+01B9  19         INC    R1                  
+01BA  7B         ADDC   A,R3                
+01BB  BA 35      MOV    R2,#35h             
+01BD  1D         INC    R5                  
+01BE  7F         ADDC   A,R7                
+01BF  BE C1      MOV    R2,#0C1h            
+W01C1:
+01C1  20         XCH    A,@R0               
+01C2  43 C2      ORL    A,#0C2h             
+01C4  C5         SEL    RB0                 
+01C5  24 47      JMP    0147h               
+
+01C7  C6 A0      JZ     01A0h               
+01C9  E0         ???                        Illegal instruction
+01CA  42         MOV    A,T                 
+01CB  4B         ORL    A,R3                
+01CC  EC 05      DJNZ   R4,0105h            
+01CE  46 4F      JNT1   014Fh               
+01D0  51         ANL    A,@R1               
+01D1  D0         XRL    A,@R0               
+01D2  D3 32      XRL    A,#32h              
+01D4  55         STRT   T                   
+01D5  D4 D7      CALL   06D7h               
+01D7  36 F8      JT0    01F8h               
+01D9  11         INC    @R1                 
+01DA  52 5B      JB2    015Bh               
+01DC  FC         MOV    A,R4                
+01DD  15         DIS    I                   
+01DE  56 5F      JT1    015Fh               
+01E0  80         MOVX   A,@R0               
+01E1  41         ORL    A,@R1               
+01E2  02         OUTL   BUS,A               
+01E3  62         MOV    T,A                 
+01E4  C5         SEL    RB0                 
+01E5  85         CLR    F0                  
+01E6  06         ???                        Illegal instruction
+W01E7:
+01E7  66         ???                        Illegal instruction
+01E8  01         ID1                        Undocument instruction
+01E9  E9 82      DJNZ   R1,0182h            
+01EB  EB 84      DJNZ   R3,0184h            
+01ED  ED 86      DJNZ   R5,0186h            
+01EF  EF F9      DJNZ   R7,01F9h            
+01F1  F9         MOV    A,R1                
+01F2  FB         MOV    A,R3                
+01F3  FB         MOV    A,R3                
+01F4  FD         MOV    A,R5                
+01F5  FD         MOV    A,R5                
+01F6  FF         MOV    A,R7                
+W01F7:
+01F7  FF         MOV    A,R7                
+W01F8:
+01F8  90         MOVX   @R0,A               
+W01F9:
+01F9  F9         MOV    A,R1                
+W01FA:
+01FA  92 FB      JB4    01FBh               
+01FC  94 FD      CALL   W04FD               
+W01FE:
+01FE  96 FF      JNZ    01FFh               
+0200  21         XCH    A,@R1               
+0201  41         ORL    A,@R1               
+0202  AA         MOV    R2,A                
+0203  AA         MOV    R2,A                
+0204  0C         MOVD   A,P4                
+0205  AD         MOV    R5,A                
+0206  2E         XCH    A,R6                
+0207  86 A9      JNI    02A9h               
+0209  29         XCH    A,R1                
+020A  42         MOV    A,T                 
+020B  C2         ???                        Illegal instruction
+020C  EC E4      DJNZ   R4,02E4h            
+020E  4E         ORL    A,R6                
+020F  2F         XCH    A,R7                
+0210  18         INC    R0                  
+0211  B9 3A      MOV    R1,#3Ah             
+0213  92 1D      JB4    021Dh               
+0215  35         DIS    TCNTI               
+0216  3E         MOVD   P6,A                
+0217  96 B9      JNZ    02B9h               
+0219  39         OUTL   P1,A                
+021A  52 D2      JB2    02D2h               
+021C  FC         MOV    A,R4                
+W021D:
+021D  F4 5E      CALL   075Eh               
+021F  3F         MOVD   P7,A                
+0220  88 E0      ORL    BUS,#0E0h           
+0222  43 03      ORL    A,#03h              
+0224  04 E4      JMP    00E4h               
+
+0226  8E         ORLD   P6,A                
+0227  E6 E8      JNC    02E8h               
+0229  80         MOVX   A,@R0               
+022A  23 62      MOV    A,#62h              
+022C  04 45      JMP    0045h               
+
+022E  46 47      JNT1   0247h               
+0230  B8 F0      MOV    R0,#0F0h            
+0232  3A         OUTL   P2,A                
+0233  F2 9C      JB7    029Ch               
+0235  F4 57      CALL   0757h               
+0237  17         INC    A                   
+0238  50         ANL    A,@R0               
+0239  51         ANL    A,@R1               
+023A  52 53      JB2    0253h               
+023C  54 55      CALL   0255h               
+023E  56 57      JT1    0257h               
+0240  80         MOVX   A,@R0               
+0241  29         XCH    A,R1                
+0242  82         ???                        Illegal instruction
+0243  2B         XCH    A,R3                
+0244  84 2D      JMP    042Dh               
+
+0246  86 2F      JNI    022Fh               
+0248  40         ORL    A,@R0               
+0249  A8         MOV    R0,A                
+024A  C3         ???                        Illegal instruction
+024B  62         MOV    T,A                 
+024C  AC         MOV    R4,A                
+024D  2C         XCH    A,R4                
+024E  27         CLR    A                   
+024F  AE         MOV    R6,A                
+0250  F0         MOV    A,@R0               
+0251  B8 F2      MOV    R0,#0F2h            
+W0253:
+0253  BA F4      MOV    R2,#0F4h            
+W0255:
+0255  BC F6      MOV    R0,#0F6h            
+W0257:
+0257  BE D1      MOV    R2,#0D1h            
+0259  70         ADDC   A,@R0               
+025A  BA 3A      MOV    R2,#3Ah             
+025C  35         DIS    TCNTI               
+025D  BC D7      MOV    R0,#0D7h            
+025F  76 E9      JF1    02E9h               
+0261  A1         MOV    @R1,A               
+0262  82         ???                        Illegal instruction
+0263  E2         ???                        Illegal instruction
+0264  84 E4      JMP    04E4h               
+
+0266  86 E6      JNI    02E6h               
+0268  A9         MOV    R1,A                
+0269  A1         MOV    @R1,A               
+026A  AB         MOV    R3,A                
+026B  A3         MOVP   A,@A                
+026C  AD         MOV    R5,A                
+026D  A5         CLR    F1                  
+026E  AF         MOV    R7,A                
+026F  A7         CPL    C                   
+0270  90         MOVX   @R0,A               
+0271  F0         MOV    A,@R0               
+0272  92 F2      JB4    02F2h               
+0274  94 F4      CALL   04F4h               
+0276  96 F6      JNZ    02F6h               
+0278  B9 B1      MOV    R1,#0B1h            
+027A  BB B3      MOV    R3,#0B3h            
+027C  BD B5      MOV    R1,#0B5h            
+027E  BF B7      MOV    R3,#0B7h            
+0280  41         ORL    A,@R1               
+0281  80         MOVX   A,@R0               
+0282  23 82      MOV    A,#82h              
+0284  E4 64      JMP    0764h               
+
+0286  AF         MOV    R7,A                
+0287  0E         MOVD   A,P6                
+0288  80         MOVX   A,@R0               
+0289  01         ID1                        Undocument instruction
+028A  82         ???                        Illegal instruction
+028B  A3         MOVP   A,@A                
+028C  84 A5      JMP    04A5h               
+
+028E  86 A7      JNI    02A7h               
+0290  31         XCHD   A,@R1               
+0291  70         ADDC   A,@R0               
+0292  BB 1A      MOV    R3,#1Ah             
+0294  B4 BC      CALL   05BCh               
+0296  BE 76      MOV    R2,#76h             
+0298  70         ADDC   A,@R0               
+0299  18         INC    R0                  
+029A  92 B3      JB4    02B3h               
+W029C:
+029C  94 B5      CALL   04B5h               
+029E  96 B7      JNZ    02B7h               
+02A0  A1         MOV    @R1,A               
+02A1  A0         MOV    @R0,A               
+02A2  42         MOV    A,T                 
+02A3  E2         ???                        Illegal instruction
+02A4  AC         MOV    R4,A                
+02A5  A4 46      JMP    0546h               
+
+W02A7:
+02A7  E6 A1      JNC    02A1h               
+W02A9:
+02A9  A1         MOV    @R1,A               
+02AA  EB E2      DJNZ   R3,02E2h            
+W02AC:
+02AC  ED E4      DJNZ   R5,W02E4            
+02AE  EF E6      DJNZ   R7,W02E6            
+02B0  D8         XRL    A,R0                
+02B1  B0 52      MOV    @R0,#52h            
+W02B3:
+02B3  F2 BC      JB7    02BCh               
+02B5  B4 56      CALL   0556h               
+W02B7:
+02B7  F6 B1      JC     02B1h               
+W02B9:
+02B9  B1 FB      MOV    @R1,#0FBh           
+02BB  F2 FD      JB7    02FDh               
+02BD  F4 FF      CALL   07FFh               
+02BF  F6 E0      JC     02E0h               
+02C1  00         NOP                        
+02C2  02         OUTL   BUS,A               
+02C3  43 84      ORL    A,#84h              
+02C5  E4 8E      JMP    078Eh               
+
+02C7  07         DEC    A                   
+02C8  60         ADD    A,@R0               
+02C9  61         ADD    A,@R1               
+02CA  42         MOV    A,T                 
+02CB  82         ???                        Illegal instruction
+02CC  AC         MOV    R4,A                
+02CD  0D         MOVD   A,P5                
+02CE  46 86      JNT1   0286h               
+02D0  98 11      ANL    BUS,#11h            
+W02D2:
+02D2  9B         ???                        Illegal instruction
+02D3  13 9D      ADDC   A,#9Dh              
+02D5  15         DIS    I                   
+02D6  9F         ANLD   P7,A                
+02D7  17         INC    A                   
+02D8  70         ADDC   A,@R0               
+02D9  71         ADDC   A,@R1               
+02DA  52 92      JB2    0292h               
+02DC  BC 1D      MOV    R0,#1Dh             
+02DE  56 96      JT1    0296h               
+W02E0:
+02E0  E9 E9      DJNZ   R1,W02E9            
+W02E2:
+02E2  EB EB      DJNZ   R3,02EBh            
+W02E4:
+02E4  ED ED      DJNZ   R5,02EDh            
+W02E6:
+02E6  EF EF      DJNZ   R7,02EFh            
+W02E8:
+02E8  80         MOVX   A,@R0               
+W02E9:
+02E9  E9 82      DJNZ   R1,0282h            
+W02EB:
+02EB  EB 84      DJNZ   R3,0284h            
+W02ED:
+02ED  ED 86      DJNZ   R5,W0286            
+W02EF:
+02EF  EF F9      DJNZ   R7,02F9h            
+02F1  F9         MOV    A,R1                
+W02F2:
+02F2  FB         MOV    A,R3                
+02F3  FB         MOV    A,R3                
+02F4  FD         MOV    A,R5                
+02F5  FD         MOV    A,R5                
+W02F6:
+02F6  FF         MOV    A,R7                
+02F7  FF         MOV    A,R7                
+02F8  90         MOVX   @R0,A               
+W02F9:
+02F9  F9         MOV    A,R1                
+02FA  92 FB      JB4    02FBh               
+02FC  94 FD      CALL   W04FD               
+02FE  96 FF      JNZ    02FFh               
+0300  00         NOP                        
+0301  40         ORL    A,@R0               
+0302  0B         ???                        Illegal instruction
+0303  42         MOV    A,T                 
+0304  0D         MOVD   A,P5                
+0305  44 0F      JMP    020Fh               
+
+0307  46 08      JNT1   0308h               
+0309  A0         MOV    @R0,A               
+030A  0B         ???                        Illegal instruction
+030B  A2         ???                        Illegal instruction
+030C  0D         MOVD   A,P5                
+030D  A4 0F      JMP    050Fh               
+
+030F  A6         ???                        Illegal instruction
+0310  10         INC    @R0                 
+0311  50         ANL    A,@R0               
+0312  1B         INC    R3                  
+0313  52 1D      JB2    031Dh               
+0315  54 1F      CALL   021Fh               
+0317  56 18      JT1    0318h               
+0319  B0 1B      MOV    @R0,#1Bh            
+031B  B2 1D      JB5    W031D               
+W031D:
+031D  B4 1F      CALL   051Fh               
+031F  B6 40      JF0    0340h               
+0321  A0         MOV    @R0,A               
+0322  02         OUTL   BUS,A               
+0323  22         ???                        Illegal instruction
+0324  25         EN     TCNTI               
+0325  A4 46      JMP    W0546               
+
+0327  A6         ???                        Illegal instruction
+0328  40         ORL    A,@R0               
+0329  29         XCH    A,R1                
+032A  02         OUTL   BUS,A               
+032B  23 64      MOV    A,#64h              
+032D  25         EN     TCNTI               
+032E  66         ???                        Illegal instruction
+032F  27         CLR    A                   
+0330  10         INC    @R0                 
+0331  50         ANL    A,@R0               
+0332  12 52      JB0    0352h               
+0334  14 54      CALL   W0053+1             
+0336  16 56      JTF    0356h               
+0338  31         XCHD   A,@R1               
+0339  30         XCHD   A,@R0               
+033A  52 3B      JB2    033Bh               
+033C  14 35      CALL   0035h               
+033E  76 37      JF1    0337h               
+W0340:
+0340  60         ADD    A,@R0               
+0341  28         XCH    A,R0                
+0342  23 22      MOV    A,#22h              
+0344  4D         ORL    A,R5                
+0345  CD         DEC    R5                  
+0346  66         ???                        Illegal instruction
+0347  46 A0      JNT1   03A0h               
+0349  E0         ???                        Illegal instruction
+034A  4A         ORL    A,R2                
+034B  02         OUTL   BUS,A               
+034C  A4 E4      JMP    05E4h               
+
+034E  4E         ORL    A,R6                
+034F  06         ???                        Illegal instruction
+0350  70         ADDC   A,@R0               
+0351  50         ANL    A,@R0               
+W0352:
+0352  1A         INC    R2                  
+0353  32 5D      JB1    035Dh               
+0355  DD         XRL    A,R5                
+W0356:
+0356  76 56      JF1    W0356               
+0358  B0 F0      MOV    @R0,#0F0h           
+035A  5A         ANL    A,R2                
+035B  12 B4      JB0    03B4h               
+W035D:
+035D  F4 5E      CALL   W075E               
+035F  16 20      JTF    0320h               
+0361  E8 42      DJNZ   R0,0342h            
+0363  EA 44      DJNZ   R2,0344h            
+0365  EC 46      DJNZ   R4,0346h            
+0367  EE 40      DJNZ   R6,W0340            
+0369  21         XCH    A,@R1               
+036A  0A         IN     A,P2                
+036B  03 0C      ADD    A,#0Ch              
+036D  05         EN     I                   
+036E  EE 8F      DJNZ   R6,038Fh            Read Joystick
+0370  30         XCHD   A,@R0               
+0371  F8         MOV    A,R0                
+0372  52 FA      JB2    03FAh               
+0374  54 FC      CALL   W02FC               
+0376  56 FE      JT1    03FEh               
+0378  50         ANL    A,@R0               
+0379  31         XCHD   A,@R1               
+037A  1A         INC    R2                  
+037B  13 1C      ADDC   A,#1Ch              
+037D  15         DIS    I                   
+037E  FE         MOV    A,R6                
+037F  9F         ANLD   P7,A                
+0380  01         ID1                        Undocument instruction
+0381  A0         MOV    @R0,A               
+0382  2A         XCH    A,R2                
+0383  42         MOV    A,T                 
+0384  05         EN     I                   
+0385  A4 2E      JMP    052Eh               
+
+W0387:
+0387  46 48      JNT1   0348h               
+0389  20         XCH    A,@R0               
+038A  02         OUTL   BUS,A               
+038B  0A         IN     A,P2                
+038C  25         EN     TCNTI               
+038D  44 07      JMP    0207h               
+
+W038F:
+038F  A6         ???                        Illegal instruction
+0390  38         ???                        Illegal instruction
+0391  50         ANL    A,@R0               
+0392  13 B2      ADDC   A,#0B2h             
+0394  3C         MOVD   P4,A                
+0395  54 17      CALL   0217h               
+W0397:
+0397  B6 50      JF0    0350h               
+0399  18         INC    R0                  
+039A  33         ???                        Illegal instruction
+039B  52 15      JB2    0315h               
+039D  B4 56      CALL   W0556               
+039F  1E         INC    R6                  
+W03A0:
+03A0  A0         MOV    @R0,A               
+03A1  08         INS    A,BUS               
+03A2  A2         ???                        Illegal instruction
+03A3  0A         IN     A,P2                
+03A4  A4 0C      JMP    050Ch               
+
+03A6  A6         ???                        Illegal instruction
+03A7  0E         MOVD   A,P6                
+03A8  08         INS    A,BUS               
+03A9  40         ORL    A,@R0               
+03AA  2A         XCH    A,R2                
+03AB  A2         ???                        Illegal instruction
+W03AC:
+03AC  C4 A4      JMP    06A4h               
+
+03AE  C6 A6      JZ     03A6h               
+03B0  31         XCHD   A,@R1               
+03B1  50         ANL    A,@R0               
+03B2  33         ???                        Illegal instruction
+03B3  52 35      JB2    0335h               
+03B5  54 37      CALL   0237h               
+03B7  56 38      JT1    0338h               
+03B9  B0 D2      MOV    @R0,#0D2h           
+03BB  B2 D4      JB5    03D4h               
+03BD  B4 D6      CALL   05D6h               
+03BF  B6 28      JF0    0328h               
+03C1  A0         MOV    @R0,A               
+03C2  E2         ???                        Illegal instruction
+03C3  0B         ???                        Illegal instruction
+03C4  AC         MOV    R4,A                
+03C5  0D         MOVD   A,P5                
+03C6  AE         MOV    R6,A                
+03C7  0F         MOVD   A,P7                
+03C8  00         NOP                        
+03C9  A8         MOV    R0,A                
+03CA  23 E2      MOV    A,#0E2h             
+03CC  CD         DEC    R5                  
+03CD  AC         MOV    R4,A                
+03CE  27         CLR    A                   
+03CF  E6 B0      JNC    03B0h               
+03D1  11         INC    @R1                 
+03D2  D3 B2      XRL    A,#0B2h             
+W03D4:
+03D4  F4 1D      CALL   071Dh               
+03D6  BE 1F      MOV    R2,#1Fh             
+03D8  10         INC    @R0                 
+03D9  B8 33      MOV    R0,#33h             
+03DB  F2 DD      JB7    03DDh               
+W03DD:
+03DD  BC 37      MOV    R0,#37h             
+03DF  F6 E9      JC     03E9h               
+03E1  E9 EB      DJNZ   R1,03EBh            
+03E3  EB ED      DJNZ   R3,03EDh            
+03E5  ED EF      DJNZ   R5,03EFh            
+03E7  EF 80      DJNZ   R7,0380h            
+W03E9:
+03E9  E9 82      DJNZ   R1,0382h            
+W03EB:
+03EB  EB 84      DJNZ   R3,0384h            
+W03ED:
+03ED  ED 86      DJNZ   R5,0386h            
+W03EF:
+03EF  EF F9      DJNZ   R7,03F9h            
+03F1  F9         MOV    A,R1                
+03F2  FB         MOV    A,R3                
+03F3  FB         MOV    A,R3                
+03F4  FD         MOV    A,R5                
+03F5  FD         MOV    A,R5                
+03F6  FF         MOV    A,R7                
+03F7  FF         MOV    A,R7                
+03F8  90         MOVX   @R0,A               
+W03F9:
+03F9  F9         MOV    A,R1                
+W03FA:
+03FA  92 FB      JB4    03FBh               
+03FC  94 FD      CALL   W04FD               
+W03FE:
+03FE  96 FF      JNZ    03FFh               
+0400  E0         ???                        Illegal instruction
+0401  E1         ???                        Illegal instruction
+0402  03 03      ADD    A,#03h              
+0404  E4 E5      JMP    07E5h               
+
+0406  07         DEC    A                   
+0407  07         DEC    A                   
+0408  A8         MOV    R0,A                
+0409  E8 C3      DJNZ   R0,04C3h            
+040B  03 45      ADD    A,#45h              
+040D  EC C7      DJNZ   R4,04C7h            
+040F  07         DEC    A                   
+0410  D1         XRL    A,@R1               
+0411  11         INC    @R1                 
+0412  93         RETR                       
+
+0413  33         ???                        Illegal instruction
+0414  15         DIS    I                   
+0415  35         DIS    TCNTI               
+0416  F6 F7      JC     04F7h               
+0418  51         ANL    A,@R1               
+0419  F8         MOV    A,R0                
+041A  D3 13      XRL    A,#13h              
+041C  55         STRT   T                   
+041D  FC         MOV    A,R4                
+041E  D7         MOV    PSW,A               
+041F  17         INC    A                   
+0420  29         XCH    A,R1                
+0421  A9         MOV    R1,A                
+0422  82         ???                        Illegal instruction
+0423  E2         ???                        Illegal instruction
+0424  E4 44      JMP    0744h               
+
+0426  47         SWAP   A                   
+0427  AE         MOV    R6,A                
+0428  40         ORL    A,@R0               
+0429  49         ORL    A,R1                
+042A  A2         ???                        Illegal instruction
+042B  E2         ???                        Illegal instruction
+042C  AC         MOV    R4,A                
+W042D:
+042D  E4 46      JMP    0746h               
+
+042F  4F         ORL    A,R7                
+0430  F8         MOV    A,R0                
+0431  B0 3B      MOV    @R0,#3Bh            
+0433  BB 94      MOV    R3,#94h             
+0435  F4 F6      CALL   07F6h               
+0437  56 B8      JT1    04B8h               
+0439  F0         MOV    A,@R0               
+043A  52 5B      JB2    045Bh               
+043C  B4 F4      CALL   05F4h               
+043E  56 5F      JT1    045Fh               
+0440  81         MOVX   A,@R1               
+0441  61         ADD    A,@R1               
+0442  EA 63      DJNZ   R2,0463h            
+0444  25         EN     TCNTI               
+0445  AC         MOV    R4,A                
+0446  E6 AE      JNC    04AEh               
+0448  61         ADD    A,@R1               
+0449  49         ORL    A,R1                
+044A  42         MOV    A,T                 
+044B  63         ???                        Illegal instruction
+044C  AD         MOV    R5,A                
+044D  E4 67      JMP    0767h               
+
+044F  4F         ORL    A,R7                
+0450  90         MOVX   @R0,A               
+0451  51         ANL    A,@R1               
+0452  92 53      JB4    0453h               
+0454  94 55      CALL   0455h               
+0456  96 57      JNZ    0457h               
+0458  50         ANL    A,@R0               
+0459  71         ADDC   A,@R1               
+045A  BB F2      MOV    R3,#0F2h            
+045C  75         ENT0   CLK                 
+045D  5D         ANL    A,R5                
+045E  56 77      JT1    0477h               
+0460  A1         MOV    @R1,A               
+0461  A1         MOV    @R1,A               
+0462  A3         MOVP   A,@A                
+W0463:
+0463  A3         MOVP   A,@A                
+0464  A5         CLR    F1                  
+0465  A5         CLR    F1                  
+0466  A7         CPL    C                   
+0467  A7         CPL    C                   
+0468  81         MOVX   A,@R1               
+0469  61         ADD    A,@R1               
+046A  83         RET                        
+
+046B  63         ???                        Illegal instruction
+046C  C4 E4      JMP    06E4h               
+
+046E  86 E6      JNI    04E6h               
+0470  B9 70      MOV    R1,#70h             
+0472  BB 72      MOV    R3,#72h             
+0474  BD 74      MOV    R1,#74h             
+0476  BF 76      MOV    R3,#76h             
+0478  78         ADDC   A,R0                
+0479  91         MOVX   @R1,A               
+047A  B2 BA      JB5    04BAh               
+047C  BC 75      MOV    R0,#75h             
+047E  7E         ADDC   A,R6                
+047F  97         CLR    C                   
+0480  A8         MOV    R0,A                
+0481  60         ADD    A,@R0               
+0482  AA         MOV    R2,A                
+0483  EA 65      DJNZ   R2,0465h            
+0485  85         CLR    F0                  
+0486  AE         MOV    R6,A                
+0487  66         ???                        Illegal instruction
+0488  01         ID1                        Undocument instruction
+0489  C0         ???                        Illegal instruction
+048A  03 C2      ADD    A,#0C2h             
+048C  05         EN     I                   
+048D  C4 07      JMP    0607h               
+
+048F  C6 B8      JZ     W04B8               
+0491  F8         MOV    A,R0                
+0492  73         ???                        Illegal instruction
+0493  93         RETR                       
+
+0494  BC 74      MOV    R0,#74h             
+0496  BE FE      MOV    R2,#0FEh            
+0498  F0         MOV    A,@R0               
+0499  70         ADDC   A,@R0               
+049A  D2 D2      JB6    04D2h               
+049C  15         DIS    I                   
+049D  D4 17      CALL   0617h               
+049F  D6         ???                        Illegal instruction
+04A0  28         XCH    A,R0                
+04A1  A9         MOV    R1,A                
+04A2  A2         ???                        Illegal instruction
+04A3  E2         ???                        Illegal instruction
+04A4  E4 E4      JMP    07E4h               
+
+04A6  E6 E6      JNC    W04E6               
+04A8  01         ID1                        Undocument instruction
+04A9  C0         ???                        Illegal instruction
+04AA  03 C2      ADD    A,#0C2h             
+04AC  05         EN     I                   
+04AD  C4 07      JMP    W0607               
+
+04AF  C6 F0      JZ     04F0h               
+04B1  F0         MOV    A,@R0               
+04B2  F2 F2      JB7    04F2h               
+04B4  F4 F4      CALL   07F4h               
+04B6  F6 F6      JC     04F6h               
+W04B8:
+04B8  11         INC    @R1                 
+04B9  D0         XRL    A,@R0               
+W04BA:
+04BA  13 D2      ADDC   A,#0D2h             
+04BC  15         DIS    I                   
+04BD  D4 17      CALL   W0617               
+04BF  D6         ???                        Illegal instruction
+04C0  09         IN     A,P1                
+04C1  89 E3      ORL    P1,#0E3h            
+W04C3:
+04C3  CB         DEC    R3                  
+04C4  C4 ED      JMP    06EDh               
+
+04C6  0F         MOVD   A,P7                
+W04C7:
+04C7  E6 C1      JNC    04C1h               
+04C9  89 0A      ORL    P1,#0Ah             
+04CB  CB         DEC    R3                  
+04CC  A5         CLR    F1                  
+04CD  84 A7      JMP    04A7h               
+
+04CF  86 90      JNI    0490h               
+04D1  D1         XRL    A,@R1               
+W04D2:
+04D2  1B         INC    R3                  
+04D3  9B         ???                        Illegal instruction
+04D4  F5         SEL    MB1                 
+04D5  DD         XRL    A,R5                
+04D6  D6         ???                        Illegal instruction
+04D7  FF         MOV    A,R7                
+04D8  F8         MOV    A,R0                
+04D9  90         MOVX   @R0,A               
+04DA  B3         JMPP   @A                  
+04DB  92 B5      JB4    W04B4+1             
+04DD  94 B7      CALL   04B7h               
+04DF  96 01      JNZ    0401h               
+04E1  89 EB      ORL    P1,#0EBh            
+04E3  EB ED      DJNZ   R3,04EDh            
+04E5  ED EF      DJNZ   R5,04EFh            
+04E7  EF 80      DJNZ   R7,0480h            
+04E9  E9 82      DJNZ   R1,0482h            
+04EB  EB 84      DJNZ   R3,0484h            
+W04ED:
+04ED  ED 86      DJNZ   R5,0486h            
+W04EF:
+04EF  EF F9      DJNZ   R7,04F9h            
+04F1  F9         MOV    A,R1                
+W04F2:
+04F2  FB         MOV    A,R3                
+04F3  FB         MOV    A,R3                
+W04F4:
+04F4  FD         MOV    A,R5                
+04F5  FD         MOV    A,R5                
+W04F6:
+04F6  FF         MOV    A,R7                
+W04F7:
+04F7  FF         MOV    A,R7                
+04F8  90         MOVX   @R0,A               
+W04F9:
+04F9  F9         MOV    A,R1                
+04FA  92 FB      JB4    04FBh               
+04FC  94 FD      CALL   W04FD               
+04FE  96 FF      JNZ    04FFh               
+0500  89 C1      ORL    P1,#0C1h            
+0502  C2         ???                        Illegal instruction
+0503  02         OUTL   BUS,A               
+0504  04 85      JMP    0085h               
+
+0506  C6 06      JZ     0506h               
+0508  00         NOP                        
+0509  89 02      ORL    P1,#02h             
+050B  8B         ???                        Illegal instruction
+W050C:
+050C  04 8D      JMP    008Dh               
+
+050E  06         ???                        Illegal instruction
+W050F:
+050F  8F         ORLD   P7,A                
+0510  10         INC    @R0                 
+0511  91         MOVX   @R1,A               
+0512  D2 12      JB6    0512h               
+0514  14 95      CALL   W0095               
+0516  D6         ???                        Illegal instruction
+0517  16 10      JTF    0510h               
+0519  99 12      ANL    P1,#12h             
+051B  9B         ???                        Illegal instruction
+051C  14 9D      CALL   009Dh               
+051E  16 9F      JTF    059Fh               
+0520  E1         ???                        Illegal instruction
+0521  C0         ???                        Illegal instruction
+0522  EB 6A      DJNZ   R3,056Ah            
+0524  E4 C4      JMP    07C4h               
+
+0526  EF 6E      DJNZ   R7,056Eh            
+0528  21         XCH    A,@R1               
+0529  60         ADD    A,@R0               
+052A  A2         ???                        Illegal instruction
+052B  0B         ???                        Illegal instruction
+052C  AD         MOV    R5,A                
+052D  04 86      JMP    W0086               
+
+052F  06         ???                        Illegal instruction
+0530  F1         MOV    A,@R1               
+0531  D0         XRL    A,@R0               
+0532  FB         MOV    A,R3                
+0533  7A         ADDC   A,R2                
+0534  F4 D4      CALL   07D4h               
+0536  FF         MOV    A,R7                
+0537  7E         ADDC   A,R6                
+0538  31         XCHD   A,@R1               
+0539  70         ADDC   A,@R0               
+053A  B2 1B      JB5    051Bh               
+053C  BD 14      MOV    R1,#14h             
+053E  96 16      JNZ    0516h               
+0540  E1         ???                        Illegal instruction
+0541  A8         MOV    R0,A                
+0542  C2         ???                        Illegal instruction
+0543  AA         MOV    R2,A                
+0544  44 E4      JMP    W02E4               
+
+W0546:
+0546  46 E6      JNT1   W05E6               
+0548  A9         MOV    R1,A                
+0549  69         ADD    A,R1                
+054A  A3         MOVP   A,@A                
+054B  6B         ADD    A,R3                
+054C  A5         CLR    F1                  
+054D  6D         ADD    A,R5                
+054E  A7         CPL    C                   
+054F  6F         ADD    A,R7                
+0550  D0         XRL    A,@R0               
+0551  B8 52      MOV    R0,#52h             
+0553  F2 54      JB7    0554h               
+0555  F4 56      CALL   0756h               
+0557  F6 B9      JC     05B9h               
+0559  79         ADDC   A,R1                
+055A  B3         JMPP   @A                  
+055B  7B         ADDC   A,R3                
+055C  B5         CPL    F1                  
+055D  7D         ADDC   A,R5                
+055E  B7         ???                        Illegal instruction
+055F  7F         ADDC   A,R7                
+0560  69         ADD    A,R1                
+0561  60         ADD    A,@R0               
+0562  C3         ???                        Illegal instruction
+0563  03 C5      ADD    A,#0C5h             
+0565  AD         MOV    R5,A                
+0566  C7         MOV    A,PSW               
+0567  AF         MOV    R7,A                
+0568  A8         MOV    R0,A                
+0569  69         ADD    A,R1                
+W056A:
+056A  AA         MOV    R2,A                
+056B  AA         MOV    R2,A                
+056C  E4 E5      JMP    W07E5               
+
+W056E:
+056E  AE         MOV    R6,A                
+056F  6F         ADD    A,R7                
+0570  91         MOVX   @R1,A               
+0571  71         ADDC   A,@R1               
+0572  93         RETR                       
+
+0573  73         ???                        Illegal instruction
+0574  95         CPL    F0                  
+0575  75         ENT0   CLK                 
+0576  97         CLR    C                   
+0577  77         RR     A                   
+0578  B8 B8      MOV    R0,#0B8h            
+057A  F2 F3      JB7    05F3h               
+057C  B4 F4      CALL   W05F4               
+057E  97         CLR    C                   
+057F  96 A0      JNZ    05A0h               
+0581  81         MOVX   A,@R1               
+0582  AB         MOV    R3,A                
+0583  83         RET                        
+
+0584  AD         MOV    R5,A                
+0585  85         CLR    F0                  
+0586  AF         MOV    R7,A                
+0587  87         ???                        Illegal instruction
+0588  A0         MOV    @R0,A               
+0589  60         ADD    A,@R0               
+058A  03 AB      ADD    A,#0ABh             
+058C  05         EN     I                   
+058D  AD         MOV    R5,A                
+058E  07         DEC    A                   
+058F  AF         MOV    R7,A                
+0590  F0         MOV    A,@R0               
+0591  F9         MOV    A,R1                
+0592  7B         ADDC   A,R3                
+0593  73         ???                        Illegal instruction
+0594  F4 FD      CALL   07FDh               
+0596  7F         ADDC   A,R7                
+0597  77         RR     A                   
+0598  11         INC    @R1                 
+0599  B9 13      MOV    R1,#13h             
+059B  BB 15      MOV    R3,#15h             
+059D  BD 17      MOV    R1,#17h             
+W059F:
+059F  BF 40      MOV    R3,#40h             
+05A1  A0         MOV    @R0,A               
+05A2  42         MOV    A,T                 
+05A3  A2         ???                        Illegal instruction
+05A4  44 A4      JMP    02A4h               
+
+05A6  46 A6      JNT1   05A6h               
+05A8  E1         ???                        Illegal instruction
+05A9  A9         MOV    R1,A                
+05AA  83         RET                        
+
+05AB  EA E4      DJNZ   R2,W05E4            
+05AD  EC E6      DJNZ   R4,W05E6            
+05AF  EE 11      DJNZ   R6,0511h            
+05B1  F0         MOV    A,@R0               
+05B2  D2 32      JB6    0532h               
+05B4  15         DIS    I                   
+05B5  B4 56      CALL   W0555+1             
+W05B7:
+05B7  B6 F1      JF0    05F1h               
+W05B9:
+05B9  B9 93      MOV    R1,#93h             
+05BB  FA         MOV    A,R2                
+W05BC:
+05BC  F4 FC      CALL   07FCh               
+05BE  F6 FE      JC     05FEh               
+05C0  A8         MOV    R0,A                
+05C1  41         ORL    A,@R1               
+05C2  A2         ???                        Illegal instruction
+05C3  43 A4      ORL    A,#0A4h             
+05C5  45         STRT   CNT                 
+05C6  A6         ???                        Illegal instruction
+05C7  47         SWAP   A                   
+05C8  A8         MOV    R0,A                
+05C9  E0         ???                        Illegal instruction
+05CA  C2         ???                        Illegal instruction
+05CB  83         RET                        
+
+05CC  0C         MOVD   A,P4                
+05CD  AD         MOV    R5,A                
+05CE  E6 E6      JNC    W05E6               
+05D0  B8 51      MOV    R0,#51h             
+05D2  B2 53      JB5    W0553               
+05D4  B4 55      CALL   W0555               
+W05D6:
+05D6  B6 57      JF0    0557h               
+05D8  B8 F0      MOV    R0,#0F0h            
+05DA  D2 93      JB6    0593h               
+05DC  1C         INC    R4                  
+05DD  BD F6      MOV    R1,#0F6h            
+05DF  F6 21      JC     0521h               
+05E1  01         ID1                        Undocument instruction
+05E2  03 CB      ADD    A,#0CBh             
+W05E4:
+05E4  85         CLR    F0                  
+05E5  CD         DEC    R5                  
+W05E6:
+05E6  87         ???                        Illegal instruction
+05E7  CF         DEC    R7                  
+05E8  80         MOVX   A,@R0               
+05E9  E9 82      DJNZ   R1,0582h            
+05EB  EB 84      DJNZ   R3,0584h            
+05ED  ED 86      DJNZ   R5,0586h            
+05EF  EF 91      DJNZ   R7,0591h            
+W05F1:
+05F1  D9         XRL    A,R1                
+05F2  93         RETR                       
+
+W05F3:
+05F3  DB         XRL    A,R3                
+W05F4:
+05F4  95         CPL    F0                  
+05F5  DD         XRL    A,R5                
+W05F6:
+05F6  97         CLR    C                   
+05F7  DF         XRL    A,R7                
+05F8  90         MOVX   @R0,A               
+05F9  F9         MOV    A,R1                
+05FA  92 FB      JB4    05FBh               
+05FC  94 FD      CALL   W04FC+1             
+W05FE:
+05FE  96 FF      JNZ    05FFh               
+0600  A0         MOV    @R0,A               
+0601  A8         MOV    R0,A                
+0602  83         RET                        
+
+0603  6A         ADD    A,R2                
+0604  A4 AC      JMP    05ACh               
+
+W0606:
+0606  87         ???                        Illegal instruction
+W0607:
+0607  6E         ADD    A,R6                
+0608  00         NOP                        
+0609  21         XCH    A,@R1               
+060A  23 E2      MOV    A,#0E2h             
+060C  C5         SEL    RB0                 
+060D  25         EN     TCNTI               
+060E  C7         MOV    A,PSW               
+060F  27         CLR    A                   
+0610  D0         XRL    A,@R0               
+0611  10         INC    @R0                 
+0612  BA BA      MOV    R2,#0BAh            
+0614  95         CPL    F0                  
+0615  7C         ADDC   A,R4                
+0616  B6 BE      JF0    06BEh               
+0618  31         XCHD   A,@R1               
+0619  F0         MOV    A,@R0               
+061A  33         ???                        Illegal instruction
+061B  F2 D5      JB7    06D5h               
+061D  35         DIS    TCNTI               
+061E  D7         MOV    PSW,A               
+061F  37         CPL    A                   
+0620  41         ORL    A,@R1               
+0621  E0         ???                        Illegal instruction
+0622  23 AA      MOV    A,#0AAh             
+0624  25         EN     TCNTI               
+0625  AC         MOV    R4,A                
+0626  27         CLR    A                   
+0627  AE         MOV    R6,A                
+0628  29         XCH    A,R1                
+0629  E0         ???                        Illegal instruction
+062A  4B         ORL    A,R3                
+062B  E2         ???                        Illegal instruction
+062C  4D         ORL    A,R5                
+062D  E4 4F      JMP    074Fh               
+
+062F  E6 F0      JNC    06F0h               
+0631  B8 33      MOV    R0,#33h             
+0633  BA 35      MOV    R2,#35h             
+0635  BC 37      MOV    R0,#37h             
+0637  BE 39      MOV    R2,#39h             
+0639  F0         MOV    A,@R0               
+063A  5B         ANL    A,R3                
+063B  F2 5D      JB7    065Dh               
+063D  F4 5F      CALL   075Fh               
+063F  F6 C1      JC     06C1h               
+0641  60         ADD    A,@R0               
+0642  C3         ???                        Illegal instruction
+0643  62         MOV    T,A                 
+0644  C5         SEL    RB0                 
+0645  64 C7      JMP    03C7h               
+
+0647  66         ???                        Illegal instruction
+0648  C9         DEC    R1                  
+0649  60         ADD    A,@R0               
+064A  CB         DEC    R3                  
+064B  62         MOV    T,A                 
+064C  CD         DEC    R5                  
+064D  64 CF      JMP    03CFh               [Unknown]
+
+064F  66         ???                        Illegal instruction
+0650  D1         XRL    A,@R1               
+0651  70         ADDC   A,@R0               
+0652  D3 72      XRL    A,#72h              
+0654  D5         SEL    RB1                 
+0655  74 D7      CALL   03D7h               
+0657  76 D9      JF1    06D9h               
+0659  70         ADDC   A,@R0               
+065A  DB         XRL    A,R3                
+065B  72 DD      JB3    06DDh               
+W065D:
+065D  74 DF      CALL   03DFh               
+065F  76 C1      JF1    W06C1               
+0661  60         ADD    A,@R0               
+0662  C3         ???                        Illegal instruction
+0663  62         MOV    T,A                 
+0664  C5         SEL    RB0                 
+0665  64 C7      JMP    W03C7               
+
+0667  66         ???                        Illegal instruction
+0668  C9         DEC    R1                  
+0669  60         ADD    A,@R0               
+066A  CB         DEC    R3                  
+066B  62         MOV    T,A                 
+066C  CD         DEC    R5                  
+066D  64 CF      JMP    W03CF               [Unknown]
+
+066F  66         ???                        Illegal instruction
+0670  D1         XRL    A,@R1               
+0671  70         ADDC   A,@R0               
+0672  D3 72      XRL    A,#72h              
+0674  D5         SEL    RB1                 
+0675  74 D7      CALL   W03D7               
+0677  76 D9      JF1    W06D9               
+0679  70         ADDC   A,@R0               
+067A  DB         XRL    A,R3                
+067B  72 DD      JB3    W06DD               
+067D  74 DF      CALL   W03DF               
+067F  76 C1      JF1    W06C1               
+0681  60         ADD    A,@R0               
+0682  C3         ???                        Illegal instruction
+0683  62         MOV    T,A                 
+0684  C5         SEL    RB0                 
+0685  64 C7      JMP    W03C7               
+
+0687  66         ???                        Illegal instruction
+0688  C9         DEC    R1                  
+0689  60         ADD    A,@R0               
+068A  CB         DEC    R3                  
+068B  62         MOV    T,A                 
+068C  CD         DEC    R5                  
+068D  64 CF      JMP    W03CF               [Unknown]
+
+068F  66         ???                        Illegal instruction
+0690  D1         XRL    A,@R1               
+0691  70         ADDC   A,@R0               
+0692  D3 72      XRL    A,#72h              
+0694  D5         SEL    RB1                 
+0695  74 D7      CALL   W03D7               
+0697  76 D9      JF1    W06D9               
+0699  70         ADDC   A,@R0               
+069A  DB         XRL    A,R3                
+069B  72 DD      JB3    W06DD               
+069D  74 DF      CALL   W03DF               
+069F  76 C1      JF1    W06C1               
+06A1  60         ADD    A,@R0               
+06A2  C3         ???                        Illegal instruction
+06A3  62         MOV    T,A                 
+W06A4:
+06A4  C5         SEL    RB0                 
+06A5  64 C7      JMP    W03C7               
+
+06A7  66         ???                        Illegal instruction
+06A8  C9         DEC    R1                  
+06A9  E9 EB      DJNZ   R1,06EBh            
+06AB  EB ED      DJNZ   R3,W06ED            
+06AD  ED EF      DJNZ   R5,06EFh            
+06AF  EF 11      DJNZ   R7,0611h            
+06B1  70         ADDC   A,@R0               
+06B2  D3 72      XRL    A,#72h              
+06B4  D5         SEL    RB1                 
+06B5  74 D7      CALL   W03D7               
+06B7  76 D9      JF1    W06D9               
+06B9  F9         MOV    A,R1                
+06BA  FB         MOV    A,R3                
+06BB  FB         MOV    A,R3                
+06BC  FD         MOV    A,R5                
+06BD  FD         MOV    A,R5                
+W06BE:
+06BE  FF         MOV    A,R7                
+06BF  FF         MOV    A,R7                
+06C0  E9 E9      DJNZ   R1,06E9h            
+06C2  EB EB      DJNZ   R3,W06EB            
+06C4  ED ED      DJNZ   R5,W06ED            
+06C6  EF EF      DJNZ   R7,W06EF            
+06C8  E9 E9      DJNZ   R1,W06E9            
+06CA  EB EB      DJNZ   R3,W06EB            
+06CC  ED ED      DJNZ   R5,W06ED            
+06CE  EF EF      DJNZ   R7,W06EF            
+06D0  F9         MOV    A,R1                
+06D1  F9         MOV    A,R1                
+06D2  FB         MOV    A,R3                
+06D3  FB         MOV    A,R3                
+06D4  FD         MOV    A,R5                
+W06D5:
+06D5  FD         MOV    A,R5                
+06D6  FF         MOV    A,R7                
+W06D7:
+06D7  FF         MOV    A,R7                
+06D8  F9         MOV    A,R1                
+W06D9:
+06D9  F9         MOV    A,R1                
+06DA  FB         MOV    A,R3                
+06DB  FB         MOV    A,R3                
+06DC  FD         MOV    A,R5                
+W06DD:
+06DD  FD         MOV    A,R5                
+06DE  FF         MOV    A,R7                
+06DF  FF         MOV    A,R7                
+06E0  E9 E9      DJNZ   R1,W06E9            
+06E2  EB EB      DJNZ   R3,W06EB            
+W06E4:
+06E4  ED ED      DJNZ   R5,W06ED            
+06E6  EF EF      DJNZ   R7,W06EF            
+06E8  80         MOVX   A,@R0               
+W06E9:
+06E9  E9 82      DJNZ   R1,0682h            
+W06EB:
+06EB  EB 84      DJNZ   R3,0684h            
+W06ED:
+06ED  ED 86      DJNZ   R5,0686h            
+W06EF:
+06EF  EF F9      DJNZ   R7,06F9h            
+06F1  F9         MOV    A,R1                
+06F2  FB         MOV    A,R3                
+06F3  FB         MOV    A,R3                
+06F4  FD         MOV    A,R5                
+06F5  FD         MOV    A,R5                
+06F6  FF         MOV    A,R7                
+06F7  FF         MOV    A,R7                
+06F8  90         MOVX   @R0,A               
+W06F9:
+06F9  F9         MOV    A,R1                
+06FA  92 FB      JB4    06FBh               
+06FC  94 FD      CALL   W04FC+1             
+W06FE:
+06FE  96 FF      JNZ    06FFh               
+0700  80         MOVX   A,@R0               
+0701  41         ORL    A,@R1               
+0702  02         OUTL   BUS,A               
+0703  23 E4      MOV    A,#0E4h             
+0705  25         EN     TCNTI               
+0706  E6 27      JNC    0727h               
+0708  09         IN     A,P1                
+0709  00         NOP                        
+070A  0B         ???                        Illegal instruction
+070B  02         OUTL   BUS,A               
+070C  24 04      JMP    0104h               
+
+070E  0F         MOVD   A,P7                
+070F  06         ???                        Illegal instruction
+0710  F0         MOV    A,@R0               
+0711  31         XCHD   A,@R1               
+0712  F2 33      JB7    0733h               
+0714  F4 35      CALL   0735h               
+0716  F6 37      JC     0737h               
+0718  19         INC    R1                  
+0719  10         INC    @R0                 
+071A  1B         INC    R3                  
+071B  12 34      JB0    0734h               
+W071D:
+071D  14 1F      CALL   001Fh               
+071F  16 20      JTF    0720h               
+0721  A0         MOV    @R0,A               
+0722  8A 22      ORL    P2,#22h             
+0724  E5         SEL    MB0                 
+0725  A4 8E      JMP    058Eh               
+
+W0727:
+0727  26 E1      JNT0   07E1h               
+0729  00         NOP                        
+072A  C3         ???                        Illegal instruction
+072B  A3         MOVP   A,@A                
+072C  E5         SEL    MB0                 
+072D  04 C7      JMP    00C7h               
+
+072F  A7         CPL    C                   
+0730  F1         MOV    A,@R1               
+0731  B0 9A      MOV    @R0,#9Ah            
+W0733:
+0733  32 F5      JB1    07F5h               
+W0735:
+0735  B4 9E      CALL   059Eh               
+W0737:
+0737  36 F1      JT0    07F1h               
+0739  10         INC    @R0                 
+073A  D3 B3      XRL    A,#0B3h             
+073C  F5         SEL    MB1                 
+073D  14 D7      CALL   W00D7               
+073F  B7         ???                        Illegal instruction
+0740  A0         MOV    @R0,A               
+0741  E8 43      DJNZ   R0,0743h            
+W0743:
+0743  E2         ???                        Illegal instruction
+W0744:
+0744  4C         ORL    A,R4                
+0745  25         EN     TCNTI               
+W0746:
+0746  AE         MOV    R6,A                
+0747  E6 68      JNC    0768h               
+0749  C0         ???                        Illegal instruction
+074A  6A         ADD    A,R2                
+074B  C2         ???                        Illegal instruction
+074C  6C         ADD    A,R4                
+074D  C4 6E      JMP    066Eh               
+
+W074F:
+074F  C6 58      JZ     0758h               
+0751  31         XCHD   A,@R1               
+0752  BA F2      MOV    R2,#0F2h            
+0754  5C         ANL    A,R4                
+0755  35         DIS    TCNTI               
+W0756:
+0756  BE F6      MOV    R2,#0F6h            
+W0758:
+0758  78         ADDC   A,R0                
+0759  D0         XRL    A,@R0               
+075A  7A         ADDC   A,R2                
+075B  D2 7C      JB6    077Ch               
+075D  D4 7E      CALL   067Eh               
+W075F:
+075F  D6         ???                        Illegal instruction
+0760  A0         MOV    @R0,A               
+0761  A0         MOV    @R0,A               
+0762  43 0A      ORL    A,#0Ah              
+W0764:
+0764  24 C4      JMP    01C4h               
+
+0766  AF         MOV    R7,A                
+W0767:
+0767  A6         ???                        Illegal instruction
+W0768:
+0768  21         XCH    A,@R1               
+0769  21         XCH    A,@R1               
+076A  23 23      MOV    A,#23h              
+076C  E4 0C      JMP    070Ch               
+
+076E  AE         MOV    R6,A                
+076F  46 10      JNT1   0710h               
+0771  18         INC    R0                  
+0772  32 D2      JB1    07D2h               
+0774  BD B4      MOV    R1,#0B4h            
+0776  57         DA     A                   
+0777  1E         INC    R6                  
+0778  B8 50      MOV    R0,#50h             
+077A  9A 1A      ANL    P2,#1Ah             
+W077C:
+077C  BC 54      MOV    R0,#54h             
+077E  9E         ANLD   P6,A                
+077F  1E         INC    R6                  
+0780  E0         ???                        Illegal instruction
+0781  60         ADD    A,@R0               
+0782  EA 43      DJNZ   R2,W0743            
+0784  2D         XCH    A,R5                
+0785  CC         DEC    R4                  
+0786  86 47      JNI    0747h               
+0788  80         MOVX   A,@R0               
+0789  21         XCH    A,@R1               
+078A  E2         ???                        Illegal instruction
+078B  23 AC      MOV    A,#0ACh             
+078D  8C         ORLD   P4,A                
+W078E:
+078E  AE         MOV    R6,A                
+W078F:
+078F  8E         ORLD   P6,A                
+0790  10         INC    @R0                 
+0791  70         ADDC   A,@R0               
+0792  FA         MOV    A,R2                
+0793  53 3D      ANL    A,#3Dh              
+0795  DC         XRL    A,R4                
+0796  96 57      JNZ    W0756+1             
+0798  90         MOVX   @R0,A               
+0799  31         XCHD   A,@R1               
+079A  F2 33      JB7    W0733               
+079C  BC 9C      MOV    R0,#9Ch             
+079E  BE 9E      MOV    R2,#9Eh             
+07A0  48         ORL    A,R0                
+07A1  A9         MOV    R1,A                
+07A2  E2         ???                        Illegal instruction
+07A3  AA         MOV    R2,A                
+07A4  ED AC      DJNZ   R5,07ACh            
+07A6  EF AE      DJNZ   R7,07AEh            
+07A8  C0         ???                        Illegal instruction
+07A9  41         ORL    A,@R1               
+07AA  AB         MOV    R3,A                
+07AB  AA         MOV    R2,A                
+W07AC:
+07AC  A4 AC      JMP    W05AC               
+
+W07AE:
+07AE  A6         ???                        Illegal instruction
+07AF  AE         MOV    R6,A                
+07B0  31         XCHD   A,@R1               
+07B1  30         XCHD   A,@R0               
+07B2  33         ???                        Illegal instruction
+07B3  32 35      JB1    W0735               
+07B5  34 37      CALL   0137h               
+07B7  36 B0      JT0    07B0h               
+07B9  B8 B2      MOV    R0,#0B2h            
+07BB  BA B4      MOV    R2,#0B4h            
+07BD  BC B6      MOV    R0,#0B6h            
+07BF  BE 41      MOV    R2,#41h             
+07C1  48         ORL    A,R0                
+07C2  C3         ???                        Illegal instruction
+07C3  E2         ???                        Illegal instruction
+W07C4:
+07C4  E5         SEL    MB0                 
+07C5  C4 87      JMP    0687h               
+
+07C7  4E         ORL    A,R6                
+07C8  E0         ???                        Illegal instruction
+07C9  E0         ???                        Illegal instruction
+07CA  E2         ???                        Illegal instruction
+07CB  E2         ???                        Illegal instruction
+07CC  E4 E4      JMP    W07E4               
+
+07CE  E6 E6      JNC    07E6h               
+07D0  B0 F8      MOV    @R0,#0F8h           
+W07D2:
+07D2  D3 F2      XRL    A,#0F2h             
+W07D4:
+07D4  F5         SEL    MB1                 
+07D5  D4 97      CALL   0697h               
+07D7  5E         ANL    A,R6                
+07D8  F0         MOV    A,@R0               
+07D9  F0         MOV    A,@R0               
+07DA  F2 F2      JB7    07F2h               
+07DC  F4 F4      CALL   W07F4               
+07DE  F6 F6      JC     W07F6               
+07E0  C0         ???                        Illegal instruction
+W07E1:
+07E1  A0         MOV    @R0,A               
+07E2  E2         ???                        Illegal instruction
+07E3  02         OUTL   BUS,A               
+W07E4:
+07E4  E4 04      JMP    0704h               
+
+W07E6:
+07E6  E6 06      JNC    W0706               
+07E8  E9 01      DJNZ   R1,0701h            
+07EA  EB 03      DJNZ   R3,0703h            
+07EC  ED 05      DJNZ   R5,0705h            
+07EE  EF 07      DJNZ   R7,W0706+1          
+07F0  B1 10      MOV    @R1,#10h            
+W07F2:
+07F2  F2 12      JB7    0712h               
+W07F4:
+07F4  F4 14      CALL   0714h               
+W07F6:
+07F6  F6 16      JC     W0716               
+07F8  F9         MOV    A,R1                
+07F9  11         INC    @R1                 
+07FA  FB         MOV    A,R3                
+07FB  13 FD      ADDC   A,#0FDh             
+W07FD:
+07FD  15         DIS    I                   
+07FE  FF         MOV    A,R7                
+W07FF:
+07FF  17         INC    A                   
