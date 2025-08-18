@@ -1,0 +1,2884 @@
+0400  f5      SEL MB1
+0401  04 00   JMP $000
+0403  d5      SEL RB1
+0404  aa      MOV R2,A
+0405  24 3d   JMP $13d
+0407  d5      SEL RB1
+0408  aa      MOV R2,A
+0409  b8 6b   MOV R0, #6b
+040b  f0      MOV A,@R0
+040c  10      INC @R0
+040d  c6 2a   JZ $2a
+040f  03 fc   ADD A, #fc
+0411  f6 55   JC $55
+0413  03 02   ADD A, #02
+0415  96 40   JNZ $40
+0417  8a 40   ORL P2, #40
+0419  b8 48   MOV R0, #48
+041b  b0 d8   MOV @R0, #d8
+041d  b8 6c   MOV R0, #6c
+041f  f0      MOV A,@R0
+0420  f2 24   JB7 $24
+0422  04 45   JMP $045
+0424  c5      SEL RB0
+0425  fa      MOV A,R2
+0426  03 06   ADD A, #06
+0428  04 47   JMP $047
+042a  ff      MOV A,R7
+042b  c6 35   JZ $35
+042d  23 01   MOV A, #01
+042f  03 ff   ADD A, #ff
+0431  96 2f   JNZ $2f
+0433  ef 33   DJNZ R7, $33
+0435  9a bf   ANL P2, #bf
+0437  fe      MOV A,R6
+0438  53 bf   ANL A, #bf
+043a  ae      MOV R6,A
+043b  b9 69   MOV R1, #69
+043d  f1      MOV A,@R1
+043e  04 47   JMP $047
+0440  17      INC A
+0441  c6 45   JZ $45
+0443  8a 40   ORL P2, #40
+0445  c5      SEL RB0
+0446  fa      MOV A,R2
+0447  37      CPL A
+0448  17      INC A
+0449  d5      SEL RB1
+044a  a8      MOV R0,A
+044b  b4 9e   CALL $59e
+044d  42      MOV A,T
+044e  68      ADD A,R0
+044f  62      MOV T,A
+0450  f8      MOV A,R0
+0451  94 70   CALL $470
+0453  84 00   JMP $400
+0455  86 5c   JNI $5c
+0457  ff      MOV A,R7
+0458  c6 5c   JZ $5c
+045a  ef 5a   DJNZ R7, $5a
+045c  9a bf   ANL P2, #bf
+045e  fa      MOV A,R2
+045f  93      RETR
+
+0460  c5      SEL RB0
+0461  b8 76   MOV R0, #76
+0463  b4 9e   CALL $59e
+0465  d5      SEL RB1
+0466  fe      MOV A,R6
+0467  32 77   JB1 $77
+0469  43 02   ORL A, #02
+046b  ae      MOV R6,A
+046c  c5      SEL RB0
+046d  b9 67   MOV R1, #67
+046f  f1      MOV A,@R1
+0470  60      ADD A,@R0
+0471  b9 78   MOV R1, #78
+0473  61      ADD A,@R1
+0474  a0      MOV @R0,A
+0475  b1 00   MOV @R1, #00
+0477  c5      SEL RB0
+0478  42      MOV A,T
+0479  60      ADD A,@R0
+047a  03 f6   ADD A, #f6
+047c  f6 8a   JC $8a
+047e  03 01   ADD A, #01
+0480  f6 8a   JC $8a
+0482  03 03   ADD A, #03
+0484  e6 88   JNC $88
+0486  04 60   JMP $060
+0488  c5      SEL RB0
+0489  83      RET
+
+048a  b4 9e   CALL $59e
+048c  b8 76   MOV R0, #76
+048e  f0      MOV A,@R0
+048f  03 f4   ADD A, #f4
+0491  a0      MOV @R0,A
+0492  b9 57   MOV R1, #57
+0494  b1 fe   MOV @R1, #fe
+0496  b8 52   MOV R0, #52
+0498  34 33   CALL $133
+049a  94 a5   CALL $4a5
+049c  c5      SEL RB0
+049d  fb      MOV A,R3
+049e  03 9b   ADD A, #9b
+04a0  f6 e7   JC $e7
+04a2  97      CLR C
+04a3  46 a6   JNT1 $a6
+04a5  a7      CPL C
+04a6  b9 34   MOV R1, #34
+04a8  f1      MOV A,@R1
+04a9  f7      RLC A
+04aa  a1      MOV @R1,A
+04ab  b8 3b   MOV R0, #3b
+04ad  86 d2   JNI $d2
+04af  f0      MOV A,@R0
+04b0  96 d7   JNZ $d7
+04b2  37      CPL A
+04b3  a0      MOV @R0,A
+04b4  b8 3d   MOV R0, #3d
+04b6  f1      MOV A,@R1
+04b7  53 0f   ANL A, #0f
+04b9  c6 c0   JZ $c0
+04bb  d3 0f   XRL A, #0f
+04bd  96 c8   JNZ $c8
+04bf  37      CPL A
+04c0  a1      MOV @R1,A
+04c1  d0      XRL A,@R0
+04c2  c6 c8   JZ $c8
+04c4  f1      MOV A,@R1
+04c5  a0      MOV @R0,A
+04c6  04 cc   JMP $0cc
+04c8  b9 38   MOV R1, #38
+04ca  f0      MOV A,@R0
+04cb  a1      MOV @R1,A
+04cc  fd      MOV A,R5
+04cd  c6 d7   JZ $d7
+04cf  cd      DEC R5
+04d0  04 d7   JMP $0d7
+04d2  f0      MOV A,@R0
+04d3  c6 d7   JZ $d7
+04d5  b0 00   MOV @R0, #00
+04d7  94 1e   CALL $41e
+04d9  b8 2f   MOV R0, #2f
+04db  f0      MOV A,@R0
+04dc  07      DEC A
+04dd  a0      MOV @R0,A
+04de  c6 e5   JZ $e5
+04e0  07      DEC A
+04e1  f2 e5   JB7 $e5
+04e3  24 be   JMP $1be
+04e5  24 00   JMP $100
+04e7  84 11   JMP $411
+04e9  ff      MOV A,R7
+04ea  ff      MOV A,R7
+04eb  ff      MOV A,R7
+04ec  ff      MOV A,R7
+04ed  ff      MOV A,R7
+04ee  ff      MOV A,R7
+04ef  ff      MOV A,R7
+04f0  ff      MOV A,R7
+04f1  ff      MOV A,R7
+04f2  ff      MOV A,R7
+04f3  ff      MOV A,R7
+04f4  ff      MOV A,R7
+04f5  ff      MOV A,R7
+04f6  ff      MOV A,R7
+04f7  ff      MOV A,R7
+04f8  ff      MOV A,R7
+04f9  ff      MOV A,R7
+04fa  ff      MOV A,R7
+04fb  ff      MOV A,R7
+04fc  ff      MOV A,R7
+04fd  ff      MOV A,R7
+04fe  84 11   JMP $411
+
+0500  03 05   ADD A, #05
+0502  a0      MOV @R0,A
+0503  fa      MOV A,R2
+0504  03 eb   ADD A, #eb
+0506  e6 0c   JNC $0c
+0508  f5      SEL MB1
+0509  b4 00   CALL $500
+050b  e5      SEL MB0
+050c  b9 2e   MOV R1, #2e
+050e  f1      MOV A,@R1
+050f  11      INC @R1
+0510  12 16   JB0 $16
+0512  9a 7f   ANL P2, #7f
+0514  24 18   JMP $118
+0516  8a 80   ORL P2, #80
+0518  94 b4   CALL $4b4
+051a  c5      SEL RB0
+051b  b9 57   MOV R1, #57
+051d  b1 f9   MOV @R1, #f9
+051f  b8 43   MOV R0, #43
+0521  34 33   CALL $133
+0523  b8 30   MOV R0, #30
+0525  f0      MOV A,@R0
+0526  07      DEC A
+0527  a0      MOV @R0,A
+0528  96 31   JNZ $31
+052a  b0 15   MOV @R0, #15
+052c  d5      SEL RB1
+052d  fe      MOV A,R6
+052e  43 08   ORL A, #08
+0530  ae      MOV R6,A
+0531  24 be   JMP $1be
+0533  f0      MOV A,@R0
+0534  c6 37   JZ $37
+0536  10      INC @R0
+0537  18      INC R0
+0538  11      INC @R1
+0539  f1      MOV A,@R1
+053a  96 33   JNZ $33
+053c  83      RET
+
+053d  b9 6c   MOV R1, #6c
+053f  f1      MOV A,@R1
+0540  f2 4f   JB7 $4f
+0542  9a bf   ANL P2, #bf
+0544  55      STRT T
+0545  42      MOV A,T
+0546  b8 67   MOV R0, #67
+0548  a0      MOV @R0,A
+0549  27      CLR A
+054a  62      MOV T,A
+054b  b4 20   CALL $520
+054d  24 9b   JMP $19b
+054f  b8 67   MOV R0, #67
+0551  55      STRT T
+0552  42      MOV A,T
+0553  a0      MOV @R0,A
+0554  b9 61   MOV R1, #61
+0556  f1      MOV A,@R1
+0557  c6 7a   JZ $7a
+0559  03 f9   ADD A, #f9
+055b  e6 6f   JNC $6f
+055d  f1      MOV A,@R1
+055e  37      CPL A
+055f  17      INC A
+0560  62      MOV T,A
+0561  fe      MOV A,R6
+0562  43 40   ORL A, #40
+0564  ae      MOV R6,A
+0565  b4 20   CALL $520
+0567  94 69   CALL $469
+0569  b8 6b   MOV R0, #6b
+056b  b0 00   MOV @R0, #00
+056d  24 a9   JMP $1a9
+056f  f1      MOV A,@R1
+0570  37      CPL A
+0571  17      INC A
+0572  16 74   JTF $74
+0574  62      MOV T,A
+0575  00      NOP
+0576  16 87   JTF $87
+0578  24 76   JMP $176
+057a  27      CLR A
+057b  62      MOV T,A
+057c  ff      MOV A,R7
+057d  c6 91   JZ $91
+057f  03 fd   ADD A, #fd
+0581  e6 91   JNC $91
+0583  cf      DEC R7
+0584  cf      DEC R7
+0585  24 8f   JMP $18f
+0587  ff      MOV A,R7
+0588  c6 91   JZ $91
+058a  23 03   MOV A, #03
+058c  07      DEC A
+058d  96 8c   JNZ $8c
+058f  ef 8f   DJNZ R7, $8f
+0591  9a bf   ANL P2, #bf
+0593  b4 20   CALL $520
+0595  94 69   CALL $469
+0597  b9 6b   MOV R1, #6b
+0599  b1 01   MOV @R1, #01
+059b  b4 9e   CALL $59e
+059d  42      MOV A,T
+059e  37      CPL A
+059f  17      INC A
+05a0  b8 69   MOV R0, #69
+05a2  60      ADD A,@R0
+05a3  37      CPL A
+05a4  17      INC A
+05a5  62      MOV T,A
+05a6  f0      MOV A,@R0
+05a7  94 76   CALL $476
+05a9  b9 47   MOV R1, #47
+05ab  b1 d8   MOV @R1, #d8
+05ad  b9 79   MOV R1, #79
+05af  f1      MOV A,@R1
+05b0  53 7f   ANL A, #7f
+05b2  a1      MOV @R1,A
+05b3  fe      MOV A,R6
+05b4  53 f8   ANL A, #f8
+05b6  ae      MOV R6,A
+05b7  15      DIS I
+05b8  16 ba   JTF $ba
+05ba  35      DIS TCNTI
+05bb  25      EN TCNTI
+05bc  84 0f   JMP $40f
+05be  d5      SEL RB1
+05bf  fe      MOV A,R6
+05c0  d2 e0   JB6 $e0
+05c2  52 d2   JB2 $d2
+05c4  43 24   ORL A, #24
+05c6  ae      MOV R6,A
+05c7  f5      SEL MB1
+05c8  54 00   CALL $200
+05ca  e5      SEL MB0
+05cb  d5      SEL RB1
+05cc  fe      MOV A,R6
+05cd  53 df   ANL A, #df
+05cf  ae      MOV R6,A
+05d0  24 e0   JMP $1e0
+05d2  c5      SEL RB0
+05d3  b8 79   MOV R0, #79
+05d5  f0      MOV A,@R0
+05d6  f2 e0   JB7 $e0
+05d8  26 e0   JNT0 $e0
+05da  b0 01   MOV @R0, #01
+05dc  b8 4d   MOV R0, #4d
+05de  b0 01   MOV @R0, #01
+05e0  d5      SEL RB1
+05e1  fe      MOV A,R6
+05e2  12 ea   JB0 $ea
+05e4  86 ea   JNI $ea
+05e6  05      EN I
+05e7  43 01   ORL A, #01
+05e9  ae      MOV R6,A
+05ea  b2 f4   JB5 $f4
+05ec  c5      SEL RB0
+05ed  fa      MOV A,R2
+05ee  03 ec   ADD A, #ec
+05f0  f6 f4   JC $f4
+05f2  04 60   JMP $060
+05f4  c5      SEL RB0
+05f5  83      RET
+
+05f6  ff      MOV A,R7
+05f7  ff      MOV A,R7
+05f8  ff      MOV A,R7
+05f9  ff      MOV A,R7
+05fa  ff      MOV A,R7
+05fb  ff      MOV A,R7
+05fc  ff      MOV A,R7
+05fd  ff      MOV A,R7
+05fe  84 11   JMP $411
+
+0600  b8 41   MOV R0, #41
+0602  f0      MOV A,@R0
+0603  96 0e   JNZ $0e
+0605  76 21   JF1 $21
+0607  b9 38   MOV R1, #38
+0609  f1      MOV A,@R1
+060a  c6 2d   JZ $2d
+060c  44 c6   JMP $2c6
+060e  fc      MOV A,R4
+060f  43 2a   ORL A, #2a
+0611  ac      MOV R4,A
+0612  b8 31   MOV R0, #31
+0614  f0      MOV A,@R0
+0615  52 1b   JB2 $1b
+0617  b8 4a   MOV R0, #4a
+0619  44 1d   JMP $21d
+061b  b8 4b   MOV R0, #4b
+061d  f0      MOV A,@R0
+061e  ab      MOV R3,A
+061f  a5      CLR F1
+0620  b5      CPL F1
+0621  e4 00   JMP $700
+0623  03 9c   ADD A, #9c
+0625  e6 28   JNC $28
+0627  27      CLR A
+0628  03 64   ADD A, #64
+062a  ab      MOV R3,A
+062b  e4 00   JMP $700
+062d  b8 73   MOV R0, #73
+062f  fc      MOV A,R4
+0630  43 08   ORL A, #08
+0632  ac      MOV R4,A
+0633  32 79   JB1 $79
+0635  f0      MOV A,@R0
+0636  96 3c   JNZ $3c
+0638  fc      MOV A,R4
+0639  43 40   ORL A, #40
+063b  ac      MOV R4,A
+063c  fd      MOV A,R5
+063d  96 21   JNZ $21
+063f  b8 53   MOV R0, #53
+0641  f0      MOV A,@R0
+0642  96 21   JNZ $21
+0644  b8 49   MOV R0, #49
+0646  f0      MOV A,@R0
+0647  96 21   JNZ $21
+0649  b8 40   MOV R0, #40
+064b  f0      MOV A,@R0
+064c  96 af   JNZ $af
+064e  b8 5f   MOV R0, #5f
+0650  f0      MOV A,@R0
+0651  b8 31   MOV R0, #31
+0653  c6 5c   JZ $5c
+0655  f0      MOV A,@R0
+0656  53 2b   ANL A, #2b
+0658  d3 28   XRL A, #28
+065a  c6 66   JZ $66
+065c  fc      MOV A,R4
+065d  52 6f   JB2 $6f
+065f  f0      MOV A,@R0
+0660  53 2f   ANL A, #2f
+0662  d3 2d   XRL A, #2d
+0664  96 6f   JNZ $6f
+0666  fb      MOV A,R3
+0667  c6 21   JZ $21
+0669  07      DEC A
+066a  b4 a5   CALL $5a5
+066c  ab      MOV R3,A
+066d  44 73   JMP $273
+066f  fb      MOV A,R3
+0670  c6 21   JZ $21
+0672  cb      DEC R3
+0673  a5      CLR F1
+0674  b5      CPL F1
+0675  b4 bf   CALL $5bf
+0677  e4 00   JMP $700
+0679  b0 ec   MOV @R0, #ec
+067b  b2 c1   JB5 $c1
+067d  b8 2c   MOV R0, #2c
+067f  fb      MOV A,R3
+0680  a0      MOV @R0,A
+0681  b8 31   MOV R0, #31
+0683  f0      MOV A,@R0
+0684  53 0b   ANL A, #0b
+0686  d3 08   XRL A, #08
+0688  96 8c   JNZ $8c
+068a  94 45   CALL $445
+068c  fc      MOV A,R4
+068d  53 bd   ANL A, #bd
+068f  ac      MOV R4,A
+0690  b8 74   MOV R0, #74
+0692  f0      MOV A,@R0
+0693  96 af   JNZ $af
+0695  fc      MOV A,R4
+0696  37      CPL A
+0697  92 af   JB4 $af
+0699  b8 49   MOV R0, #49
+069b  0a      IN A,P2
+069c  72 a3   JB3 $a3
+069e  fa      MOV A,R2
+069f  03 d6   ADD A, #d6
+06a1  f6 a7   JC $a7
+06a3  b0 d8   MOV @R0, #d8
+06a5  44 a9   JMP $2a9
+06a7  b0 88   MOV @R0, #88
+06a9  b8 40   MOV R0, #40
+06ab  b0 ff   MOV @R0, #ff
+06ad  e4 00   JMP $700
+06af  b8 40   MOV R0, #40
+06b1  b0 00   MOV @R0, #00
+06b3  b8 2c   MOV R0, #2c
+06b5  f0      MOV A,@R0
+06b6  b8 2d   MOV R0, #2d
+06b8  60      ADD A,@R0
+06b9  17      INC A
+06ba  97      CLR C
+06bb  67      RRC A
+06bc  ab      MOV R3,A
+06bd  a5      CLR F1
+06be  b5      CPL F1
+06bf  e4 00   JMP $700
+06c1  53 9d   ANL A, #9d
+06c3  ac      MOV R4,A
+06c4  e4 00   JMP $700
+06c6  fc      MOV A,R4
+06c7  43 02   ORL A, #02
+06c9  ac      MOV R4,A
+06ca  72 dc   JB3 $dc
+06cc  fd      MOV A,R5
+06cd  96 21   JNZ $21
+06cf  b8 53   MOV R0, #53
+06d1  f0      MOV A,@R0
+06d2  96 21   JNZ $21
+06d4  fb      MOV A,R3
+06d5  03 9c   ADD A, #9c
+06d7  f6 21   JC $21
+06d9  1b      INC R3
+06da  44 73   JMP $273
+06dc  b2 e8   JB5 $e8
+06de  b8 2d   MOV R0, #2d
+06e0  fb      MOV A,R3
+06e1  a0      MOV @R0,A
+06e2  fc      MOV A,R4
+06e3  53 b7   ANL A, #b7
+06e5  ac      MOV R4,A
+06e6  44 af   JMP $2af
+06e8  53 97   ANL A, #97
+06ea  ac      MOV R4,A
+06eb  e4 00   JMP $700
+06ed  ff      MOV A,R7
+06ee  ff      MOV A,R7
+06ef  ff      MOV A,R7
+06f0  ff      MOV A,R7
+06f1  ff      MOV A,R7
+06f2  ff      MOV A,R7
+06f3  ff      MOV A,R7
+06f4  ff      MOV A,R7
+06f5  ff      MOV A,R7
+06f6  ff      MOV A,R7
+06f7  ff      MOV A,R7
+06f8  ff      MOV A,R7
+06f9  ff      MOV A,R7
+06fa  ff      MOV A,R7
+06fb  ff      MOV A,R7
+06fc  ff      MOV A,R7
+06fd  ff      MOV A,R7
+06fe  84 11   JMP $411
+
+0700  0a      IN A,P2
+0701  52 c1   JB2 $c1
+0703  b6 09   JF0 $09
+0705  b4 00   CALL $500
+0707  64 0b   JMP $30b
+0709  b4 1b   CALL $51b
+070b  23 32   MOV A, #32
+070d  44 23   JMP $223
+070f  b6 d9   JF0 $d9
+0711  b4 09   CALL $509
+0713  44 00   JMP $200
+0715  b6 d9   JF0 $d9
+0717  0a      IN A,P2
+0718  52 11   JB2 $11
+071a  08      INS A,BUS
+071b  d2 1f   JB6 $1f
+071d  64 11   JMP $311
+071f  b4 12   CALL $512
+0721  44 00   JMP $200
+0723  b4 00   CALL $500
+0725  b6 d9   JF0 $d9
+0727  0a      IN A,P2
+0728  52 40   JB2 $40
+072a  72 36   JB3 $36
+072c  12 32   JB0 $32
+072e  23 28   MOV A, #28
+0730  44 23   JMP $223
+0732  23 32   MOV A, #32
+0734  44 23   JMP $223
+0736  12 3c   JB0 $3c
+0738  23 23   MOV A, #23
+073a  44 23   JMP $223
+073c  23 2d   MOV A, #2d
+073e  44 23   JMP $223
+0740  72 44   JB3 $44
+0742  64 36   JMP $336
+0744  12 2e   JB0 $2e
+0746  23 1e   MOV A, #1e
+0748  44 23   JMP $223
+074a  b6 dd   JF0 $dd
+074c  b4 00   CALL $500
+074e  44 00   JMP $200
+0750  b6 dd   JF0 $dd
+0752  0a      IN A,P2
+0753  52 60   JB2 $60
+0755  32 59   JB1 $59
+0757  64 4c   JMP $34c
+0759  b4 00   CALL $500
+075b  b8 4a   MOV R0, #4a
+075d  f0      MOV A,@R0
+075e  44 23   JMP $223
+0760  32 66   JB1 $66
+0762  b4 12   CALL $512
+0764  64 68   JMP $368
+0766  b4 00   CALL $500
+0768  0a      IN A,P2
+0769  37      CPL A
+076a  72 13   JB3 $13
+076c  08      INS A,BUS
+076d  d2 5b   JB6 $5b
+076f  44 00   JMP $200
+0771  b6 05   JF0 $05
+0773  fc      MOV A,R4
+0774  52 11   JB2 $11
+0776  64 4c   JMP $34c
+0778  b6 91   JF0 $91
+077a  fc      MOV A,R4
+077b  37      CPL A
+077c  52 89   JB2 $89
+077e  0a      IN A,P2
+077f  52 11   JB2 $11
+0781  08      INS A,BUS
+0782  37      CPL A
+0783  d2 11   JB6 $11
+0785  b4 12   CALL $512
+0787  44 00   JMP $200
+0789  0a      IN A,P2
+078a  37      CPL A
+078b  52 4c   JB2 $4c
+078d  32 11   JB1 $11
+078f  64 4c   JMP $34c
+0791  b4 00   CALL $500
+0793  23 3c   MOV A, #3c
+0795  44 23   JMP $223
+0797  b6 a2   JF0 $a2
+0799  b4 00   CALL $500
+079b  0a      IN A,P2
+079c  52 93   JB2 $93
+079e  23 46   MOV A, #46
+07a0  44 23   JMP $223
+07a2  b4 1b   CALL $51b
+07a4  64 9e   JMP $39e
+07a6  fc      MOV A,R4
+07a7  37      CPL A
+07a8  52 05   JB2 $05
+07aa  0a      IN A,P2
+07ab  52 05   JB2 $05
+07ad  64 d9   JMP $3d9
+07af  b4 00   CALL $500
+07b1  fc      MOV A,R4
+07b2  37      CPL A
+07b3  52 93   JB2 $93
+07b5  0a      IN A,P2
+07b6  37      CPL A
+07b7  52 3c   JB2 $3c
+07b9  b6 38   JF0 $38
+07bb  64 3c   JMP $33c
+07bd  b6 d0   JF0 $d0
+07bf  64 dd   JMP $3dd
+07c1  b6 c7   JF0 $c7
+07c3  b4 00   CALL $500
+07c5  64 c9   JMP $3c9
+07c7  b4 1b   CALL $51b
+07c9  b8 36   MOV R0, #36
+07cb  f0      MOV A,@R0
+07cc  03 32   ADD A, #32
+07ce  44 23   JMP $223
+07d0  b4 1b   CALL $51b
+07d2  b8 36   MOV R0, #36
+07d4  f0      MOV A,@R0
+07d5  03 2a   ADD A, #2a
+07d7  44 23   JMP $223
+07d9  b4 00   CALL $500
+07db  64 df   JMP $3df
+07dd  b4 1b   CALL $51b
+07df  b8 36   MOV R0, #36
+07e1  f0      MOV A,@R0
+07e2  44 23   JMP $223
+07e4  ff      MOV A,R7
+07e5  ff      MOV A,R7
+07e6  ff      MOV A,R7
+07e7  ff      MOV A,R7
+07e8  ff      MOV A,R7
+07e9  ff      MOV A,R7
+07ea  ff      MOV A,R7
+07eb  ff      MOV A,R7
+07ec  ff      MOV A,R7
+07ed  ff      MOV A,R7
+07ee  ff      MOV A,R7
+07ef  ff      MOV A,R7
+07f0  ff      MOV A,R7
+07f1  ff      MOV A,R7
+07f2  ff      MOV A,R7
+07f3  ff      MOV A,R7
+07f4  ff      MOV A,R7
+07f5  ff      MOV A,R7
+07f6  ff      MOV A,R7
+07f7  ff      MOV A,R7
+07f8  ff      MOV A,R7
+07f9  ff      MOV A,R7
+07fa  ff      MOV A,R7
+07fb  ff      MOV A,R7
+07fc  ff      MOV A,R7
+07fd  ff      MOV A,R7
+07fe  84 11   JMP $411
+
+0800  c7      MOV A,PSW
+0801  07      DEC A
+0802  53 07   ANL A, #07
+0804  03 fa   ADD A, #fa
+0806  f6 11   JC $11
+0808  86 0f   JNI $0f
+080a  05      EN I
+080b  fe      MOV A,R6
+080c  43 01   ORL A, #01
+080e  ae      MOV R6,A
+080f  fa      MOV A,R2
+0810  93      RETR
+
+0811  8a 20   ORL P2, #20
+0813  35      DIS TCNTI
+0814  15      DIS I
+0815  27      CLR A
+0816  d7      MOV PSW,A
+0817  e5      SEL MB0
+0818  94 10   CALL $410
+081a  c5      SEL RB0
+081b  80      MOVX A,@R0
+081c  04 00   JMP $000
+081e  c5      SEL RB0
+081f  b8 29   MOV R0, #29
+0821  b9 28   MOV R1, #28
+0823  08      INS A,BUS
+0824  53 3f   ANL A, #3f
+0826  20      XCH A,@R0
+0827  d0      XRL A,@R0
+0828  c6 2e   JZ $2e
+082a  b1 fd   MOV @R1, #fd
+082c  84 44   JMP $444
+082e  11      INC @R1
+082f  f1      MOV A,@R1
+0830  96 44   JNZ $44
+0832  f0      MOV A,@R0
+0833  b8 2a   MOV R0, #2a
+0835  a0      MOV @R0,A
+0836  fc      MOV A,R4
+0837  f2 44   JB7 $44
+0839  f0      MOV A,@R0
+083a  32 44   JB1 $44
+083c  b8 5f   MOV R0, #5f
+083e  b0 10   MOV @R0, #10
+0840  fc      MOV A,R4
+0841  43 80   ORL A, #80
+0843  ac      MOV R4,A
+0844  83      RET
+
+0845  b9 31   MOV R1, #31
+0847  f1      MOV A,@R1
+0848  b9 4b   MOV R1, #4b
+084a  52 4e   JB2 $4e
+084c  b9 4a   MOV R1, #4a
+084e  b8 2c   MOV R0, #2c
+0850  f0      MOV A,@R0
+0851  b8 2d   MOV R0, #2d
+0853  60      ADD A,@R0
+0854  97      CLR C
+0855  67      RRC A
+0856  97      CLR C
+0857  61      ADD A,@R1
+0858  61      ADD A,@R1
+0859  f6 5e   JC $5e
+085b  61      ADD A,@R1
+085c  84 61   JMP $461
+085e  61      ADD A,@R1
+085f  97      CLR C
+0860  a7      CPL C
+0861  67      RRC A
+0862  97      CLR C
+0863  67      RRC A
+0864  e6 67   JNC $67
+0866  17      INC A
+0867  a1      MOV @R1,A
+0868  83      RET
+
+0869  b8 61   MOV R0, #61
+086b  f0      MOV A,@R0
+086c  c6 83   JZ $83
+086e  84 76   JMP $476
+0870  b9 76   MOV R1, #76
+0872  37      CPL A
+0873  17      INC A
+0874  84 78   JMP $478
+0876  b9 78   MOV R1, #78
+0878  b8 77   MOV R0, #77
+087a  a0      MOV @R0,A
+087b  61      ADD A,@R1
+087c  a1      MOV @R1,A
+087d  f0      MOV A,@R0
+087e  6c      ADD A,R4
+087f  e6 82   JNC $82
+0881  1d      INC R5
+0882  ac      MOV R4,A
+0883  83      RET
+
+0884  b9 66   MOV R1, #66
+0886  b8 65   MOV R0, #65
+0888  f0      MOV A,@R0
+0889  37      CPL A
+088a  17      INC A
+088b  6c      ADD A,R4
+088c  c6 9c   JZ $9c
+088e  07      DEC A
+088f  c6 9c   JZ $9c
+0891  fc      MOV A,R4
+0892  a0      MOV @R0,A
+0893  b8 63   MOV R0, #63
+0895  a0      MOV @R0,A
+0896  fd      MOV A,R5
+0897  a1      MOV @R1,A
+0898  b9 64   MOV R1, #64
+089a  a1      MOV @R1,A
+089b  83      RET
+
+089c  f0      MOV A,@R0
+089d  b8 63   MOV R0, #63
+089f  a0      MOV @R0,A
+08a0  f1      MOV A,@R1
+08a1  b9 64   MOV R1, #64
+08a3  a1      MOV @R1,A
+08a4  83      RET
+
+08a5  b8 3a   MOV R0, #3a
+08a7  f0      MOV A,@R0
+08a8  96 ea   JNZ $ea
+08aa  b8 3e   MOV R0, #3e
+08ac  f0      MOV A,@R0
+08ad  10      INC @R0
+08ae  96 ea   JNZ $ea
+08b0  b0 f6   MOV @R0, #f6
+08b2  84 b9   JMP $4b9
+08b4  b8 3a   MOV R0, #3a
+08b6  f0      MOV A,@R0
+08b7  c6 ea   JZ $ea
+08b9  c5      SEL RB0
+08ba  fb      MOV A,R3
+08bb  d5      SEL RB1
+08bc  37      CPL A
+08bd  6b      ADD A,R3
+08be  17      INC A
+08bf  c6 e9   JZ $e9
+08c1  e6 c6   JNC $c6
+08c3  cb      DEC R3
+08c4  84 c7   JMP $4c7
+08c6  1b      INC R3
+08c7  fb      MOV A,R3
+08c8  53 03   ANL A, #03
+08ca  03 cd   ADD A, #cd
+08cc  b3      JMPP @A
+08cd  d1      XRL A,@R1
+08ce  d7      MOV PSW,A
+08cf  dd      XRL A,R5
+08d0  e3      MOVP3 A,@A
+08d1  89 09   ORL P1, #09
+08d3  99 f9   ANL P1, #f9
+08d5  84 ea   JMP $4ea
+08d7  89 0a   ORL P1, #0a
+08d9  99 fa   ANL P1, #fa
+08db  84 ea   JMP $4ea
+08dd  89 06   ORL P1, #06
+08df  99 f6   ANL P1, #f6
+08e1  84 ea   JMP $4ea
+08e3  89 05   ORL P1, #05
+08e5  99 f5   ANL P1, #f5
+08e7  84 ea   JMP $4ea
+08e9  a5      CLR F1
+08ea  83      RET
+
+08eb  ff      MOV A,R7
+08ec  ff      MOV A,R7
+08ed  ff      MOV A,R7
+08ee  ff      MOV A,R7
+08ef  ff      MOV A,R7
+08f0  ff      MOV A,R7
+08f1  ff      MOV A,R7
+08f2  ff      MOV A,R7
+08f3  ff      MOV A,R7
+08f4  ff      MOV A,R7
+08f5  ff      MOV A,R7
+08f6  ff      MOV A,R7
+08f7  ff      MOV A,R7
+08f8  ff      MOV A,R7
+08f9  ff      MOV A,R7
+08fa  ff      MOV A,R7
+08fb  ff      MOV A,R7
+08fc  ff      MOV A,R7
+08fd  ff      MOV A,R7
+08fe  84 11   JMP $411
+
+0900  b4 d5   CALL $5d5
+0902  c6 1b   JZ $1b
+0904  89 20   ORL P1, #20
+0906  89 10   ORL P1, #10
+0908  83      RET
+
+0909  b4 d5   CALL $5d5
+090b  c6 1b   JZ $1b
+090d  99 df   ANL P1, #df
+090f  89 10   ORL P1, #10
+0911  83      RET
+
+0912  b4 d5   CALL $5d5
+0914  c6 1b   JZ $1b
+0916  fc      MOV A,R4
+0917  d2 04   JB6 $04
+0919  a4 0d   JMP $50d
+091b  99 df   ANL P1, #df
+091d  99 ef   ANL P1, #ef
+091f  83      RET
+
+0920  b8 6b   MOV R0, #6b
+0922  b9 67   MOV R1, #67
+0924  f0      MOV A,@R0
+0925  03 fb   ADD A, #fb
+0927  e6 30   JNC $30
+0929  f1      MOV A,@R1
+092a  6c      ADD A,R4
+092b  e6 37   JNC $37
+092d  1d      INC R5
+092e  a4 37   JMP $537
+0930  f1      MOV A,@R1
+0931  c6 38   JZ $38
+0933  6c      ADD A,R4
+0934  f6 37   JC $37
+0936  cd      DEC R5
+0937  ac      MOV R4,A
+0938  94 84   CALL $484
+093a  bc 00   MOV R4, #00
+093c  bd 00   MOV R5, #00
+093e  b9 66   MOV R1, #66
+0940  f1      MOV A,@R1
+0941  b8 65   MOV R0, #65
+0943  c5      SEL RB0
+0944  ba 00   MOV R2, #00
+0946  97      CLR C
+0947  c6 56   JZ $56
+0949  07      DEC A
+094a  c6 55   JZ $55
+094c  07      DEC A
+094d  ba 80   MOV R2, #80
+094f  c6 56   JZ $56
+0951  ba c0   MOV R2, #c0
+0953  a4 56   JMP $556
+0955  a7      CPL C
+0956  d5      SEL RB1
+0957  f0      MOV A,@R0
+0958  b9 7b   MOV R1, #7b
+095a  b1 00   MOV @R1, #00
+095c  67      RRC A
+095d  e6 60   JNC $60
+095f  11      INC @R1
+0960  97      CLR C
+0961  67      RRC A
+0962  e6 66   JNC $66
+0964  11      INC @R1
+0965  11      INC @R1
+0966  c5      SEL RB0
+0967  6a      ADD A,R2
+0968  aa      MOV R2,A
+0969  e6 6f   JNC $6f
+096b  ba ff   MOV R2, #ff
+096d  d5      SEL RB1
+096e  83      RET
+
+096f  fa      MOV A,R2
+0970  d5      SEL RB1
+0971  b9 6b   MOV R1, #6b
+0973  b1 01   MOV @R1, #01
+0975  b9 7b   MOV R1, #7b
+0977  61      ADD A,@R1
+0978  b8 69   MOV R0, #69
+097a  f6 92   JC $92
+097c  a0      MOV @R0,A
+097d  b9 6c   MOV R1, #6c
+097f  f1      MOV A,@R1
+0980  f2 9d   JB7 $9d
+0982  b9 61   MOV R1, #61
+0984  f1      MOV A,@R1
+0985  c6 9d   JZ $9d
+0987  37      CPL A
+0988  17      INC A
+0989  60      ADD A,@R0
+098a  a0      MOV @R0,A
+098b  e6 95   JNC $95
+098d  03 f6   ADD A, #f6
+098f  e6 95   JNC $95
+0991  83      RET
+
+0992  b0 ff   MOV @R0, #ff
+0994  83      RET
+
+0995  b9 6b   MOV R1, #6b
+0997  11      INC @R1
+0998  c5      SEL RB0
+0999  fa      MOV A,R2
+099a  d5      SEL RB1
+099b  60      ADD A,@R0
+099c  a0      MOV @R0,A
+099d  83      RET
+
+099e  42      MOV A,T
+099f  a9      MOV R1,A
+09a0  42      MOV A,T
+09a1  d9      XRL A,R1
+09a2  c6 a0   JZ $a0
+09a4  83      RET
+
+09a5  a8      MOV R0,A
+09a6  b9 36   MOV R1, #36
+09a8  f1      MOV A,@R1
+09a9  03 e2   ADD A, #e2
+09ab  e6 bb   JNC $bb
+09ad  c6 bb   JZ $bb
+09af  37      CPL A
+09b0  17      INC A
+09b1  97      CLR C
+09b2  68      ADD A,R0
+09b3  f6 bb   JC $bb
+09b5  f1      MOV A,@R1
+09b6  03 e2   ADD A, #e2
+09b8  f2 bd   JB7 $bd
+09ba  83      RET
+
+09bb  f8      MOV A,R0
+09bc  83      RET
+
+09bd  27      CLR A
+09be  83      RET
+
+09bf  fa      MOV A,R2
+09c0  03 df   ADD A, #df
+09c2  e6 cc   JNC $cc
+09c4  fa      MOV A,R2
+09c5  03 cf   ADD A, #cf
+09c7  e6 d0   JNC $d0
+09c9  bd 08   MOV R5, #08
+09cb  83      RET
+
+09cc  23 0c   MOV A, #0c
+09ce  ad      MOV R5,A
+09cf  83      RET
+
+09d0  b8 53   MOV R0, #53
+09d2  b0 83   MOV @R0, #83
+09d4  83      RET
+
+09d5  b8 5d   MOV R0, #5d
+09d7  f0      MOV A,@R0
+09d8  c6 f0   JZ $f0
+09da  b8 5c   MOV R0, #5c
+09dc  f0      MOV A,@R0
+09dd  c6 f0   JZ $f0
+09df  b9 37   MOV R1, #37
+09e1  fa      MOV A,R2
+09e2  03 df   ADD A, #df
+09e4  e6 ee   JNC $ee
+09e6  fa      MOV A,R2
+09e7  03 de   ADD A, #de
+09e9  f6 f2   JC $f2
+09eb  f1      MOV A,@R1
+09ec  c6 f4   JZ $f4
+09ee  b1 01   MOV @R1, #01
+09f0  27      CLR A
+09f1  83      RET
+
+09f2  b1 00   MOV @R1, #00
+09f4  23 ff   MOV A, #ff
+09f6  83      RET
+
+09f7  ff      MOV A,R7
+09f8  ff      MOV A,R7
+09f9  ff      MOV A,R7
+09fa  ff      MOV A,R7
+09fb  ff      MOV A,R7
+09fc  ff      MOV A,R7
+09fd  ff      MOV A,R7
+09fe  84 11   JMP $411
+
+0a00  b8 5b   MOV R0, #5b
+0a02  b0 00   MOV @R0, #00
+0a04  b8 6e   MOV R0, #6e
+0a06  b0 00   MOV @R0, #00
+0a08  b8 5e   MOV R0, #5e
+0a0a  b0 00   MOV @R0, #00
+0a0c  64 dd   JMP $3dd
+0a0e  14 60   CALL $060
+0a10  85      CLR F0
+0a11  b8 5b   MOV R0, #5b
+0a13  f0      MOV A,@R0
+0a14  c6 17   JZ $17
+0a16  95      CPL F0
+0a17  b8 31   MOV R0, #31
+0a19  f0      MOV A,@R0
+0a1a  53 35   ANL A, #35
+0a1c  d3 31   XRL A, #31
+0a1e  c6 24   JZ $24
+0a20  b9 5c   MOV R1, #5c
+0a22  b1 e2   MOV @R1, #e2
+0a24  f0      MOV A,@R0
+0a25  53 2d   ANL A, #2d
+0a27  d3 2d   XRL A, #2d
+0a29  c6 2f   JZ $2f
+0a2b  b9 5d   MOV R1, #5d
+0a2d  b1 88   MOV @R1, #88
+0a2f  d4 31   CALL $631
+0a31  b8 31   MOV R0, #31
+0a33  f0      MOV A,@R0
+0a34  53 3f   ANL A, #3f
+0a36  e7      RL A
+0a37  03 3d   ADD A, #3d
+0a39  b8 08   MOV R0, #08
+0a3b  a0      MOV @R0,A
+0a3c  83      RET
+
+0a3d  e4 c7   JMP $7c7
+0a3f  64 c7   JMP $3c7
+0a41  64 dd   JMP $3dd
+0a43  64 c7   JMP $3c7
+0a45  64 dd   JMP $3dd
+0a47  64 dd   JMP $3dd
+0a49  64 dd   JMP $3dd
+0a4b  64 dd   JMP $3dd
+0a4d  64 bd   JMP $3bd
+0a4f  64 c7   JMP $3c7
+0a51  64 d0   JMP $3d0
+0a53  64 d0   JMP $3d0
+0a55  64 bd   JMP $3bd
+0a57  64 d0   JMP $3d0
+0a59  64 d0   JMP $3d0
+0a5b  64 d0   JMP $3d0
+0a5d  64 dd   JMP $3dd
+0a5f  64 c7   JMP $3c7
+0a61  64 dd   JMP $3dd
+0a63  64 c7   JMP $3c7
+0a65  64 dd   JMP $3dd
+0a67  64 dd   JMP $3dd
+0a69  64 dd   JMP $3dd
+0a6b  64 dd   JMP $3dd
+0a6d  64 bd   JMP $3bd
+0a6f  64 c7   JMP $3c7
+0a71  64 d0   JMP $3d0
+0a73  64 d0   JMP $3d0
+0a75  64 bd   JMP $3bd
+0a77  64 d0   JMP $3d0
+0a79  64 d0   JMP $3d0
+0a7b  64 d0   JMP $3d0
+0a7d  64 dd   JMP $3dd
+0a7f  64 00   JMP $300
+0a81  64 dd   JMP $3dd
+0a83  64 c1   JMP $3c1
+0a85  64 dd   JMP $3dd
+0a87  64 dd   JMP $3dd
+0a89  64 dd   JMP $3dd
+0a8b  64 dd   JMP $3dd
+0a8d  64 0f   JMP $30f
+0a8f  64 4a   JMP $34a
+0a91  64 d9   JMP $3d9
+0a93  64 03   JMP $303
+0a95  64 0f   JMP $30f
+0a97  64 71   JMP $371
+0a99  64 d9   JMP $3d9
+0a9b  64 a6   JMP $3a6
+0a9d  64 dd   JMP $3dd
+0a9f  64 c1   JMP $3c1
+0aa1  64 dd   JMP $3dd
+0aa3  64 c1   JMP $3c1
+0aa5  64 dd   JMP $3dd
+0aa7  64 dd   JMP $3dd
+0aa9  64 dd   JMP $3dd
+0aab  64 dd   JMP $3dd
+0aad  64 15   JMP $315
+0aaf  64 50   JMP $350
+0ab1  64 d9   JMP $3d9
+0ab3  64 97   JMP $397
+0ab5  64 15   JMP $315
+0ab7  64 78   JMP $378
+0ab9  64 23   JMP $323
+0abb  64 af   JMP $3af
+0abd  ff      MOV A,R7
+0abe  ff      MOV A,R7
+0abf  ff      MOV A,R7
+0ac0  ff      MOV A,R7
+0ac1  ff      MOV A,R7
+0ac2  ff      MOV A,R7
+0ac3  ff      MOV A,R7
+0ac4  ff      MOV A,R7
+0ac5  ff      MOV A,R7
+0ac6  ff      MOV A,R7
+0ac7  ff      MOV A,R7
+0ac8  ff      MOV A,R7
+0ac9  ff      MOV A,R7
+0aca  ff      MOV A,R7
+0acb  ff      MOV A,R7
+0acc  ff      MOV A,R7
+0acd  ff      MOV A,R7
+0ace  ff      MOV A,R7
+0acf  ff      MOV A,R7
+0ad0  ff      MOV A,R7
+0ad1  ff      MOV A,R7
+0ad2  ff      MOV A,R7
+0ad3  ff      MOV A,R7
+0ad4  ff      MOV A,R7
+0ad5  ff      MOV A,R7
+0ad6  ff      MOV A,R7
+0ad7  ff      MOV A,R7
+0ad8  ff      MOV A,R7
+0ad9  ff      MOV A,R7
+0ada  ff      MOV A,R7
+0adb  ff      MOV A,R7
+0adc  ff      MOV A,R7
+0add  ff      MOV A,R7
+0ade  ff      MOV A,R7
+0adf  ff      MOV A,R7
+0ae0  ff      MOV A,R7
+0ae1  ff      MOV A,R7
+0ae2  ff      MOV A,R7
+0ae3  ff      MOV A,R7
+0ae4  ff      MOV A,R7
+0ae5  ff      MOV A,R7
+0ae6  ff      MOV A,R7
+0ae7  ff      MOV A,R7
+0ae8  ff      MOV A,R7
+0ae9  ff      MOV A,R7
+0aea  ff      MOV A,R7
+0aeb  ff      MOV A,R7
+0aec  ff      MOV A,R7
+0aed  ff      MOV A,R7
+0aee  ff      MOV A,R7
+0aef  ff      MOV A,R7
+0af0  ff      MOV A,R7
+0af1  ff      MOV A,R7
+0af2  ff      MOV A,R7
+0af3  ff      MOV A,R7
+0af4  ff      MOV A,R7
+0af5  ff      MOV A,R7
+0af6  ff      MOV A,R7
+0af7  ff      MOV A,R7
+0af8  ff      MOV A,R7
+0af9  ff      MOV A,R7
+0afa  ff      MOV A,R7
+0afb  ff      MOV A,R7
+0afc  ff      MOV A,R7
+0afd  ff      MOV A,R7
+0afe  84 11   JMP $411
+
+0b00  25      EN TCNTI
+0b01  94 10   CALL $410
+0b03  b8 47   MOV R0, #47
+0b05  f0      MOV A,@R0
+0b06  96 0a   JNZ $0a
+0b08  84 11   JMP $411
+0b0a  18      INC R0
+0b0b  f0      MOV A,@R0
+0b0c  96 10   JNZ $10
+0b0e  84 11   JMP $411
+0b10  f4 a4   CALL $7a4
+0b12  14 60   CALL $060
+0b14  b8 31   MOV R0, #31
+0b16  f0      MOV A,@R0
+0b17  53 0d   ANL A, #0d
+0b19  d3 0d   XRL A, #0d
+0b1b  96 24   JNZ $24
+0b1d  fc      MOV A,R4
+0b1e  52 24   JB2 $24
+0b20  9a ef   ANL P2, #ef
+0b22  e4 26   JMP $726
+0b24  8a 10   ORL P2, #10
+0b26  f5      SEL MB1
+0b27  b8 50   MOV R0, #50
+0b29  f0      MOV A,@R0
+0b2a  12 31   JB0 $31
+0b2c  34 00   CALL $100
+0b2e  e5      SEL MB0
+0b2f  e4 34   JMP $734
+0b31  d4 00   CALL $600
+0b33  e5      SEL MB0
+0b34  f4 a4   CALL $7a4
+0b36  14 60   CALL $060
+0b38  c5      SEL RB0
+0b39  0a      IN A,P2
+0b3a  72 45   JB3 $45
+0b3c  23 a7   MOV A, #a7
+0b3e  6a      ADD A,R2
+0b3f  f6 59   JC $59
+0b41  23 be   MOV A, #be
+0b43  e4 4c   JMP $74c
+0b45  23 b2   MOV A, #b2
+0b47  6a      ADD A,R2
+0b48  f6 59   JC $59
+0b4a  23 c4   MOV A, #c4
+0b4c  6a      ADD A,R2
+0b4d  e6 53   JNC $53
+0b4f  fc      MOV A,R4
+0b50  37      CPL A
+0b51  52 59   JB2 $59
+0b53  fc      MOV A,R4
+0b54  43 04   ORL A, #04
+0b56  ac      MOV R4,A
+0b57  e4 5d   JMP $75d
+0b59  fc      MOV A,R4
+0b5a  53 fb   ANL A, #fb
+0b5c  ac      MOV R4,A
+0b5d  b8 36   MOV R0, #36
+0b5f  b0 32   MOV @R0, #32
+0b61  08      INS A,BUS
+0b62  92 66   JB4 $66
+0b64  b0 19   MOV @R0, #19
+0b66  b9 3c   MOV R1, #3c
+0b68  b8 2a   MOV R0, #2a
+0b6a  f0      MOV A,@R0
+0b6b  b8 31   MOV R0, #31
+0b6d  a0      MOV @R0,A
+0b6e  d1      XRL A,@R1
+0b6f  b8 41   MOV R0, #41
+0b71  b0 00   MOV @R0, #00
+0b73  c6 9e   JZ $9e
+0b75  b0 ff   MOV @R0, #ff
+0b77  0a      IN A,P2
+0b78  37      CPL A
+0b79  52 9a   JB2 $9a
+0b7b  08      INS A,BUS
+0b7c  f2 9a   JB7 $9a
+0b7e  b8 31   MOV R0, #31
+0b80  f0      MOV A,@R0
+0b81  53 3b   ANL A, #3b
+0b83  d3 38   XRL A, #38
+0b85  c6 94   JZ $94
+0b87  f0      MOV A,@R0
+0b88  d3 3d   XRL A, #3d
+0b8a  96 9a   JNZ $9a
+0b8c  fc      MOV A,R4
+0b8d  37      CPL A
+0b8e  52 94   JB2 $94
+0b90  b8 74   MOV R0, #74
+0b92  b0 ce   MOV @R0, #ce
+0b94  fc      MOV A,R4
+0b95  43 10   ORL A, #10
+0b97  ac      MOV R4,A
+0b98  e4 9e   JMP $79e
+0b9a  fc      MOV A,R4
+0b9b  53 ef   ANL A, #ef
+0b9d  ac      MOV R4,A
+0b9e  b8 31   MOV R0, #31
+0ba0  f0      MOV A,@R0
+0ba1  a1      MOV @R1,A
+0ba2  c4 0e   JMP $60e
+0ba4  d5      SEL RB1
+0ba5  fe      MOV A,R6
+0ba6  72 a9   JB3 $a9
+0ba8  83      RET
+
+0ba9  53 f7   ANL A, #f7
+0bab  ae      MOV R6,A
+0bac  c5      SEL RB0
+0bad  b9 57   MOV R1, #57
+0baf  b1 f9   MOV @R1, #f9
+0bb1  b8 6e   MOV R0, #6e
+0bb3  34 33   CALL $133
+0bb5  b8 4e   MOV R0, #4e
+0bb7  f0      MOV A,@R0
+0bb8  c6 bc   JZ $bc
+0bba  10      INC @R0
+0bbb  83      RET
+
+0bbc  b0 f7   MOV @R0, #f7
+0bbe  b9 57   MOV R1, #57
+0bc0  b1 fa   MOV @R1, #fa
+0bc2  b8 5a   MOV R0, #5a
+0bc4  34 33   CALL $133
+0bc6  83      RET
+
+0bc7  b8 50   MOV R0, #50
+0bc9  f0      MOV A,@R0
+0bca  32 f6   JB1 $f6
+0bcc  12 f4   JB0 $f4
+0bce  b9 41   MOV R1, #41
+0bd0  f1      MOV A,@R1
+0bd1  c6 d7   JZ $d7
+0bd3  f0      MOV A,@R0
+0bd4  43 04   ORL A, #04
+0bd6  a0      MOV @R0,A
+0bd7  f0      MOV A,@R0
+0bd8  37      CPL A
+0bd9  52 f6   JB2 $f6
+0bdb  fa      MOV A,R2
+0bdc  03 d6   ADD A, #d6
+0bde  f6 f6   JC $f6
+0be0  f0      MOV A,@R0
+0be1  53 fb   ANL A, #fb
+0be3  43 11   ORL A, #11
+0be5  a0      MOV @R0,A
+0be6  b9 7c   MOV R1, #7c
+0be8  b1 06   MOV @R1, #06
+0bea  b9 6f   MOV R1, #6f
+0bec  b1 fb   MOV @R1, #fb
+0bee  b9 4d   MOV R1, #4d
+0bf0  b1 00   MOV @R1, #00
+0bf2  99 3f   ANL P1, #3f
+0bf4  64 dd   JMP $3dd
+0bf6  c4 00   JMP $600
+0bf8  ff      MOV A,R7
+0bf9  ff      MOV A,R7
+0bfa  ff      MOV A,R7
+0bfb  ff      MOV A,R7
+0bfc  ff      MOV A,R7
+0bfd  ff      MOV A,R7
+0bfe  84 11   JMP $411
+
+0c00  c5      SEL RB0
+0c01  8a 20   ORL P2, #20
+0c03  9a 7f   ANL P2, #7f
+0c05  b9 7e   MOV R1, #7e
+0c07  f1      MOV A,@R1
+0c08  d3 2e   XRL A, #2e
+0c0a  96 12   JNZ $12
+0c0c  19      INC R1
+0c0d  f1      MOV A,@R1
+0c0e  d3 d2   XRL A, #d2
+0c10  c6 14   JZ $14
+0c12  e4 2a   JMP $72a
+0c14  b8 7d   MOV R0, #7d
+0c16  27      CLR A
+0c17  a0      MOV @R0,A
+0c18  e8 17   DJNZ R0, $17
+0c1a  34 a3   CALL $1a3
+0c1c  b8 36   MOV R0, #36
+0c1e  b0 32   MOV @R0, #32
+0c20  08      INS A,BUS
+0c21  92 25   JB4 $25
+0c23  b0 19   MOV @R0, #19
+0c25  f0      MOV A,@R0
+0c26  b8 4a   MOV R0, #4a
+0c28  a0      MOV @R0,A
+0c29  b8 4b   MOV R0, #4b
+0c2b  a0      MOV @R0,A
+0c2c  bc 0b   MOV R4, #0b
+0c2e  08      INS A,BUS
+0c2f  32 35   JB1 $35
+0c31  fc      MOV A,R4
+0c32  43 80   ORL A, #80
+0c34  ac      MOV R4,A
+0c35  15      DIS I
+0c36  35      DIS TCNTI
+0c37  d5      SEL RB1
+0c38  bd 00   MOV R5, #00
+0c3a  c5      SEL RB0
+0c3b  27      CLR A
+0c3c  86 49   JNI $49
+0c3e  8a 40   ORL P2, #40
+0c40  27      CLR A
+0c41  86 51   JNI $51
+0c43  96 41   JNZ $41
+0c45  14 c9   CALL $0c9
+0c47  04 41   JMP $041
+0c49  9a bf   ANL P2, #bf
+0c4b  96 3c   JNZ $3c
+0c4d  14 c9   CALL $0c9
+0c4f  04 3c   JMP $03c
+0c51  27      CLR A
+0c52  62      MOV T,A
+0c53  55      STRT T
+0c54  16 56   JTF $56
+0c56  86 6a   JNI $6a
+0c58  8a 40   ORL P2, #40
+0c5a  27      CLR A
+0c5b  86 79   JNI $79
+0c5d  96 61   JNZ $61
+0c5f  14 c9   CALL $0c9
+0c61  16 65   JTF $65
+0c63  04 5b   JMP $05b
+0c65  d5      SEL RB1
+0c66  1d      INC R5
+0c67  c5      SEL RB0
+0c68  04 5b   JMP $05b
+0c6a  9a bf   ANL P2, #bf
+0c6c  96 70   JNZ $70
+0c6e  14 c9   CALL $0c9
+0c70  16 74   JTF $74
+0c72  04 56   JMP $056
+0c74  d5      SEL RB1
+0c75  1d      INC R5
+0c76  c5      SEL RB0
+0c77  04 56   JMP $056
+0c79  42      MOV A,T
+0c7a  d5      SEL RB1
+0c7b  ac      MOV R4,A
+0c7c  fd      MOV A,R5
+0c7d  03 fd   ADD A, #fd
+0c7f  f6 38   JC $38
+0c81  55      STRT T
+0c82  27      CLR A
+0c83  62      MOV T,A
+0c84  c5      SEL RB0
+0c85  05      EN I
+0c86  9a df   ANL P2, #df
+0c88  14 c9   CALL $0c9
+0c8a  b9 32   MOV R1, #32
+0c8c  14 c2   CALL $0c2
+0c8e  14 c9   CALL $0c9
+0c90  c5      SEL RB0
+0c91  b9 31   MOV R1, #31
+0c93  b8 35   MOV R0, #35
+0c95  08      INS A,BUS
+0c96  a0      MOV @R0,A
+0c97  a1      MOV @R1,A
+0c98  bb 64   MOV R3, #64
+0c9a  14 b7   CALL $0b7
+0c9c  bb 32   MOV R3, #32
+0c9e  14 b7   CALL $0b7
+0ca0  b8 3a   MOV R0, #3a
+0ca2  10      INC @R0
+0ca3  e5      SEL MB0
+0ca4  14 60   CALL $060
+0ca6  f5      SEL MB1
+0ca7  fa      MOV A,R2
+0ca8  03 4d   ADD A, #4d
+0caa  f6 a3   JC $a3
+0cac  b8 5b   MOV R0, #5b
+0cae  b0 ec   MOV @R0, #ec
+0cb0  b8 6c   MOV R0, #6c
+0cb2  b0 06   MOV @R0, #06
+0cb4  e5      SEL MB0
+0cb5  e4 00   JMP $700
+0cb7  a5      CLR F1
+0cb8  b5      CPL F1
+0cb9  76 bc   JF1 $bc
+0cbb  83      RET
+
+0cbc  e5      SEL MB0
+0cbd  14 60   CALL $060
+0cbf  f5      SEL MB1
+0cc0  04 b9   JMP $0b9
+0cc2  b8 63   MOV R0, #63
+0cc4  e8 c4   DJNZ R0, $c4
+0cc6  e9 c2   DJNZ R1, $c2
+0cc8  83      RET
+
+0cc9  8a 80   ORL P2, #80
+0ccb  23 64   MOV A, #64
+0ccd  07      DEC A
+0cce  96 cd   JNZ $cd
+0cd0  9a 7f   ANL P2, #7f
+0cd2  23 01   MOV A, #01
+0cd4  83      RET
+
+0cd5  ff      MOV A,R7
+0cd6  ff      MOV A,R7
+0cd7  ff      MOV A,R7
+0cd8  ff      MOV A,R7
+0cd9  ff      MOV A,R7
+0cda  ff      MOV A,R7
+0cdb  ff      MOV A,R7
+0cdc  ff      MOV A,R7
+0cdd  ff      MOV A,R7
+0cde  ff      MOV A,R7
+0cdf  ff      MOV A,R7
+0ce0  ff      MOV A,R7
+0ce1  ff      MOV A,R7
+0ce2  ff      MOV A,R7
+0ce3  ff      MOV A,R7
+0ce4  ff      MOV A,R7
+0ce5  ff      MOV A,R7
+0ce6  ff      MOV A,R7
+0ce7  ff      MOV A,R7
+0ce8  ff      MOV A,R7
+0ce9  ff      MOV A,R7
+0cea  ff      MOV A,R7
+0ceb  ff      MOV A,R7
+0cec  ff      MOV A,R7
+0ced  ff      MOV A,R7
+0cee  ff      MOV A,R7
+0cef  ff      MOV A,R7
+0cf0  ff      MOV A,R7
+0cf1  ff      MOV A,R7
+0cf2  ff      MOV A,R7
+0cf3  ff      MOV A,R7
+0cf4  ff      MOV A,R7
+0cf5  ff      MOV A,R7
+0cf6  ff      MOV A,R7
+0cf7  ff      MOV A,R7
+0cf8  ff      MOV A,R7
+0cf9  ff      MOV A,R7
+0cfa  ff      MOV A,R7
+0cfb  ff      MOV A,R7
+0cfc  ff      MOV A,R7
+0cfd  e5      SEL MB0
+0cfe  84 11   JMP $411
+
+0d00  b8 6e   MOV R0, #6e
+0d02  b9 7d   MOV R1, #7d
+0d04  f1      MOV A,@R1
+0d05  12 77   JB0 $77
+0d07  f0      MOV A,@R0
+0d08  96 11   JNZ $11
+0d0a  b8 52   MOV R0, #52
+0d0c  f0      MOV A,@R0
+0d0d  96 11   JNZ $11
+0d0f  99 bf   ANL P1, #bf
+0d11  b8 6f   MOV R0, #6f
+0d13  f0      MOV A,@R0
+0d14  96 18   JNZ $18
+0d16  99 7f   ANL P1, #7f
+0d18  0a      IN A,P2
+0d19  37      CPL A
+0d1a  72 21   JB3 $21
+0d1c  fa      MOV A,R2
+0d1d  03 8e   ADD A, #8e
+0d1f  24 24   JMP $124
+0d21  fa      MOV A,R2
+0d22  03 70   ADD A, #70
+0d24  e6 36   JNC $36
+0d26  89 40   ORL P1, #40
+0d28  89 80   ORL P1, #80
+0d2a  b8 6e   MOV R0, #6e
+0d2c  b0 fc   MOV @R0, #fc
+0d2e  b8 6f   MOV R0, #6f
+0d30  b0 e7   MOV @R0, #e7
+0d32  b8 55   MOV R0, #55
+0d34  b0 ff   MOV @R0, #ff
+0d36  b8 55   MOV R0, #55
+0d38  f0      MOV A,@R0
+0d39  c6 4d   JZ $4d
+0d3b  b9 31   MOV R1, #31
+0d3d  f1      MOV A,@R1
+0d3e  12 49   JB0 $49
+0d40  b9 6f   MOV R1, #6f
+0d42  f1      MOV A,@R1
+0d43  96 4d   JNZ $4d
+0d45  b0 00   MOV @R0, #00
+0d47  24 4d   JMP $14d
+0d49  b8 6f   MOV R0, #6f
+0d4b  b0 e7   MOV @R0, #e7
+0d4d  b8 31   MOV R0, #31
+0d4f  f0      MOV A,@R0
+0d50  53 05   ANL A, #05
+0d52  d3 05   XRL A, #05
+0d54  96 63   JNZ $63
+0d56  0a      IN A,P2
+0d57  72 63   JB3 $63
+0d59  fa      MOV A,R2
+0d5a  03 a0   ADD A, #a0
+0d5c  e6 a2   JNC $a2
+0d5e  b8 4c   MOV R0, #4c
+0d60  b0 ff   MOV @R0, #ff
+0d62  83      RET
+
+0d63  b8 4c   MOV R0, #4c
+0d65  f0      MOV A,@R0
+0d66  c6 a2   JZ $a2
+0d68  b0 00   MOV @R0, #00
+0d6a  89 40   ORL P1, #40
+0d6c  89 80   ORL P1, #80
+0d6e  b8 6f   MOV R0, #6f
+0d70  b0 e7   MOV @R0, #e7
+0d72  b8 52   MOV R0, #52
+0d74  b0 98   MOV @R0, #98
+0d76  83      RET
+
+0d77  f0      MOV A,@R0
+0d78  96 a2   JNZ $a2
+0d7a  b8 31   MOV R0, #31
+0d7c  f1      MOV A,@R1
+0d7d  32 98   JB1 $98
+0d7f  52 9c   JB2 $9c
+0d81  f0      MOV A,@R0
+0d82  32 90   JB1 $90
+0d84  99 bf   ANL P1, #bf
+0d86  b8 5e   MOV R0, #5e
+0d88  f0      MOV A,@R0
+0d89  96 a2   JNZ $a2
+0d8b  99 7f   ANL P1, #7f
+0d8d  b1 00   MOV @R1, #00
+0d8f  83      RET
+
+0d90  b2 95   JB5 $95
+0d92  b1 03   MOV @R1, #03
+0d94  83      RET
+
+0d95  b1 05   MOV @R1, #05
+0d97  83      RET
+
+0d98  f0      MOV A,@R0
+0d99  b2 84   JB5 $84
+0d9b  83      RET
+
+0d9c  99 bf   ANL P1, #bf
+0d9e  f0      MOV A,@R0
+0d9f  37      CPL A
+0da0  32 86   JB1 $86
+0da2  83      RET
+
+0da3  c5      SEL RB0
+0da4  23 f9   MOV A, #f9
+0da6  39      OUTL P1,A
+0da7  8a 5f   ORL P2, #5f
+0da9  b8 30   MOV R0, #30
+0dab  b0 15   MOV @R0, #15
+0dad  b9 2f   MOV R1, #2f
+0daf  b1 05   MOV @R1, #05
+0db1  b8 7d   MOV R0, #7d
+0db3  b0 01   MOV @R0, #01
+0db5  b8 6e   MOV R0, #6e
+0db7  b0 6a   MOV @R0, #6a
+0db9  b8 5e   MOV R0, #5e
+0dbb  b0 c4   MOV @R0, #c4
+0dbd  b8 2c   MOV R0, #2c
+0dbf  b0 32   MOV @R0, #32
+0dc1  18      INC R0
+0dc2  b0 32   MOV @R0, #32
+0dc4  b8 5c   MOV R0, #5c
+0dc6  b0 e2   MOV @R0, #e2
+0dc8  b8 5d   MOV R0, #5d
+0dca  b0 88   MOV @R0, #88
+0dcc  be 06   MOV R6, #06
+0dce  b8 3e   MOV R0, #3e
+0dd0  b0 f5   MOV @R0, #f5
+0dd2  b8 5a   MOV R0, #5a
+0dd4  b0 fe   MOV @R0, #fe
+0dd6  83      RET
+
+0dd7  ff      MOV A,R7
+0dd8  ff      MOV A,R7
+0dd9  ff      MOV A,R7
+0dda  ff      MOV A,R7
+0ddb  ff      MOV A,R7
+0ddc  ff      MOV A,R7
+0ddd  ff      MOV A,R7
+0dde  ff      MOV A,R7
+0ddf  ff      MOV A,R7
+0de0  ff      MOV A,R7
+0de1  ff      MOV A,R7
+0de2  ff      MOV A,R7
+0de3  ff      MOV A,R7
+0de4  ff      MOV A,R7
+0de5  ff      MOV A,R7
+0de6  ff      MOV A,R7
+0de7  ff      MOV A,R7
+0de8  ff      MOV A,R7
+0de9  ff      MOV A,R7
+0dea  ff      MOV A,R7
+0deb  ff      MOV A,R7
+0dec  ff      MOV A,R7
+0ded  ff      MOV A,R7
+0dee  ff      MOV A,R7
+0def  ff      MOV A,R7
+0df0  ff      MOV A,R7
+0df1  ff      MOV A,R7
+0df2  ff      MOV A,R7
+0df3  ff      MOV A,R7
+0df4  ff      MOV A,R7
+0df5  ff      MOV A,R7
+0df6  ff      MOV A,R7
+0df7  ff      MOV A,R7
+0df8  ff      MOV A,R7
+0df9  ff      MOV A,R7
+0dfa  ff      MOV A,R7
+0dfb  ff      MOV A,R7
+0dfc  ff      MOV A,R7
+0dfd  e5      SEL MB0
+0dfe  84 11   JMP $411
+
+0e00  d5      SEL RB1
+0e01  bf 00   MOV R7, #00
+0e03  c5      SEL RB0
+0e04  b8 33   MOV R0, #33
+0e06  fa      MOV A,R2
+0e07  03 eb   ADD A, #eb
+0e09  f6 0f   JC $0f
+0e0b  b0 01   MOV @R0, #01
+0e0d  44 16   JMP $216
+0e0f  fa      MOV A,R2
+0e10  03 ea   ADD A, #ea
+0e12  e6 16   JNC $16
+0e14  b0 00   MOV @R0, #00
+0e16  b8 56   MOV R0, #56
+0e18  b9 6c   MOV R1, #6c
+0e1a  f0      MOV A,@R0
+0e1b  f2 36   JB7 $36
+0e1d  b8 50   MOV R0, #50
+0e1f  f0      MOV A,@R0
+0e20  37      CPL A
+0e21  12 27   JB0 $27
+0e23  b8 7c   MOV R0, #7c
+0e25  44 30   JMP $230
+0e27  b8 46   MOV R0, #46
+0e29  f0      MOV A,@R0
+0e2a  c6 40   JZ $40
+0e2c  44 2e   JMP $22e
+0e2e  b8 6a   MOV R0, #6a
+0e30  f0      MOV A,@R0
+0e31  a1      MOV @R1,A
+0e32  f2 87   JB7 $87
+0e34  84 00   JMP $400
+0e36  b0 00   MOV @R0, #00
+0e38  b8 71   MOV R0, #71
+0e3a  b0 f9   MOV @R0, #f9
+0e3c  b8 6a   MOV R0, #6a
+0e3e  f0      MOV A,@R0
+0e3f  a1      MOV @R1,A
+0e40  b8 39   MOV R0, #39
+0e42  f0      MOV A,@R0
+0e43  47      SWAP
+0e44  43 01   ORL A, #01
+0e46  a0      MOV @R0,A
+0e47  b8 31   MOV R0, #31
+0e49  f0      MOV A,@R0
+0e4a  53 0f   ANL A, #0f
+0e4c  d3 03   XRL A, #03
+0e4e  c6 56   JZ $56
+0e50  d3 02   XRL A, #02
+0e52  96 66   JNZ $66
+0e54  44 8b   JMP $28b
+0e56  b8 61   MOV R0, #61
+0e58  fa      MOV A,R2
+0e59  03 ea   ADD A, #ea
+0e5b  f6 62   JC $62
+0e5d  b1 01   MOV @R1, #01
+0e5f  b0 02   MOV @R0, #02
+0e61  83      RET
+
+0e62  b1 04   MOV @R1, #04
+0e64  84 00   JMP $400
+0e66  f0      MOV A,@R0
+0e67  53 0b   ANL A, #0b
+0e69  d3 08   XRL A, #08
+0e6b  b8 33   MOV R0, #33
+0e6d  96 82   JNZ $82
+0e6f  f0      MOV A,@R0
+0e70  c6 89   JZ $89
+0e72  0a      IN A,P2
+0e73  52 7b   JB2 $7b
+0e75  08      INS A,BUS
+0e76  37      CPL A
+0e77  f2 7b   JB7 $7b
+0e79  64 dd   JMP $3dd
+0e7b  b1 fc   MOV @R1, #fc
+0e7d  b8 61   MOV R0, #61
+0e7f  b0 02   MOV @R0, #02
+0e81  83      RET
+
+0e82  f0      MOV A,@R0
+0e83  c6 89   JZ $89
+0e85  64 dd   JMP $3dd
+0e87  64 c6   JMP $3c6
+0e89  64 00   JMP $300
+0e8b  fa      MOV A,R2
+0e8c  03 d2   ADD A, #d2
+0e8e  e6 94   JNC $94
+0e90  b1 fc   MOV @R1, #fc
+0e92  84 00   JMP $400
+0e94  64 dd   JMP $3dd
+0e96  ff      MOV A,R7
+0e97  ff      MOV A,R7
+0e98  ff      MOV A,R7
+0e99  ff      MOV A,R7
+0e9a  ff      MOV A,R7
+0e9b  ff      MOV A,R7
+0e9c  ff      MOV A,R7
+0e9d  ff      MOV A,R7
+0e9e  ff      MOV A,R7
+0e9f  ff      MOV A,R7
+0ea0  ff      MOV A,R7
+0ea1  ff      MOV A,R7
+0ea2  ff      MOV A,R7
+0ea3  ff      MOV A,R7
+0ea4  ff      MOV A,R7
+0ea5  ff      MOV A,R7
+0ea6  ff      MOV A,R7
+0ea7  ff      MOV A,R7
+0ea8  ff      MOV A,R7
+0ea9  ff      MOV A,R7
+0eaa  ff      MOV A,R7
+0eab  ff      MOV A,R7
+0eac  ff      MOV A,R7
+0ead  ff      MOV A,R7
+0eae  ff      MOV A,R7
+0eaf  ff      MOV A,R7
+0eb0  ff      MOV A,R7
+0eb1  ff      MOV A,R7
+0eb2  ff      MOV A,R7
+0eb3  ff      MOV A,R7
+0eb4  ff      MOV A,R7
+0eb5  ff      MOV A,R7
+0eb6  ff      MOV A,R7
+0eb7  ff      MOV A,R7
+0eb8  ff      MOV A,R7
+0eb9  ff      MOV A,R7
+0eba  ff      MOV A,R7
+0ebb  ff      MOV A,R7
+0ebc  ff      MOV A,R7
+0ebd  ff      MOV A,R7
+0ebe  ff      MOV A,R7
+0ebf  ff      MOV A,R7
+0ec0  ff      MOV A,R7
+0ec1  ff      MOV A,R7
+0ec2  ff      MOV A,R7
+0ec3  ff      MOV A,R7
+0ec4  ff      MOV A,R7
+0ec5  ff      MOV A,R7
+0ec6  ff      MOV A,R7
+0ec7  ff      MOV A,R7
+0ec8  ff      MOV A,R7
+0ec9  ff      MOV A,R7
+0eca  ff      MOV A,R7
+0ecb  ff      MOV A,R7
+0ecc  ff      MOV A,R7
+0ecd  ff      MOV A,R7
+0ece  ff      MOV A,R7
+0ecf  ff      MOV A,R7
+0ed0  ff      MOV A,R7
+0ed1  ff      MOV A,R7
+0ed2  ff      MOV A,R7
+0ed3  ff      MOV A,R7
+0ed4  ff      MOV A,R7
+0ed5  ff      MOV A,R7
+0ed6  ff      MOV A,R7
+0ed7  ff      MOV A,R7
+0ed8  ff      MOV A,R7
+0ed9  ff      MOV A,R7
+0eda  ff      MOV A,R7
+0edb  ff      MOV A,R7
+0edc  ff      MOV A,R7
+0edd  ff      MOV A,R7
+0ede  ff      MOV A,R7
+0edf  ff      MOV A,R7
+0ee0  ff      MOV A,R7
+0ee1  ff      MOV A,R7
+0ee2  ff      MOV A,R7
+0ee3  ff      MOV A,R7
+0ee4  ff      MOV A,R7
+0ee5  ff      MOV A,R7
+0ee6  ff      MOV A,R7
+0ee7  ff      MOV A,R7
+0ee8  ff      MOV A,R7
+0ee9  ff      MOV A,R7
+0eea  ff      MOV A,R7
+0eeb  ff      MOV A,R7
+0eec  ff      MOV A,R7
+0eed  ff      MOV A,R7
+0eee  ff      MOV A,R7
+0eef  ff      MOV A,R7
+0ef0  ff      MOV A,R7
+0ef1  ff      MOV A,R7
+0ef2  ff      MOV A,R7
+0ef3  ff      MOV A,R7
+0ef4  ff      MOV A,R7
+0ef5  ff      MOV A,R7
+0ef6  ff      MOV A,R7
+0ef7  ff      MOV A,R7
+0ef8  ff      MOV A,R7
+0ef9  ff      MOV A,R7
+0efa  ff      MOV A,R7
+0efb  ff      MOV A,R7
+0efc  ff      MOV A,R7
+0efd  e5      SEL MB0
+0efe  84 11   JMP $411
+
+0f00  c5      SEL RB0
+0f01  b9 6d   MOV R1, #6d
+0f03  b8 31   MOV R0, #31
+0f05  f0      MOV A,@R0
+0f06  53 0a   ANL A, #0a
+0f08  d3 0a   XRL A, #0a
+0f0a  c6 23   JZ $23
+0f0c  0a      IN A,P2
+0f0d  52 13   JB2 $13
+0f0f  be 06   MOV R6, #06
+0f11  64 25   JMP $325
+0f13  72 0f   JB3 $0f
+0f15  f0      MOV A,@R0
+0f16  53 3e   ANL A, #3e
+0f18  d3 38   XRL A, #38
+0f1a  96 0f   JNZ $0f
+0f1c  08      INS A,BUS
+0f1d  d2 0f   JB6 $0f
+0f1f  be 04   MOV R6, #04
+0f21  64 25   JMP $325
+0f23  be 0c   MOV R6, #0c
+0f25  b8 31   MOV R0, #31
+0f27  f0      MOV A,@R0
+0f28  53 05   ANL A, #05
+0f2a  d3 05   XRL A, #05
+0f2c  96 51   JNZ $51
+0f2e  f1      MOV A,@R1
+0f2f  f2 3b   JB7 $3b
+0f31  37      CPL A
+0f32  b8 72   MOV R0, #72
+0f34  12 4b   JB0 $4b
+0f36  f0      MOV A,@R0
+0f37  96 5d   JNZ $5d
+0f39  b1 80   MOV @R1, #80
+0f3b  b9 6c   MOV R1, #6c
+0f3d  fc      MOV A,R4
+0f3e  52 dd   JB2 $dd
+0f40  0a      IN A,P2
+0f41  72 47   JB3 $47
+0f43  b1 f7   MOV @R1, #f7
+0f45  84 00   JMP $400
+0f47  b1 f3   MOV @R1, #f3
+0f49  84 00   JMP $400
+0f4b  b1 01   MOV @R1, #01
+0f4d  b0 f6   MOV @R0, #f6
+0f4f  64 5d   JMP $35d
+0f51  f1      MOV A,@R1
+0f52  b1 00   MOV @R1, #00
+0f54  f2 d7   JB7 $d7
+0f56  b8 39   MOV R0, #39
+0f58  f0      MOV A,@R0
+0f59  b0 00   MOV @R0, #00
+0f5b  92 d7   JB4 $d7
+0f5d  b8 5a   MOV R0, #5a
+0f5f  b9 6c   MOV R1, #6c
+0f61  f0      MOV A,@R0
+0f62  b8 79   MOV R0, #79
+0f64  c6 6a   JZ $6a
+0f66  b0 00   MOV @R0, #00
+0f68  64 ab   JMP $3ab
+0f6a  f0      MOV A,@R0
+0f6b  26 a9   JNT0 $a9
+0f6d  43 80   ORL A, #80
+0f6f  a0      MOV @R0,A
+0f70  64 74   JMP $374
+0f72  b0 00   MOV @R0, #00
+0f74  c5      SEL RB0
+0f75  b8 4d   MOV R0, #4d
+0f77  b0 01   MOV @R0, #01
+0f79  b8 71   MOV R0, #71
+0f7b  b0 f4   MOV @R0, #f4
+0f7d  b8 31   MOV R0, #31
+0f7f  f1      MOV A,@R1
+0f80  f2 a4   JB7 $a4
+0f82  fc      MOV A,R4
+0f83  12 87   JB0 $87
+0f85  64 98   JMP $398
+0f87  fc      MOV A,R4
+0f88  53 fe   ANL A, #fe
+0f8a  ac      MOV R4,A
+0f8b  f0      MOV A,@R0
+0f8c  12 93   JB0 $93
+0f8e  f1      MOV A,@R1
+0f8f  03 fc   ADD A, #fc
+0f91  64 9f   JMP $39f
+0f93  f1      MOV A,@R1
+0f94  03 fd   ADD A, #fd
+0f96  64 9f   JMP $39f
+0f98  f1      MOV A,@R1
+0f99  03 fe   ADD A, #fe
+0f9b  64 9f   JMP $39f
+0f9d  f1      MOV A,@R1
+0f9e  07      DEC A
+0f9f  a1      MOV @R1,A
+0fa0  f2 c6   JB7 $c6
+0fa2  84 00   JMP $400
+0fa4  f0      MOV A,@R0
+0fa5  12 9d   JB0 $9d
+0fa7  64 98   JMP $398
+0fa9  12 72   JB0 $72
+0fab  b8 71   MOV R0, #71
+0fad  f0      MOV A,@R0
+0fae  96 d5   JNZ $d5
+0fb0  fc      MOV A,R4
+0fb1  43 01   ORL A, #01
+0fb3  ac      MOV R4,A
+0fb4  b0 f9   MOV @R0, #f9
+0fb6  f1      MOV A,@R1
+0fb7  03 01   ADD A, #01
+0fb9  a1      MOV @R1,A
+0fba  f2 d5   JB7 $d5
+0fbc  fe      MOV A,R6
+0fbd  37      CPL A
+0fbe  17      INC A
+0fbf  61      ADD A,@R1
+0fc0  e6 d5   JNC $d5
+0fc2  fe      MOV A,R6
+0fc3  a1      MOV @R1,A
+0fc4  84 00   JMP $400
+0fc6  03 09   ADD A, #09
+0fc8  f6 d5   JC $d5
+0fca  b1 f6   MOV @R1, #f6
+0fcc  b8 46   MOV R0, #46
+0fce  f0      MOV A,@R0
+0fcf  96 d5   JNZ $d5
+0fd1  b9 5a   MOV R1, #5a
+0fd3  b1 fc   MOV @R1, #fc
+0fd5  84 00   JMP $400
+0fd7  b9 6c   MOV R1, #6c
+0fd9  fe      MOV A,R6
+0fda  a1      MOV @R1,A
+0fdb  84 00   JMP $400
+0fdd  b1 00   MOV @R1, #00
+0fdf  b8 61   MOV R0, #61
+0fe1  b0 00   MOV @R0, #00
+0fe3  83      RET
+
+0fe4  ff      MOV A,R7
+0fe5  ff      MOV A,R7
+0fe6  ff      MOV A,R7
+0fe7  ff      MOV A,R7
+0fe8  ff      MOV A,R7
+0fe9  ff      MOV A,R7
+0fea  ff      MOV A,R7
+0feb  ff      MOV A,R7
+0fec  ff      MOV A,R7
+0fed  ff      MOV A,R7
+0fee  ff      MOV A,R7
+0fef  ff      MOV A,R7
+0ff0  ff      MOV A,R7
+0ff1  ff      MOV A,R7
+0ff2  ff      MOV A,R7
+0ff3  ff      MOV A,R7
+0ff4  ff      MOV A,R7
+0ff5  ff      MOV A,R7
+0ff6  ff      MOV A,R7
+0ff7  ff      MOV A,R7
+0ff8  ff      MOV A,R7
+0ff9  ff      MOV A,R7
+0ffa  ff      MOV A,R7
+0ffb  ff      MOV A,R7
+0ffc  ff      MOV A,R7
+0ffd  e5      SEL MB0
+0ffe  84 11   JMP $411
+
+1000  e5      SEL MB0
+1001  14 60   CALL $060
+1003  f5      SEL MB1
+1004  c5      SEL RB0
+1005  b8 63   MOV R0, #63
+1007  b9 64   MOV R1, #64
+1009  f1      MOV A,@R1
+100a  96 11   JNZ $11
+100c  f0      MOV A,@R0
+100d  03 89   ADD A, #89
+100f  e6 41   JNC $41
+1011  bf 00   MOV R7, #00
+1013  f1      MOV A,@R1
+1014  c6 28   JZ $28
+1016  b1 02   MOV @R1, #02
+1018  bf 10   MOV R7, #10
+101a  07      DEC A
+101b  c6 28   JZ $28
+101d  b1 04   MOV @R1, #04
+101f  bf 20   MOV R7, #20
+1021  07      DEC A
+1022  c6 28   JZ $28
+1024  b1 06   MOV @R1, #06
+1026  bf 30   MOV R7, #30
+1028  f0      MOV A,@R0
+1029  03 88   ADD A, #88
+102b  e6 2f   JNC $2f
+102d  11      INC @R1
+102e  a0      MOV @R0,A
+102f  ff      MOV A,R7
+1030  60      ADD A,@R0
+1031  a0      MOV @R0,A
+1032  e6 3b   JNC $3b
+1034  11      INC @R1
+1035  11      INC @R1
+1036  03 10   ADD A, #10
+1038  a0      MOV @R0,A
+1039  84 41   JMP $441
+103b  03 88   ADD A, #88
+103d  e6 41   JNC $41
+103f  11      INC @R1
+1040  a0      MOV @R0,A
+1041  b9 7a   MOV R1, #7a
+1043  b8 6c   MOV R0, #6c
+1045  f0      MOV A,@R0
+1046  f2 4a   JB7 $4a
+1048  84 4c   JMP $44c
+104a  37      CPL A
+104b  17      INC A
+104c  af      MOV R7,A
+104d  c5      SEL RB0
+104e  a1      MOV @R1,A
+104f  b9 64   MOV R1, #64
+1051  b8 63   MOV R0, #63
+1053  ff      MOV A,R7
+1054  c6 be   JZ $be
+1056  27      CLR A
+1057  61      ADD A,@R1
+1058  ef 57   DJNZ R7, $57
+105a  a1      MOV @R1,A
+105b  e5      SEL MB0
+105c  14 60   CALL $060
+105e  f5      SEL MB1
+105f  b9 64   MOV R1, #64
+1061  b8 7a   MOV R0, #7a
+1063  f0      MOV A,@R0
+1064  b8 63   MOV R0, #63
+1066  af      MOV R7,A
+1067  27      CLR A
+1068  60      ADD A,@R0
+1069  e6 6f   JNC $6f
+106b  11      INC @R1
+106c  11      INC @R1
+106d  03 10   ADD A, #10
+106f  ef 68   DJNZ R7, $68
+1071  a0      MOV @R0,A
+1072  03 88   ADD A, #88
+1074  e6 79   JNC $79
+1076  11      INC @R1
+1077  84 72   JMP $472
+1079  03 78   ADD A, #78
+107b  b8 7a   MOV R0, #7a
+107d  e7      RL A
+107e  a0      MOV @R0,A
+107f  b9 6c   MOV R1, #6c
+1081  f1      MOV A,@R1
+1082  b9 64   MOV R1, #64
+1084  f2 9c   JB7 $9c
+1086  11      INC @R1
+1087  f0      MOV A,@R0
+1088  03 80   ADD A, #80
+108a  f6 94   JC $94
+108c  03 10   ADD A, #10
+108e  f6 96   JC $96
+1090  03 f0   ADD A, #f0
+1092  84 97   JMP $497
+1094  03 10   ADD A, #10
+1096  11      INC @R1
+1097  03 10   ADD A, #10
+1099  37      CPL A
+109a  84 af   JMP $4af
+109c  f0      MOV A,@R0
+109d  03 80   ADD A, #80
+109f  f6 af   JC $af
+10a1  a0      MOV @R0,A
+10a2  f1      MOV A,@R1
+10a3  07      DEC A
+10a4  f2 ac   JB7 $ac
+10a6  a1      MOV @R1,A
+10a7  f0      MOV A,@R0
+10a8  03 f0   ADD A, #f0
+10aa  84 af   JMP $4af
+10ac  27      CLR A
+10ad  84 be   JMP $4be
+10af  d5      SEL RB1
+10b0  03 f1   ADD A, #f1
+10b2  e6 b7   JNC $b7
+10b4  1f      INC R7
+10b5  84 b0   JMP $4b0
+10b7  03 07   ADD A, #07
+10b9  e6 bc   JNC $bc
+10bb  1f      INC R7
+10bc  c5      SEL RB0
+10bd  f1      MOV A,@R1
+10be  b8 61   MOV R0, #61
+10c0  a0      MOV @R0,A
+10c1  83      RET
+
+10c2  ff      MOV A,R7
+10c3  ff      MOV A,R7
+10c4  ff      MOV A,R7
+10c5  ff      MOV A,R7
+10c6  ff      MOV A,R7
+10c7  ff      MOV A,R7
+10c8  ff      MOV A,R7
+10c9  ff      MOV A,R7
+10ca  ff      MOV A,R7
+10cb  ff      MOV A,R7
+10cc  ff      MOV A,R7
+10cd  ff      MOV A,R7
+10ce  ff      MOV A,R7
+10cf  ff      MOV A,R7
+10d0  ff      MOV A,R7
+10d1  ff      MOV A,R7
+10d2  ff      MOV A,R7
+10d3  ff      MOV A,R7
+10d4  ff      MOV A,R7
+10d5  ff      MOV A,R7
+10d6  ff      MOV A,R7
+10d7  ff      MOV A,R7
+10d8  ff      MOV A,R7
+10d9  ff      MOV A,R7
+10da  ff      MOV A,R7
+10db  ff      MOV A,R7
+10dc  ff      MOV A,R7
+10dd  ff      MOV A,R7
+10de  ff      MOV A,R7
+10df  ff      MOV A,R7
+10e0  ff      MOV A,R7
+10e1  ff      MOV A,R7
+10e2  ff      MOV A,R7
+10e3  ff      MOV A,R7
+10e4  ff      MOV A,R7
+10e5  ff      MOV A,R7
+10e6  ff      MOV A,R7
+10e7  ff      MOV A,R7
+10e8  ff      MOV A,R7
+10e9  ff      MOV A,R7
+10ea  ff      MOV A,R7
+10eb  ff      MOV A,R7
+10ec  ff      MOV A,R7
+10ed  ff      MOV A,R7
+10ee  ff      MOV A,R7
+10ef  ff      MOV A,R7
+10f0  ff      MOV A,R7
+10f1  ff      MOV A,R7
+10f2  ff      MOV A,R7
+10f3  ff      MOV A,R7
+10f4  ff      MOV A,R7
+10f5  ff      MOV A,R7
+10f6  ff      MOV A,R7
+10f7  ff      MOV A,R7
+10f8  ff      MOV A,R7
+10f9  ff      MOV A,R7
+10fa  ff      MOV A,R7
+10fb  ff      MOV A,R7
+10fc  ff      MOV A,R7
+10fd  e5      SEL MB0
+10fe  84 11   JMP $411
+
+1100  c5      SEL RB0
+1101  b9 70   MOV R1, #70
+1103  b8 56   MOV R0, #56
+1105  f0      MOV A,@R0
+1106  32 61   JB1 $61
+1108  52 90   JB2 $90
+110a  08      INS A,BUS
+110b  32 97   JB1 $97
+110d  37      CPL A
+110e  b2 97   JB5 $97
+1110  b9 35   MOV R1, #35
+1112  f1      MOV A,@R1
+1113  52 17   JB2 $17
+1115  a4 97   JMP $597
+1117  08      INS A,BUS
+1118  52 97   JB2 $97
+111a  12 4b   JB0 $4b
+111c  b9 43   MOV R1, #43
+111e  b1 e2   MOV @R1, #e2
+1120  b9 44   MOV R1, #44
+1122  b1 ec   MOV @R1, #ec
+1124  b0 02   MOV @R0, #02
+1126  b8 6c   MOV R0, #6c
+1128  f0      MOV A,@R0
+1129  b9 4f   MOV R1, #4f
+112b  a1      MOV @R1,A
+112c  b9 70   MOV R1, #70
+112e  f1      MOV A,@R1
+112f  b9 3f   MOV R1, #3f
+1131  96 41   JNZ $41
+1133  b1 01   MOV @R1, #01
+1135  f0      MOV A,@R0
+1136  03 f8   ADD A, #f8
+1138  b8 6a   MOV R0, #6a
+113a  a0      MOV @R0,A
+113b  b8 70   MOV R0, #70
+113d  b0 ce   MOV @R0, #ce
+113f  a4 58   JMP $558
+1141  b1 00   MOV @R1, #00
+1143  f0      MOV A,@R0
+1144  03 fc   ADD A, #fc
+1146  b8 6a   MOV R0, #6a
+1148  a0      MOV @R0,A
+1149  a4 58   JMP $558
+114b  b0 04   MOV @R0, #04
+114d  b8 6c   MOV R0, #6c
+114f  f0      MOV A,@R0
+1150  b9 4f   MOV R1, #4f
+1152  a1      MOV @R1,A
+1153  03 f4   ADD A, #f4
+1155  b8 6a   MOV R0, #6a
+1157  a0      MOV @R0,A
+1158  b8 45   MOV R0, #45
+115a  b0 ce   MOV @R0, #ce
+115c  b8 46   MOV R0, #46
+115e  b0 ca   MOV @R0, #ca
+1160  83      RET
+
+1161  b9 44   MOV R1, #44
+1163  f1      MOV A,@R1
+1164  c6 7d   JZ $7d
+1166  08      INS A,BUS
+1167  12 6a   JB0 $6a
+1169  83      RET
+
+116a  b0 04   MOV @R0, #04
+116c  b8 3f   MOV R0, #3f
+116e  f0      MOV A,@R0
+116f  b8 6a   MOV R0, #6a
+1171  c6 78   JZ $78
+1173  f0      MOV A,@R0
+1174  03 fc   ADD A, #fc
+1176  a0      MOV @R0,A
+1177  83      RET
+
+1178  f0      MOV A,@R0
+1179  03 f8   ADD A, #f8
+117b  a0      MOV @R0,A
+117c  83      RET
+
+117d  b9 43   MOV R1, #43
+117f  f1      MOV A,@R1
+1180  96 60   JNZ $60
+1182  b9 4f   MOV R1, #4f
+1184  f1      MOV A,@R1
+1185  b9 6a   MOV R1, #6a
+1187  a1      MOV @R1,A
+1188  b0 80   MOV @R0, #80
+118a  b8 46   MOV R0, #46
+118c  b0 fc   MOV @R0, #fc
+118e  a4 97   JMP $597
+1190  b9 45   MOV R1, #45
+1192  f1      MOV A,@R1
+1193  96 60   JNZ $60
+1195  a4 82   JMP $582
+1197  b8 35   MOV R0, #35
+1199  08      INS A,BUS
+119a  a0      MOV @R0,A
+119b  83      RET
+
+119c  ff      MOV A,R7
+119d  ff      MOV A,R7
+119e  ff      MOV A,R7
+119f  ff      MOV A,R7
+11a0  ff      MOV A,R7
+11a1  ff      MOV A,R7
+11a2  ff      MOV A,R7
+11a3  ff      MOV A,R7
+11a4  ff      MOV A,R7
+11a5  ff      MOV A,R7
+11a6  ff      MOV A,R7
+11a7  ff      MOV A,R7
+11a8  ff      MOV A,R7
+11a9  ff      MOV A,R7
+11aa  ff      MOV A,R7
+11ab  ff      MOV A,R7
+11ac  ff      MOV A,R7
+11ad  ff      MOV A,R7
+11ae  ff      MOV A,R7
+11af  ff      MOV A,R7
+11b0  ff      MOV A,R7
+11b1  ff      MOV A,R7
+11b2  ff      MOV A,R7
+11b3  ff      MOV A,R7
+11b4  ff      MOV A,R7
+11b5  ff      MOV A,R7
+11b6  ff      MOV A,R7
+11b7  ff      MOV A,R7
+11b8  ff      MOV A,R7
+11b9  ff      MOV A,R7
+11ba  ff      MOV A,R7
+11bb  ff      MOV A,R7
+11bc  ff      MOV A,R7
+11bd  ff      MOV A,R7
+11be  ff      MOV A,R7
+11bf  ff      MOV A,R7
+11c0  ff      MOV A,R7
+11c1  ff      MOV A,R7
+11c2  ff      MOV A,R7
+11c3  ff      MOV A,R7
+11c4  ff      MOV A,R7
+11c5  ff      MOV A,R7
+11c6  ff      MOV A,R7
+11c7  ff      MOV A,R7
+11c8  ff      MOV A,R7
+11c9  ff      MOV A,R7
+11ca  ff      MOV A,R7
+11cb  ff      MOV A,R7
+11cc  ff      MOV A,R7
+11cd  ff      MOV A,R7
+11ce  ff      MOV A,R7
+11cf  ff      MOV A,R7
+11d0  ff      MOV A,R7
+11d1  ff      MOV A,R7
+11d2  ff      MOV A,R7
+11d3  ff      MOV A,R7
+11d4  ff      MOV A,R7
+11d5  ff      MOV A,R7
+11d6  ff      MOV A,R7
+11d7  ff      MOV A,R7
+11d8  ff      MOV A,R7
+11d9  ff      MOV A,R7
+11da  ff      MOV A,R7
+11db  ff      MOV A,R7
+11dc  ff      MOV A,R7
+11dd  ff      MOV A,R7
+11de  ff      MOV A,R7
+11df  ff      MOV A,R7
+11e0  ff      MOV A,R7
+11e1  ff      MOV A,R7
+11e2  ff      MOV A,R7
+11e3  ff      MOV A,R7
+11e4  ff      MOV A,R7
+11e5  ff      MOV A,R7
+11e6  ff      MOV A,R7
+11e7  ff      MOV A,R7
+11e8  ff      MOV A,R7
+11e9  ff      MOV A,R7
+11ea  ff      MOV A,R7
+11eb  ff      MOV A,R7
+11ec  ff      MOV A,R7
+11ed  ff      MOV A,R7
+11ee  ff      MOV A,R7
+11ef  ff      MOV A,R7
+11f0  ff      MOV A,R7
+11f1  ff      MOV A,R7
+11f2  ff      MOV A,R7
+11f3  ff      MOV A,R7
+11f4  ff      MOV A,R7
+11f5  ff      MOV A,R7
+11f6  ff      MOV A,R7
+11f7  ff      MOV A,R7
+11f8  ff      MOV A,R7
+11f9  ff      MOV A,R7
+11fa  ff      MOV A,R7
+11fb  ff      MOV A,R7
+11fc  ff      MOV A,R7
+11fd  e5      SEL MB0
+11fe  84 11   JMP $411
+
+1200  b9 6f   MOV R1, #6f
+1202  f2 3d   JB7 $3d
+1204  d2 31   JB6 $31
+1206  b2 16   JB5 $16
+1208  f1      MOV A,@R1
+1209  96 15   JNZ $15
+120b  f0      MOV A,@R0
+120c  43 20   ORL A, #20
+120e  a0      MOV @R0,A
+120f  b1 eb   MOV @R1, #eb
+1211  b9 7c   MOV R1, #7c
+1213  b1 1f   MOV @R1, #1f
+1215  83      RET
+
+1216  f1      MOV A,@R1
+1217  c6 24   JZ $24
+1219  b9 4d   MOV R1, #4d
+121b  f1      MOV A,@R1
+121c  c6 15   JZ $15
+121e  b9 6f   MOV R1, #6f
+1220  b1 fc   MOV @R1, #fc
+1222  89 c0   ORL P1, #c0
+1224  b9 7c   MOV R1, #7c
+1226  b1 06   MOV @R1, #06
+1228  b9 79   MOV R1, #79
+122a  b1 00   MOV @R1, #00
+122c  f0      MOV A,@R0
+122d  43 40   ORL A, #40
+122f  a0      MOV @R0,A
+1230  83      RET
+
+1231  f1      MOV A,@R1
+1232  96 15   JNZ $15
+1234  99 3f   ANL P1, #3f
+1236  b1 fb   MOV @R1, #fb
+1238  f0      MOV A,@R0
+1239  43 80   ORL A, #80
+123b  a0      MOV @R0,A
+123c  83      RET
+
+123d  f1      MOV A,@R1
+123e  96 15   JNZ $15
+1240  f0      MOV A,@R0
+1241  72 46   JB3 $46
+1243  b0 08   MOV @R0, #08
+1245  83      RET
+
+1246  b0 02   MOV @R0, #02
+1248  83      RET
+
+1249  ff      MOV A,R7
+124a  ff      MOV A,R7
+124b  ff      MOV A,R7
+124c  ff      MOV A,R7
+124d  ff      MOV A,R7
+124e  ff      MOV A,R7
+124f  ff      MOV A,R7
+1250  ff      MOV A,R7
+1251  ff      MOV A,R7
+1252  ff      MOV A,R7
+1253  ff      MOV A,R7
+1254  ff      MOV A,R7
+1255  ff      MOV A,R7
+1256  ff      MOV A,R7
+1257  ff      MOV A,R7
+1258  ff      MOV A,R7
+1259  ff      MOV A,R7
+125a  ff      MOV A,R7
+125b  ff      MOV A,R7
+125c  ff      MOV A,R7
+125d  ff      MOV A,R7
+125e  ff      MOV A,R7
+125f  ff      MOV A,R7
+1260  ff      MOV A,R7
+1261  ff      MOV A,R7
+1262  ff      MOV A,R7
+1263  ff      MOV A,R7
+1264  ff      MOV A,R7
+1265  ff      MOV A,R7
+1266  ff      MOV A,R7
+1267  ff      MOV A,R7
+1268  ff      MOV A,R7
+1269  ff      MOV A,R7
+126a  ff      MOV A,R7
+126b  ff      MOV A,R7
+126c  ff      MOV A,R7
+126d  ff      MOV A,R7
+126e  ff      MOV A,R7
+126f  ff      MOV A,R7
+1270  ff      MOV A,R7
+1271  ff      MOV A,R7
+1272  ff      MOV A,R7
+1273  ff      MOV A,R7
+1274  ff      MOV A,R7
+1275  ff      MOV A,R7
+1276  ff      MOV A,R7
+1277  ff      MOV A,R7
+1278  ff      MOV A,R7
+1279  ff      MOV A,R7
+127a  ff      MOV A,R7
+127b  ff      MOV A,R7
+127c  ff      MOV A,R7
+127d  ff      MOV A,R7
+127e  ff      MOV A,R7
+127f  ff      MOV A,R7
+1280  ff      MOV A,R7
+1281  ff      MOV A,R7
+1282  ff      MOV A,R7
+1283  ff      MOV A,R7
+1284  ff      MOV A,R7
+1285  ff      MOV A,R7
+1286  ff      MOV A,R7
+1287  ff      MOV A,R7
+1288  ff      MOV A,R7
+1289  ff      MOV A,R7
+128a  ff      MOV A,R7
+128b  ff      MOV A,R7
+128c  ff      MOV A,R7
+128d  ff      MOV A,R7
+128e  ff      MOV A,R7
+128f  ff      MOV A,R7
+1290  ff      MOV A,R7
+1291  ff      MOV A,R7
+1292  ff      MOV A,R7
+1293  ff      MOV A,R7
+1294  ff      MOV A,R7
+1295  ff      MOV A,R7
+1296  ff      MOV A,R7
+1297  ff      MOV A,R7
+1298  ff      MOV A,R7
+1299  ff      MOV A,R7
+129a  ff      MOV A,R7
+129b  ff      MOV A,R7
+129c  ff      MOV A,R7
+129d  ff      MOV A,R7
+129e  ff      MOV A,R7
+129f  ff      MOV A,R7
+12a0  ff      MOV A,R7
+12a1  ff      MOV A,R7
+12a2  ff      MOV A,R7
+12a3  ff      MOV A,R7
+12a4  ff      MOV A,R7
+12a5  ff      MOV A,R7
+12a6  ff      MOV A,R7
+12a7  ff      MOV A,R7
+12a8  ff      MOV A,R7
+12a9  ff      MOV A,R7
+12aa  ff      MOV A,R7
+12ab  ff      MOV A,R7
+12ac  ff      MOV A,R7
+12ad  ff      MOV A,R7
+12ae  ff      MOV A,R7
+12af  ff      MOV A,R7
+12b0  ff      MOV A,R7
+12b1  ff      MOV A,R7
+12b2  ff      MOV A,R7
+12b3  ff      MOV A,R7
+12b4  ff      MOV A,R7
+12b5  ff      MOV A,R7
+12b6  ff      MOV A,R7
+12b7  ff      MOV A,R7
+12b8  ff      MOV A,R7
+12b9  ff      MOV A,R7
+12ba  ff      MOV A,R7
+12bb  ff      MOV A,R7
+12bc  ff      MOV A,R7
+12bd  ff      MOV A,R7
+12be  ff      MOV A,R7
+12bf  ff      MOV A,R7
+12c0  ff      MOV A,R7
+12c1  ff      MOV A,R7
+12c2  ff      MOV A,R7
+12c3  ff      MOV A,R7
+12c4  ff      MOV A,R7
+12c5  ff      MOV A,R7
+12c6  ff      MOV A,R7
+12c7  ff      MOV A,R7
+12c8  ff      MOV A,R7
+12c9  ff      MOV A,R7
+12ca  ff      MOV A,R7
+12cb  ff      MOV A,R7
+12cc  ff      MOV A,R7
+12cd  ff      MOV A,R7
+12ce  ff      MOV A,R7
+12cf  ff      MOV A,R7
+12d0  ff      MOV A,R7
+12d1  ff      MOV A,R7
+12d2  ff      MOV A,R7
+12d3  ff      MOV A,R7
+12d4  ff      MOV A,R7
+12d5  ff      MOV A,R7
+12d6  ff      MOV A,R7
+12d7  ff      MOV A,R7
+12d8  ff      MOV A,R7
+12d9  ff      MOV A,R7
+12da  ff      MOV A,R7
+12db  ff      MOV A,R7
+12dc  ff      MOV A,R7
+12dd  ff      MOV A,R7
+12de  ff      MOV A,R7
+12df  ff      MOV A,R7
+12e0  ff      MOV A,R7
+12e1  ff      MOV A,R7
+12e2  ff      MOV A,R7
+12e3  ff      MOV A,R7
+12e4  ff      MOV A,R7
+12e5  ff      MOV A,R7
+12e6  ff      MOV A,R7
+12e7  ff      MOV A,R7
+12e8  ff      MOV A,R7
+12e9  ff      MOV A,R7
+12ea  ff      MOV A,R7
+12eb  ff      MOV A,R7
+12ec  ff      MOV A,R7
+12ed  ff      MOV A,R7
+12ee  ff      MOV A,R7
+12ef  ff      MOV A,R7
+12f0  ff      MOV A,R7
+12f1  ff      MOV A,R7
+12f2  ff      MOV A,R7
+12f3  ff      MOV A,R7
+12f4  ff      MOV A,R7
+12f5  ff      MOV A,R7
+12f6  ff      MOV A,R7
+12f7  ff      MOV A,R7
+12f8  ff      MOV A,R7
+12f9  ff      MOV A,R7
+12fa  ff      MOV A,R7
+12fb  ff      MOV A,R7
+12fc  ff      MOV A,R7
+12fd  e5      SEL MB0
+12fe  84 11   JMP $411
+
+1300  00      NOP
+1301  00      NOP
+1302  00      NOP
+1303  00      NOP
+1304  00      NOP
+1305  00      NOP
+1306  00      NOP
+1307  00      NOP
+1308  00      NOP
+1309  00      NOP
+130a  00      NOP
+130b  00      NOP
+130c  00      NOP
+130d  00      NOP
+130e  00      NOP
+130f  e5      SEL MB0
+1310  84 11   JMP $411
+1312  39      OUTL P1,A
+1313  b9 01   MOV R1, #01
+1315  14 c2   CALL $0c2
+1317  99 bf   ANL P1, #bf
+1319  b9 02   MOV R1, #02
+131b  14 c2   CALL $0c2
+131d  83      RET
+
+131e  ef 29   DJNZ R7, $29
+1320  0a      IN A,P2
+1321  f2 27   JB7 $27
+1323  8a 80   ORL P2, #80
+1325  e4 29   JMP $729
+1327  9a 7f   ANL P2, #7f
+1329  83      RET
+
+132a  b9 7e   MOV R1, #7e
+132c  b1 2e   MOV @R1, #2e
+132e  19      INC R1
+132f  b1 d2   MOV @R1, #d2
+1331  08      INS A,BUS
+1332  53 3f   ANL A, #3f
+1334  d3 02   XRL A, #02
+1336  c6 41   JZ $41
+1338  23 9f   MOV A, #9f
+133a  86 3e   JNI $3e
+133c  23 df   MOV A, #df
+133e  3a      OUTL P2,A
+133f  e4 c3   JMP $7c3
+1341  9a 5f   ANL P2, #5f
+1343  09      IN A,P1
+1344  47      SWAP
+1345  43 0f   ORL A, #0f
+1347  39      OUTL P1,A
+1348  08      INS A,BUS
+1349  f2 4f   JB7 $4f
+134b  8a 10   ORL P2, #10
+134d  e4 51   JMP $751
+134f  9a ef   ANL P2, #ef
+1351  f4 1e   CALL $71e
+1353  86 57   JNI $57
+1355  e4 43   JMP $743
+1357  0a      IN A,P2
+1358  47      SWAP
+1359  43 0f   ORL A, #0f
+135b  39      OUTL P1,A
+135c  08      INS A,BUS
+135d  d2 63   JB6 $63
+135f  8a 10   ORL P2, #10
+1361  e4 65   JMP $765
+1363  9a ef   ANL P2, #ef
+1365  56 6b   JT1 $6b
+1367  8a 40   ORL P2, #40
+1369  e4 6d   JMP $76d
+136b  9a bf   ANL P2, #bf
+136d  f4 1e   CALL $71e
+136f  86 57   JNI $57
+1371  8a 3f   ORL P2, #3f
+1373  f4 1e   CALL $71e
+1375  08      INS A,BUS
+1376  53 3f   ANL A, #3f
+1378  c6 73   JZ $73
+137a  9a df   ANL P2, #df
+137c  08      INS A,BUS
+137d  92 83   JB4 $83
+137f  8a 10   ORL P2, #10
+1381  e4 85   JMP $785
+1383  9a ef   ANL P2, #ef
+1385  b2 8b   JB5 $8b
+1387  8a 48   ORL P2, #48
+1389  e4 8d   JMP $78d
+138b  9a b7   ANL P2, #b7
+138d  43 f0   ORL A, #f0
+138f  a8      MOV R0,A
+1390  47      SWAP
+1391  58      ANL A,R0
+1392  39      OUTL P1,A
+1393  f4 1e   CALL $71e
+1395  86 7c   JNI $7c
+1397  26 9d   JNT0 $9d
+1399  9a bf   ANL P2, #bf
+139b  e4 9f   JMP $79f
+139d  8a 40   ORL P2, #40
+139f  f4 1e   CALL $71e
+13a1  08      INS A,BUS
+13a2  53 3f   ANL A, #3f
+13a4  c6 97   JZ $97
+13a6  8a 5f   ORL P2, #5f
+13a8  23 28   MOV A, #28
+13aa  47      SWAP
+13ab  39      OUTL P1,A
+13ac  37      CPL A
+13ad  12 b1   JB0 $b1
+13af  9a ef   ANL P2, #ef
+13b1  32 b5   JB1 $b5
+13b3  9a f7   ANL P2, #f7
+13b5  f4 1e   CALL $71e
+13b7  86 a8   JNI $a8
+13b9  9a 7f   ANL P2, #7f
+13bb  bf 00   MOV R7, #00
+13bd  ef bd   DJNZ R7, $bd
+13bf  23 9f   MOV A, #9f
+13c1  e4 fc   JMP $7fc
+13c3  23 ff   MOV A, #ff
+13c5  39      OUTL P1,A
+13c6  b9 28   MOV R1, #28
+13c8  14 c2   CALL $0c2
+13ca  0a      IN A,P2
+13cb  47      SWAP
+13cc  77      RR A
+13cd  43 4f   ORL A, #4f
+13cf  f4 12   CALL $712
+13d1  0a      IN A,P2
+13d2  47      SWAP
+13d3  43 6f   ORL A, #6f
+13d5  aa      MOV R2,A
+13d6  08      INS A,BUS
+13d7  d2 dd   JB6 $dd
+13d9  fa      MOV A,R2
+13da  53 df   ANL A, #df
+13dc  aa      MOV R2,A
+13dd  fa      MOV A,R2
+13de  f4 12   CALL $712
+13e0  23 ef   MOV A, #ef
+13e2  e7      RL A
+13e3  aa      MOV R2,A
+13e4  08      INS A,BUS
+13e5  f2 eb   JB7 $eb
+13e7  fa      MOV A,R2
+13e8  53 7f   ANL A, #7f
+13ea  aa      MOV R2,A
+13eb  fa      MOV A,R2
+13ec  f4 12   CALL $712
+13ee  23 f8   MOV A, #f8
+13f0  47      SWAP
+13f1  d2 f7   JB6 $f7
+13f3  53 7f   ANL A, #7f
+13f5  43 40   ORL A, #40
+13f7  f4 12   CALL $712
+13f9  23 ff   MOV A, #ff
+13fb  39      OUTL P1,A
+13fc  3a      OUTL P2,A
+13fd  f5      SEL MB1
+13fe  e4 fe   JMP $7fe
