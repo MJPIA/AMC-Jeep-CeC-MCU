@@ -1,0 +1,3470 @@
+;****************************
+;  JC64dis version 3.0
+;  
+;  Source in (Macro Assembler) AS format
+;****************************
+
+      cpu 8048
+
+
+      org 0000h
+
+W0000:
+      sel    MB1                        
+      jmp    W0000                      ; Cold Boot
+
+      sel    RB1                        
+      mov    R2,A                       
+      jmp    W013D                      ; Get Keystroke
+
+      sel    RB1                        
+      mov    R2,A                       
+      mov    R0,#6Bh                    
+      mov    A,@R0                      
+      inc    @R0                        
+      jz     W002A                      
+      add    A,#0FCh                    
+      jc     W0055                      
+      add    A,#02h                     
+      jnz    W0040                      
+      orl    P2,#40h                    
+      mov    R0,#48h                    
+      mov    @R0,#0D8h                  
+      mov    R0,#6Ch                    
+      mov    A,@R0                      
+      jb7    W0024                      
+      jmp    W0045                      
+
+W0024:
+      sel    RB0                        
+      mov    A,R2                       
+      add    A,#06h                     
+      jmp    W0047                      
+
+W002A:
+      mov    A,R7                       
+      jz     W0035                      
+      mov    A,#01h                     
+W002F:
+      add    A,#0FFh                    
+      jnz    W002F                      
+W0033:
+      djnz   R7,W0033                   
+W0035:
+      anl    P2,#0BFh                   
+      mov    A,R6                       
+      anl    A,#0BFh                    
+      mov    R6,A                       
+      mov    R1,#69h                    
+      mov    A,@R1                      
+      jmp    W0047                      
+
+W0040:
+      inc    A                          
+W0041:
+      jz     W0045                      
+      orl    P2,#40h                    
+W0045:
+      sel    RB0                        
+      mov    A,R2                       
+W0047:
+      cpl    A                          
+      inc    A                          
+      sel    RB1                        
+      mov    R0,A                       
+      call   W059E                      
+      mov    A,T                        
+      add    A,R0                       
+      mov    T,A                        
+      mov    A,R0                       
+      call   W0470                      
+      jmp    W0400                      ; Restart
+
+W0055:
+      jni    W005C                      
+      mov    A,R7                       
+      jz     W005C                      
+W005A:
+      djnz   R7,W005A                   
+W005C:
+      anl    P2,#0BFh                   
+      mov    A,R2                       
+      retr                              
+
+W0060:
+      sel    RB0                        
+      mov    R0,#76h                    
+      call   W059E                      
+      sel    RB1                        
+      mov    A,R6                       
+      jb1    W0077                      
+      orl    A,#02h                     
+      mov    R6,A                       
+      sel    RB0                        
+      mov    R1,#67h                    
+      mov    A,@R1                      
+      add    A,@R0                      
+      mov    R1,#78h                    
+      add    A,@R1                      
+      mov    @R0,A                      
+      mov    @R1,#00h                   
+W0077:
+      sel    RB0                        
+      mov    A,T                        
+      add    A,@R0                      
+      add    A,#0F6h                    
+      jc     W008A                      
+      add    A,#01h                     
+      jc     W008A                      
+      add    A,#03h                     
+      jnc    W0088                      
+      jmp    W0060                      
+
+W0088:
+      sel    RB0                        
+      ret                               
+
+W008A:
+      call   W059E                      
+      mov    R0,#76h                    
+      mov    A,@R0                      
+      add    A,#0F4h                    
+      mov    @R0,A                      
+      mov    R1,#57h                    
+      mov    @R1,#0FEh                  
+      mov    R0,#52h                    
+      call   W0133                      
+      call   W04A5                      
+      sel    RB0                        
+      mov    A,R3                       
+      add    A,#9Bh                     
+      jc     W00E7                      ; Set up VDC Access
+      clr    C                          
+      jnt1   W00A6                      
+      cpl    C                          
+W00A6:
+      mov    R1,#34h                    
+      mov    A,@R1                      
+      rlc    A                          
+      mov    @R1,A                      
+      mov    R0,#3Bh                    
+      jni    W00D2                      
+      mov    A,@R0                      
+      jnz    W00D7                      
+      cpl    A                          
+      mov    @R0,A                      
+      mov    R0,#3Dh                    
+      mov    A,@R1                      
+W00B7:
+      anl    A,#0Fh                     
+W00B9:
+      jz     W00C0                      
+      xrl    A,#0Fh                     
+      jnz    W00C8                      
+      cpl    A                          
+W00C0:
+      mov    @R1,A                      
+      xrl    A,@R0                      
+W00C2:
+      jz     W00C8                      
+      mov    A,@R1                      
+      mov    @R0,A                      
+      jmp    W00CC                      
+
+W00C8:
+      mov    R1,#38h                    
+      mov    A,@R0                      
+      mov    @R1,A                      
+W00CC:
+      mov    A,R5                       
+      jz     W00D7                      
+      dec    R5                         
+      jmp    W00D7                      
+
+W00D2:
+      mov    A,@R0                      
+      jz     W00D7                      
+      mov    @R0,#00h                   
+W00D7:
+      call   W041E                      
+      mov    R0,#2Fh                    
+      mov    A,@R0                      
+      dec    A                          
+      mov    @R0,A                      
+      jz     W00E5                      
+      dec    A                          
+      jb7    W00E5                      
+      jmp    W01BE                      
+
+W00E5:
+      jmp    W0100                      
+
+W00E7:
+      jmp    W0411                      
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      jmp    W0411                      
+
+W0100:
+      add    A,#05h                     
+      mov    @R0,A                      
+      mov    A,R2                       
+      add    A,#0EBh                    
+      jnc    W010C                      
+      sel    MB1                        
+      call   W0500                      
+      sel    MB0                        
+W010C:
+      mov    R1,#2Eh                    
+      mov    A,@R1                      
+      inc    @R1                        
+      jb0    W0116                      
+      anl    P2,#7Fh                    
+      jmp    W0118                      
+
+W0116:
+      orl    P2,#80h                    
+W0118:
+      call   W04B4                      
+      sel    RB0                        
+      mov    R1,#57h                    
+      mov    @R1,#0F9h                  
+      mov    R0,#43h                    
+      call   W0133                      
+      mov    R0,#30h                    
+      mov    A,@R0                      
+      dec    A                          
+      mov    @R0,A                      
+      jnz    W0131                      
+      mov    @R0,#15h                   
+      sel    RB1                        
+      mov    A,R6                       
+      orl    A,#08h                     
+      mov    R6,A                       
+W0131:
+      jmp    W01BE                      
+
+W0133:
+      mov    A,@R0                      
+      jz     W0137                      
+      inc    @R0                        
+W0137:
+      inc    R0                         
+      inc    @R1                        
+      mov    A,@R1                      
+      jnz    W0133                      
+      ret                               
+
+W013D:
+      mov    R1,#6Ch                    
+      mov    A,@R1                      
+      jb7    W014F                      
+      anl    P2,#0BFh                   
+      strt   T                          
+      mov    A,T                        
+      mov    R0,#67h                    
+      mov    @R0,A                      
+      clr    A                          
+      mov    T,A                        
+      call   W0520                      
+W014D:
+      jmp    W019B                      
+
+W014F:
+      mov    R0,#67h                    
+      strt   T                          
+      mov    A,T                        
+      mov    @R0,A                      
+      mov    R1,#61h                    
+      mov    A,@R1                      
+      jz     W017A                      
+      add    A,#0F9h                    
+      jnc    W016F                      
+      mov    A,@R1                      
+      cpl    A                          
+      inc    A                          
+      mov    T,A                        
+      mov    A,R6                       
+      orl    A,#40h                     
+      mov    R6,A                       
+      call   W0520                      
+      call   W0469                      
+      mov    R0,#6Bh                    
+      mov    @R0,#00h                   
+      jmp    W01A9                      
+
+W016F:
+      mov    A,@R1                      
+      cpl    A                          
+      inc    A                          
+      jtf    W0174                      
+W0174:
+      mov    T,A                        
+      nop                               
+W0176:
+      jtf    W0187                      
+      jmp    W0176                      ; Wait for Interrupt
+
+W017A:
+      clr    A                          
+      mov    T,A                        
+      mov    A,R7                       
+      jz     W0191                      
+      add    A,#0FDh                    
+      jnc    W0191                      
+      dec    R7                         
+      dec    R7                         
+      jmp    W018F                      
+
+W0187:
+      mov    A,R7                       
+      jz     W0191                      
+      mov    A,#03h                     
+W018C:
+      dec    A                          
+      jnz    W018C                      
+W018F:
+      djnz   R7,W018F                   
+W0191:
+      anl    P2,#0BFh                   
+      call   W0520                      
+      call   W0469                      
+      mov    R1,#6Bh                    
+      mov    @R1,#01h                   
+W019B:
+      call   W059E                      
+      mov    A,T                        
+      cpl    A                          
+      inc    A                          
+      mov    R0,#69h                    
+      add    A,@R0                      
+W01A3:
+      cpl    A                          
+      inc    A                          
+      mov    T,A                        
+      mov    A,@R0                      
+      call   W0476                      
+W01A9:
+      mov    R1,#47h                    
+      mov    @R1,#0D8h                  
+      mov    R1,#79h                    
+      mov    A,@R1                      
+      anl    A,#7Fh                     
+      mov    @R1,A                      
+      mov    A,R6                       
+      anl    A,#0F8h                    
+      mov    R6,A                       
+      dis    I                          
+      jtf    W01BA                      
+W01BA:
+      dis    TCNTI                      
+      en     TCNTI                      
+      jmp    W040F                      
+
+W01BE:
+      sel    RB1                        
+      mov    A,R6                       
+      jb6    W01E0                      
+      jb2    W01D2                      
+      orl    A,#24h                     
+      mov    R6,A                       
+      sel    MB1                        
+      call   W0200                      
+      sel    MB0                        
+      sel    RB1                        
+      mov    A,R6                       
+      anl    A,#0DFh                    
+      mov    R6,A                       
+      jmp    W01E0                      
+
+W01D2:
+      sel    RB0                        
+      mov    R0,#79h                    
+      mov    A,@R0                      
+      jb7    W01E0                      
+      jnt0   W01E0                      
+      mov    @R0,#01h                   
+      mov    R0,#4Dh                    
+      mov    @R0,#01h                   
+W01E0:
+      sel    RB1                        
+      mov    A,R6                       
+      jb0    W01EA                      
+      jni    W01EA                      
+      en     I                          
+      orl    A,#01h                     
+      mov    R6,A                       
+W01EA:
+      jb5    W01F4                      
+      sel    RB0                        
+      mov    A,R2                       
+      add    A,#0ECh                    
+      jc     W01F4                      
+      jmp    W0060                      
+
+W01F4:
+      sel    RB0                        
+      ret                               
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      jmp    W0411                      
+
+W0200:
+      mov    R0,#41h                    
+      mov    A,@R0                      
+      jnz    W020E                      
+      jf1    W0221                      
+      mov    R1,#38h                    
+      mov    A,@R1                      
+      jz     W022D                      
+      jmp    W02C6                      
+
+W020E:
+      mov    A,R4                       
+      orl    A,#2Ah                     
+      mov    R4,A                       
+      mov    R0,#31h                    
+      mov    A,@R0                      
+      jb2    W021B                      
+      mov    R0,#4Ah                    
+      jmp    W021D                      
+
+W021B:
+      mov    R0,#4Bh                    
+W021D:
+      mov    A,@R0                      
+      mov    R3,A                       
+      clr    F1                         
+      cpl    F1                         
+W0221:
+      jmp    W0700                      
+
+W0223:
+      add    A,#9Ch                     
+      jnc    W0228                      
+      clr    A                          
+W0228:
+      add    A,#64h                     
+      mov    R3,A                       
+      jmp    W0700                      
+
+W022D:
+      mov    R0,#73h                    
+      mov    A,R4                       
+W0230:
+      orl    A,#08h                     
+      mov    R4,A                       
+      jb1    W0279                      
+      mov    A,@R0                      
+      jnz    W023C                      
+      mov    A,R4                       
+      orl    A,#40h                     
+      mov    R4,A                       
+W023C:
+      mov    A,R5                       
+      jnz    W0221                      
+      mov    R0,#53h                    
+      mov    A,@R0                      
+      jnz    W0221                      
+      mov    R0,#49h                    
+      mov    A,@R0                      
+      jnz    W0221                      
+      mov    R0,#40h                    
+      mov    A,@R0                      
+      jnz    W02AF                      
+      mov    R0,#5Fh                    
+      mov    A,@R0                      
+      mov    R0,#31h                    
+      jz     W025C                      
+      mov    A,@R0                      
+      anl    A,#2Bh                     
+      xrl    A,#28h                     
+      jz     W0266                      
+W025C:
+      mov    A,R4                       
+      jb2    W026F                      
+      mov    A,@R0                      
+      anl    A,#2Fh                     
+      xrl    A,#2Dh                     
+      jnz    W026F                      
+W0266:
+      mov    A,R3                       
+      jz     W0221                      
+      dec    A                          
+      call   W05A5                      
+      mov    R3,A                       
+      jmp    W0273                      
+
+W026F:
+      mov    A,R3                       
+      jz     W0221                      
+      dec    R3                         
+W0273:
+      clr    F1                         
+      cpl    F1                         
+      call   W05BF                      
+      jmp    W0700                      
+
+W0279:
+      mov    @R0,#0ECh                  
+      jb5    W02C1                      
+      mov    R0,#2Ch                    
+      mov    A,R3                       
+      mov    @R0,A                      
+      mov    R0,#31h                    
+      mov    A,@R0                      
+      anl    A,#0Bh                     
+      xrl    A,#08h                     
+      jnz    W028C                      
+      call   W0445                      
+W028C:
+      mov    A,R4                       
+      anl    A,#0BDh                    
+      mov    R4,A                       
+      mov    R0,#74h                    
+      mov    A,@R0                      
+      jnz    W02AF                      
+      mov    A,R4                       
+      cpl    A                          
+      jb4    W02AF                      
+      mov    R0,#49h                    
+      in     A,P2                       
+      jb3    W02A3                      
+      mov    A,R2                       
+      add    A,#0D6h                    
+      jc     W02A7                      
+W02A3:
+      mov    @R0,#0D8h                  
+      jmp    W02A9                      
+
+W02A7:
+      mov    @R0,#88h                   
+W02A9:
+      mov    R0,#40h                    
+      mov    @R0,#0FFh                  
+      jmp    W0700                      
+
+W02AF:
+      mov    R0,#40h                    
+      mov    @R0,#00h                   
+      mov    R0,#2Ch                    
+      mov    A,@R0                      
+      mov    R0,#2Dh                    
+      add    A,@R0                      
+      inc    A                          
+      clr    C                          
+      rrc    A                          
+      mov    R3,A                       
+      clr    F1                         
+      cpl    F1                         
+      jmp    W0700                      
+
+W02C1:
+      anl    A,#9Dh                     
+      mov    R4,A                       
+      jmp    W0700                      
+
+W02C6:
+      mov    A,R4                       
+      orl    A,#02h                     
+      mov    R4,A                       
+      jb3    W02DC                      
+      mov    A,R5                       
+      jnz    W0221                      
+      mov    R0,#53h                    
+      mov    A,@R0                      
+      jnz    W0221                      
+      mov    A,R3                       
+      add    A,#9Ch                     
+      jc     W0221                      
+      inc    R3                         
+      jmp    W0273                      
+
+W02DC:
+      jb5    W02E8                      
+      mov    R0,#2Dh                    
+      mov    A,R3                       
+      mov    @R0,A                      
+      mov    A,R4                       
+      anl    A,#0B7h                    
+      mov    R4,A                       
+      jmp    W02AF                      
+
+W02E8:
+      anl    A,#97h                     
+      mov    R4,A                       
+      jmp    W0700                      
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      jmp    W0411                      
+
+W0300:
+      in     A,P2                       
+      jb2    W03C1                      
+W0303:
+      jf0    W0309                      
+W0305:
+      call   W0500                      
+      jmp    W030B                      
+
+W0309:
+      call   W051B                      
+W030B:
+      mov    A,#32h                     
+      jmp    W0223                      
+
+W030F:
+      jf0    W03D9                      
+W0311:
+      call   W0509                      
+W0313:
+      jmp    W0200                      
+
+W0315:
+      jf0    W03D9                      
+      in     A,P2                       
+      jb2    W0311                      
+      ins    A,BUS                      
+      jb6    W031F                      
+      jmp    W0311                      
+
+W031F:
+      call   W0512                      
+      jmp    W0200                      
+
+W0323:
+      call   W0500                      
+W0325:
+      jf0    W03D9                      
+      in     A,P2                       
+      jb2    W0340                      
+      jb3    W0336                      
+      jb0    W0332                      
+W032E:
+      mov    A,#28h                     
+      jmp    W0223                      
+
+W0332:
+      mov    A,#32h                     
+      jmp    W0223                      
+
+W0336:
+      jb0    W033C                      
+W0338:
+      mov    A,#23h                     
+      jmp    W0223                      
+
+W033C:
+      mov    A,#2Dh                     
+      jmp    W0223                      
+
+W0340:
+      jb3    W0344                      
+      jmp    W0336                      
+
+W0344:
+      jb0    W032E                      
+      mov    A,#1Eh                     
+      jmp    W0223                      
+
+W034A:
+      jf0    W03DD                      
+W034C:
+      call   W0500                      
+      jmp    W0200                      
+
+W0350:
+      jf0    W03DD                      
+      in     A,P2                       
+      jb2    W0360                      
+      jb1    W0359                      
+      jmp    W034C                      
+
+W0359:
+      call   W0500                      
+W035B:
+      mov    R0,#4Ah                    
+W035D:
+      mov    A,@R0                      
+      jmp    W0223                      
+
+W0360:
+      jb1    W0366                      
+      call   W0512                      
+      jmp    W0368                      
+
+W0366:
+      call   W0500                      
+W0368:
+      in     A,P2                       
+      cpl    A                          
+      jb3    W0313                      
+      ins    A,BUS                      
+      jb6    W035B                      
+      jmp    W0200                      
+
+W0371:
+      jf0    W0305                      
+      mov    A,R4                       
+W0374:
+      jb2    W0311                      
+      jmp    W034C                      
+
+W0378:
+      jf0    W0391                      
+      mov    A,R4                       
+      cpl    A                          
+      jb2    W0389                      
+      in     A,P2                       
+      jb2    W0311                      
+      ins    A,BUS                      
+      cpl    A                          
+      jb6    W0311                      
+      call   W0512                      
+      jmp    W0200                      
+
+W0389:
+      in     A,P2                       
+      cpl    A                          
+      jb2    W034C                      
+      jb1    W0311                      
+      jmp    W034C                      
+
+W0391:
+      call   W0500                      
+W0393:
+      mov    A,#3Ch                     
+      jmp    W0223                      
+
+W0397:
+      jf0    W03A2                      
+      call   W0500                      
+      in     A,P2                       
+      jb2    W0393                      
+W039E:
+      mov    A,#46h                     
+      jmp    W0223                      
+
+W03A2:
+      call   W051B                      
+      jmp    W039E                      
+
+W03A6:
+      mov    A,R4                       
+      cpl    A                          
+      jb2    W0305                      
+      in     A,P2                       
+W03AB:
+      jb2    W0305                      
+      jmp    W03D9                      
+
+W03AF:
+      call   W0500                      
+      mov    A,R4                       
+      cpl    A                          
+      jb2    W0393                      
+      in     A,P2                       
+      cpl    A                          
+      jb2    W033C                      
+      jf0    W0338                      
+      jmp    W033C                      
+
+W03BD:
+      jf0    W03D0                      
+      jmp    W03DD                      
+
+W03C1:
+      jf0    W03C7                      
+      call   W0500                      
+      jmp    W03C9                      
+
+W03C7:
+      call   W051B                      
+W03C9:
+      mov    R0,#36h                    
+      mov    A,@R0                      
+      add    A,#32h                     
+      jmp    W0223                      
+
+W03D0:
+      call   W051B                      
+      mov    R0,#36h                    
+      mov    A,@R0                      
+      add    A,#2Ah                     
+      jmp    W0223                      
+
+W03D9:
+      call   W0500                      
+      jmp    W03DF                      
+
+W03DD:
+      call   W051B                      
+W03DF:
+      mov    R0,#36h                    
+      mov    A,@R0                      
+      jmp    W0223                      
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      jmp    W0411                      
+
+W0400:
+      mov    A,PSW                      
+      dec    A                          
+      anl    A,#07h                     
+      add    A,#0FAh                    
+      jc     W0411                      
+      jni    W040F                      
+      en     I                          
+      mov    A,R6                       
+      orl    A,#01h                     
+      mov    R6,A                       
+W040F:
+      mov    A,R2                       
+W0410:
+      retr                              
+
+W0411:
+      orl    P2,#20h                    
+      dis    TCNTI                      
+      dis    I                          
+      clr    A                          
+      mov    PSW,A                      
+      sel    MB0                        
+      call   W0410                      
+      sel    RB0                        
+      movx   A,@R0                      
+      jmp    W0000                      ; Cold Boot
+
+W041E:
+      sel    RB0                        
+      mov    R0,#29h                    
+      mov    R1,#28h                    
+      ins    A,BUS                      
+      anl    A,#3Fh                     
+      xch    A,@R0                      
+      xrl    A,@R0                      
+      jz     W042E                      
+      mov    @R1,#0FDh                  
+      jmp    W0444                      
+
+W042E:
+      inc    @R1                        
+      mov    A,@R1                      
+      jnz    W0444                      
+      mov    A,@R0                      
+      mov    R0,#2Ah                    
+      mov    @R0,A                      
+      mov    A,R4                       
+      jb7    W0444                      
+      mov    A,@R0                      
+      jb1    W0444                      
+      mov    R0,#5Fh                    
+      mov    @R0,#10h                   
+      mov    A,R4                       
+W0441:
+      orl    A,#80h                     
+      mov    R4,A                       
+W0444:
+      ret                               
+
+W0445:
+      mov    R1,#31h                    
+      mov    A,@R1                      
+      mov    R1,#4Bh                    
+      jb2    W044E                      
+W044C:
+      mov    R1,#4Ah                    
+W044E:
+      mov    R0,#2Ch                    
+      mov    A,@R0                      
+      mov    R0,#2Dh                    
+      add    A,@R0                      
+      clr    C                          
+      rrc    A                          
+      clr    C                          
+      add    A,@R1                      
+      add    A,@R1                      
+      jc     W045E                      
+      add    A,@R1                      
+      jmp    W0461                      
+
+W045E:
+      add    A,@R1                      
+      clr    C                          
+      cpl    C                          
+W0461:
+      rrc    A                          
+      clr    C                          
+      rrc    A                          
+      jnc    W0467                      
+      inc    A                          
+W0467:
+      mov    @R1,A                      
+      ret                               
+
+W0469:
+      mov    R0,#61h                    
+      mov    A,@R0                      
+      jz     W0483                      
+      jmp    W0476                      
+
+W0470:
+      mov    R1,#76h                    
+W0472:
+      cpl    A                          
+      inc    A                          
+      jmp    W0478                      
+
+W0476:
+      mov    R1,#78h                    
+W0478:
+      mov    R0,#77h                    
+      mov    @R0,A                      
+      add    A,@R1                      
+      mov    @R1,A                      
+      mov    A,@R0                      
+      add    A,R4                       
+      jnc    W0482                      
+      inc    R5                         
+W0482:
+      mov    R4,A                       
+W0483:
+      ret                               
+
+W0484:
+      mov    R1,#66h                    
+      mov    R0,#65h                    
+      mov    A,@R0                      
+      cpl    A                          
+      inc    A                          
+      add    A,R4                       
+      jz     W049C                      
+      dec    A                          
+      jz     W049C                      
+      mov    A,R4                       
+      mov    @R0,A                      
+      mov    R0,#63h                    
+      mov    @R0,A                      
+      mov    A,R5                       
+W0497:
+      mov    @R1,A                      
+      mov    R1,#64h                    
+      mov    @R1,A                      
+      ret                               
+
+W049C:
+      mov    A,@R0                      
+      mov    R0,#63h                    
+      mov    @R0,A                      
+      mov    A,@R1                      
+      mov    R1,#64h                    
+      mov    @R1,A                      
+      ret                               
+
+W04A5:
+      mov    R0,#3Ah                    
+      mov    A,@R0                      
+      jnz    W04EA                      
+      mov    R0,#3Eh                    
+      mov    A,@R0                      
+      inc    @R0                        
+      jnz    W04EA                      
+W04B0:
+      mov    @R0,#0F6h                  
+      jmp    W04B9                      
+
+W04B4:
+      mov    R0,#3Ah                    
+      mov    A,@R0                      
+      jz     W04EA                      
+W04B9:
+      sel    RB0                        
+      mov    A,R3                       
+      sel    RB1                        
+      cpl    A                          
+      add    A,R3                       
+W04BE:
+      inc    A                          
+      jz     W04E9                      
+      jnc    W04C6                      
+      dec    R3                         
+      jmp    W04C7                      
+
+W04C6:
+      inc    R3                         
+W04C7:
+      mov    A,R3                       
+      anl    A,#03h                     
+      add    A,#0CDh                    
+      jmpp   @A                         
+      xrl    A,@R1                      
+      mov    PSW,A                      
+      xrl    A,R5                       
+      movp3  A,@A                       
+      orl    P1,#09h                    
+      anl    P1,#0F9h                   
+      jmp    W04EA                      
+
+      orl    P1,#0Ah                    
+      anl    P1,#0FAh                   
+      jmp    W04EA                      
+
+      orl    P1,#06h                    
+      anl    P1,#0F6h                   
+      jmp    W04EA                      
+
+      orl    P1,#05h                    
+      anl    P1,#0F5h                   
+      jmp    W04EA                      
+
+W04E9:
+      clr    F1                         
+W04EA:
+      ret                               
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      jmp    W0411                      
+
+W0500:
+      call   W05D5                      
+      jz     W051B                      
+W0504:
+      orl    P1,#20h                    
+      orl    P1,#10h                    
+      ret                               
+
+W0509:
+      call   W05D5                      
+      jz     W051B                      
+W050D:
+      anl    P1,#0DFh                   
+      orl    P1,#10h                    
+      ret                               
+
+W0512:
+      call   W05D5                      
+      jz     W051B                      
+      mov    A,R4                       
+      jb6    W0504                      
+      jmp    W050D                      
+
+W051B:
+      anl    P1,#0DFh                   
+      anl    P1,#0EFh                   
+      ret                               
+
+W0520:
+      mov    R0,#6Bh                    
+      mov    R1,#67h                    
+      mov    A,@R0                      
+      add    A,#0FBh                    
+      jnc    W0530                      
+      mov    A,@R1                      
+      add    A,R4                       
+      jnc    W0537                      
+      inc    R5                         
+      jmp    W0537                      
+
+W0530:
+      mov    A,@R1                      
+      jz     W0538                      
+      add    A,R4                       
+      jc     W0537                      
+      dec    R5                         
+W0537:
+      mov    R4,A                       
+W0538:
+      call   W0484                      
+      mov    R0,#00h                    
+      mov    R1,#00h                    
+      mov    R1,#66h                    
+      mov    A,@R1                      
+      mov    R0,#65h                    
+      sel    RB0                        
+      mov    R2,#00h                    
+      clr    C                          
+      jz     W0556                      
+      dec    A                          
+      jz     W0555                      
+      dec    A                          
+      mov    R2,#80h                    
+      jz     W0556                      
+      mov    R2,#0C0h                   
+      jmp    W0556                      
+
+W0555:
+      cpl    C                          
+W0556:
+      sel    RB1                        
+      mov    A,@R0                      
+W0558:
+      mov    R1,#7Bh                    
+      mov    @R1,#00h                   
+      rrc    A                          
+      jnc    W0560                      
+      inc    @R1                        
+W0560:
+      clr    C                          
+      rrc    A                          
+      jnc    W0566                      
+      inc    @R1                        
+      inc    @R1                        
+W0566:
+      sel    RB0                        
+      add    A,R2                       
+      mov    R2,A                       
+      jnc    W056F                      
+      mov    R2,#0FFh                   
+      sel    RB1                        
+      ret                               
+
+W056F:
+      mov    A,R2                       
+      sel    RB1                        
+      mov    R1,#6Bh                    
+      mov    @R1,#01h                   
+      mov    R1,#7Bh                    
+      add    A,@R1                      
+      mov    R0,#69h                    
+      jc     W0592                      
+      mov    @R0,A                      
+      mov    R1,#6Ch                    
+      mov    A,@R1                      
+      jb7    W059D                      
+W0582:
+      mov    R1,#61h                    
+      mov    A,@R1                      
+      jz     W059D                      
+      cpl    A                          
+      inc    A                          
+      add    A,@R0                      
+      mov    @R0,A                      
+      jnc    W0595                      
+      add    A,#0F6h                    
+      jnc    W0595                      
+      ret                               
+
+W0592:
+      mov    @R0,#0FFh                  
+      ret                               
+
+W0595:
+      mov    R1,#6Bh                    
+W0597:
+      inc    @R1                        
+      sel    RB0                        
+      mov    A,R2                       
+      sel    RB1                        
+      add    A,@R0                      
+      mov    @R0,A                      
+W059D:
+      ret                               
+
+W059E:
+      mov    A,T                        
+      mov    R1,A                       
+W05A0:
+      mov    A,T                        
+      xrl    A,R1                       
+      jz     W05A0                      
+      ret                               
+
+W05A5:
+      mov    R0,A                       
+      mov    R1,#36h                    
+      mov    A,@R1                      
+      add    A,#0E2h                    
+      jnc    W05BB                      
+      jz     W05BB                      
+      cpl    A                          
+      inc    A                          
+      clr    C                          
+      add    A,R0                       
+      jc     W05BB                      
+      mov    A,@R1                      
+      add    A,#0E2h                    
+      jb7    W05BD                      
+      ret                               
+
+W05BB:
+      mov    A,R0                       
+      ret                               
+
+W05BD:
+      clr    A                          
+      ret                               
+
+W05BF:
+      mov    A,R2                       
+      add    A,#0DFh                    
+      jnc    W05CC                      
+      mov    A,R2                       
+      add    A,#0CFh                    
+      jnc    W05D0                      
+      mov    R1,#08h                    
+      ret                               
+
+W05CC:
+      mov    A,#0Ch                     
+      mov    R5,A                       
+      ret                               
+
+W05D0:
+      mov    R0,#53h                    
+      mov    @R0,#83h                   
+      ret                               
+
+W05D5:
+      mov    R0,#5Dh                    
+      mov    A,@R0                      
+      jz     W05F0                      
+      mov    R0,#5Ch                    
+      mov    A,@R0                      
+      jz     W05F0                      
+      mov    R1,#37h                    
+      mov    A,R2                       
+      add    A,#0DFh                    
+      jnc    W05EE                      
+      mov    A,R2                       
+      add    A,#0DEh                    
+      jc     W05F2                      
+      mov    A,@R1                      
+      jz     W05F4                      
+W05EE:
+      mov    @R1,#01h                   
+W05F0:
+      clr    A                          
+      ret                               
+
+W05F2:
+      mov    @R1,#00h                   
+W05F4:
+      mov    A,#0FFh                    
+      ret                               
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      jmp    W0411                      
+
+W0600:
+      mov    R0,#5Bh                    
+      mov    @R0,#00h                   
+      mov    R0,#6Eh                    
+      mov    @R0,#00h                   
+      mov    R0,#5Eh                    
+      mov    @R0,#00h                   
+      jmp    W03DD                      
+
+W060E:
+      call   W0060                      
+      clr    F0                         
+      mov    R0,#5Bh                    
+      mov    A,@R0                      
+      jz     W0617                      
+      cpl    F0                         
+W0617:
+      mov    R0,#31h                    
+      mov    A,@R0                      
+      anl    A,#35h                     
+      xrl    A,#31h                     
+      jz     W0624                      
+      mov    R1,#5Ch                    
+      mov    @R1,#0E2h                  
+W0624:
+      mov    A,@R0                      
+      anl    A,#2Dh                     
+      xrl    A,#2Dh                     
+      jz     W062F                      
+      mov    R1,#5Dh                    
+      mov    @R1,#88h                   
+W062F:
+      call   W0631                      
+W0631:
+      mov    R0,#31h                    
+      mov    A,@R0                      
+      anl    A,#3Fh                     
+      rl     A                          
+      add    A,#3Dh                     
+      mov    R0,#08h                    
+      mov    @R0,A                      
+      ret                               
+
+      jmp    W07C7                      
+
+      jmp    W03C7                      
+
+      jmp    W03DD                      
+
+      jmp    W03C7                      
+
+      jmp    W03DD                      
+
+      jmp    W03DD                      
+
+      jmp    W03DD                      
+
+      jmp    W03DD                      
+
+      jmp    W03BD                      
+
+      jmp    W03C7                      
+
+      jmp    W03D0                      
+
+      jmp    W03D0                      
+
+      jmp    W03BD                      
+
+      jmp    W03D0                      
+
+      jmp    W03D0                      
+
+      jmp    W03D0                      
+
+      jmp    W03DD                      
+
+      jmp    W03C7                      
+
+      jmp    W03DD                      
+
+      jmp    W03C7                      
+
+      jmp    W03DD                      
+
+      jmp    W03DD                      
+
+      jmp    W03DD                      
+
+      jmp    W03DD                      
+
+      jmp    W03BD                      
+
+      jmp    W03C7                      
+
+      jmp    W03D0                      
+
+      jmp    W03D0                      
+
+      jmp    W03BD                      
+
+      jmp    W03D0                      
+
+      jmp    W03D0                      
+
+      jmp    W03D0                      
+
+      jmp    W03DD                      
+
+      jmp    W0300                      ; Frequency Data
+
+      jmp    W03DD                      
+
+      jmp    W03C1                      
+
+      jmp    W03DD                      
+
+      jmp    W03DD                      
+
+      jmp    W03DD                      
+
+      jmp    W03DD                      
+
+      jmp    W030F                      
+
+      jmp    W034A                      ; Tune Data
+
+      jmp    W03D9                      
+
+      jmp    W0303                      
+
+      jmp    W030F                      
+
+      jmp    W0371                      
+
+      jmp    W03D9                      
+
+      jmp    W03A6                      
+
+      jmp    W03DD                      
+
+      jmp    W03C1                      
+
+      jmp    W03DD                      
+
+      jmp    W03C1                      
+
+      jmp    W03DD                      
+
+      jmp    W03DD                      
+
+      jmp    W03DD                      
+
+      jmp    W03DD                      
+
+      jmp    W0315                      
+
+      jmp    W0350                      
+
+      jmp    W03D9                      
+
+      jmp    W0397                      
+
+      jmp    W0315                      
+
+      jmp    W0378                      
+
+      jmp    W0323                      
+
+      jmp    W03AF                      
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      jmp    W0411                      
+
+W0700:
+      en     TCNTI                      
+      call   W0410                      
+      mov    R0,#47h                    
+      mov    A,@R0                      
+      jnz    W070A                      
+      jmp    W0411                      
+
+W070A:
+      inc    R0                         
+      mov    A,@R0                      
+      jnz    W0710                      
+      jmp    W0411                      
+
+W0710:
+      call   W07A4                      
+W0712:
+      call   W0060                      
+      mov    R0,#31h                    
+      mov    A,@R0                      
+      anl    A,#0Dh                     
+      xrl    A,#0Dh                     
+      jnz    W0724                      
+      mov    A,R4                       
+W071E:
+      jb2    W0724                      
+      anl    P2,#0EFh                   
+      jmp    W0726                      
+
+W0724:
+      orl    P2,#10h                    
+W0726:
+      sel    MB1                        
+      mov    R0,#50h                    
+W0729:
+      mov    A,@R0                      
+W072A:
+      jb0    W0731                      
+      call   W0100                      
+      sel    MB0                        
+      jmp    W0734                      
+
+W0731:
+      call   W0600                      
+      sel    MB0                        
+W0734:
+      call   W07A4                      
+      call   W0060                      
+      sel    RB0                        
+      in     A,P2                       
+      jb3    W0745                      
+      mov    A,#0A7h                    
+      add    A,R2                       
+      jc     W0759                      
+      mov    A,#0BEh                    
+W0743:
+      jmp    W074C                      
+
+W0745:
+      mov    A,#0B2h                    
+      add    A,R2                       
+      jc     W0759                      
+      mov    A,#0C4h                    
+W074C:
+      add    A,R2                       
+      jnc    W0753                      
+      mov    A,R4                       
+      cpl    A                          
+W0751:
+      jb2    W0759                      
+W0753:
+      mov    A,R4                       
+      orl    A,#04h                     
+      mov    R4,A                       
+      jmp    W075D                      
+
+W0759:
+      mov    A,R4                       
+      anl    A,#0FBh                    
+      mov    R4,A                       
+W075D:
+      mov    R0,#36h                    
+      mov    @R0,#32h                   
+      ins    A,BUS                      
+      jb4    W0766                      
+      mov    @R0,#19h                   
+W0766:
+      mov    R1,#3Ch                    
+      mov    R0,#2Ah                    
+      mov    A,@R0                      
+      mov    R0,#31h                    
+W076D:
+      mov    @R0,A                      
+      xrl    A,@R1                      
+      mov    R0,#41h                    
+      mov    @R0,#00h                   
+      jz     W079E                      
+      mov    @R0,#0FFh                  
+      in     A,P2                       
+      cpl    A                          
+      jb2    W079A                      
+      ins    A,BUS                      
+      jb7    W079A                      
+      mov    R0,#31h                    
+      mov    A,@R0                      
+      anl    A,#3Bh                     
+      xrl    A,#38h                     
+W0785:
+      jz     W0794                      
+      mov    A,@R0                      
+      xrl    A,#3Dh                     
+      jnz    W079A                      
+      mov    A,R4                       
+W078D:
+      cpl    A                          
+      jb2    W0794                      
+      mov    R0,#74h                    
+      mov    @R0,#0CEh                  
+W0794:
+      mov    A,R4                       
+      orl    A,#10h                     
+      mov    R4,A                       
+      jmp    W079E                      
+
+W079A:
+      mov    A,R4                       
+      anl    A,#0EFh                    
+      mov    R4,A                       
+W079E:
+      mov    R0,#31h                    
+      mov    A,@R0                      
+      mov    @R1,A                      
+      jmp    W060E                      
+
+W07A4:
+      sel    RB1                        
+      mov    A,R6                       
+      jb3    W07A9                      
+      ret                               
+
+W07A9:
+      anl    A,#0F7h                    
+      mov    R6,A                       
+      sel    RB0                        
+      mov    R1,#57h                    
+      mov    @R1,#0F9h                  
+      mov    R0,#6Eh                    
+      call   W0133                      
+      mov    R0,#4Eh                    
+      mov    A,@R0                      
+      jz     W07BC                      
+      inc    @R0                        
+      ret                               
+
+W07BC:
+      mov    @R0,#0F7h                  
+      mov    R1,#57h                    
+      mov    @R1,#0FAh                  
+      mov    R0,#5Ah                    
+      call   W0133                      
+      ret                               
+
+W07C7:
+      mov    R0,#50h                    
+      mov    A,@R0                      
+      jb1    W07F6                      
+      jb0    W07F4                      
+      mov    R1,#41h                    
+      mov    A,@R1                      
+      jz     W07D7                      
+      mov    A,@R0                      
+      orl    A,#04h                     
+      mov    @R0,A                      
+W07D7:
+      mov    A,@R0                      
+      cpl    A                          
+      jb2    W07F6                      
+      mov    A,R2                       
+      add    A,#0D6h                    
+      jc     W07F6                      
+      mov    A,@R0                      
+      anl    A,#0FBh                    
+      orl    A,#11h                     
+      mov    @R0,A                      
+      mov    R1,#7Ch                    
+      mov    @R1,#06h                   
+      mov    R1,#6Fh                    
+      mov    @R1,#0FBh                  
+      mov    R1,#4Dh                    
+      mov    @R1,#00h                   
+      anl    P1,#3Fh                    
+W07F4:
+      jmp    W03DD                      
+
+W07F6:
+      jmp    W0600                      
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+W07FC:
+      mov    A,R7                       
+      mov    A,R7                       
+W07FE:
+      jmp    W0411                      
+
+      sel    RB0                        
+      orl    P2,#20h                    
+      anl    P2,#7Fh                    
+      mov    R1,#7Eh                    
+      mov    A,@R1                      
+      xrl    A,#2Eh                     
+      jnz    W0812                      
+      inc    R1                         
+      mov    A,@R1                      
+      xrl    A,#0D2h                    
+      jz     W0814                      
+W0812:
+      jmp    W072A                      
+
+W0814:
+      mov    R0,#7Dh                    
+      clr    A                          
+W0817:
+      mov    @R0,A                      
+      djnz   R0,W0817                   
+      call   W01A3                      
+      mov    R0,#36h                    
+      mov    @R0,#32h                   
+      ins    A,BUS                      
+      jb4    W0825                      
+      mov    @R0,#19h                   
+W0825:
+      mov    A,@R0                      
+      mov    R0,#4Ah                    
+      mov    @R0,A                      
+      mov    R0,#4Bh                    
+      mov    @R0,A                      
+      mov    R0,#0Bh                    
+      ins    A,BUS                      
+      jb1    W0835                      
+      mov    A,R4                       
+      orl    A,#80h                     
+      mov    R4,A                       
+W0835:
+      dis    I                          
+      dis    TCNTI                      
+      sel    RB1                        
+W0838:
+      mov    R1,#00h                    
+      sel    RB0                        
+      clr    A                          
+W083C:
+      jni    W0849                      
+      orl    P2,#40h                    
+      clr    A                          
+W0841:
+      jni    W0851                      
+      jnz    W0841                      
+      call   W00C8+1                    
+      jmp    W0041                      
+
+W0849:
+      anl    P2,#0BFh                   
+      jnz    W083C                      
+      call   W00C8+1                    
+      jmp    W003B+1                    
+
+W0851:
+      clr    A                          
+      mov    T,A                        
+      strt   T                          
+      jtf    W0856                      
+W0856:
+      jni    W086A                      
+      orl    P2,#40h                    
+      clr    A                          
+      jni    W0879                      
+      jnz    W0861                      
+      call   W00C8+1                    
+W0861:
+      jtf    W0865                      
+      jmp    W005A+1                    
+
+W0865:
+      sel    RB1                        
+      inc    R5                         
+      sel    RB0                        
+      jmp    W005A+1                    
+
+W086A:
+      anl    P2,#0BFh                   
+      jnz    W0870                      
+      call   W00C8+1                    
+W0870:
+      jtf    W0874                      
+      jmp    W0055+1                    
+
+W0874:
+      sel    RB1                        
+      inc    R5                         
+      sel    RB0                        
+      jmp    W0055+1                    
+
+W0879:
+      mov    A,T                        
+      sel    RB1                        
+      mov    R4,A                       
+      mov    A,R5                       
+      add    A,#0FDh                    
+      jc     W0838                      
+      strt   T                          
+      clr    A                          
+      mov    T,A                        
+      sel    RB0                        
+      en     I                          
+      anl    P2,#0DFh                   
+      call   W00C8+1                    
+      mov    R1,#32h                    
+      call   W00C2                      
+      call   W00C8+1                    
+      sel    RB0                        
+      mov    R1,#31h                    
+      mov    R0,#35h                    
+      ins    A,BUS                      
+      mov    @R0,A                      
+      mov    @R1,A                      
+      mov    R3,#64h                    
+      call   W00B7                      
+      mov    R3,#32h                    
+      call   W00B7                      
+      mov    R0,#3Ah                    
+      inc    @R0                        
+W08A3:
+      sel    MB0                        
+      call   W0060                      
+      sel    MB1                        
+      mov    A,R2                       
+      add    A,#4Dh                     
+      jc     W08A3                      
+      mov    R0,#5Bh                    
+      mov    @R0,#0ECh                  
+      mov    R0,#6Ch                    
+      mov    @R0,#06h                   
+      sel    MB0                        
+      jmp    W0700                      
+
+      clr    F1                         
+      cpl    F1                         
+      jf1    W08BC                      
+      ret                               
+
+W08BC:
+      sel    MB0                        
+      call   W0060                      
+      sel    MB1                        
+      jmp    W00B9                      
+
+W08C2:
+      mov    R0,#63h                    
+W08C4:
+      djnz   R0,W08C4                   
+      djnz   R1,W08C2                   
+      ret                               
+
+      orl    P2,#80h                    
+      mov    A,#64h                     
+W08CD:
+      dec    A                          
+      jnz    W08CD                      
+      anl    P2,#7Fh                    
+      mov    A,#01h                     
+      ret                               
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      sel    MB0                        
+      jmp    W0411                      
+
+      mov    R0,#6Eh                    
+      mov    R1,#7Dh                    
+      mov    A,@R1                      
+      jb0    W0977                      
+      mov    A,@R0                      
+      jnz    W0911                      
+      mov    R0,#52h                    
+      mov    A,@R0                      
+      jnz    W0911                      
+      anl    P1,#0BFh                   
+W0911:
+      mov    R0,#6Fh                    
+      mov    A,@R0                      
+      jnz    W0918                      
+      anl    P1,#7Fh                    
+W0918:
+      in     A,P2                       
+      cpl    A                          
+      jb3    W0921                      
+      mov    A,R2                       
+      add    A,#8Eh                     
+      jmp    W0123+1                    
+
+W0921:
+      mov    A,R2                       
+      add    A,#70h                     
+      jnc    W0936                      
+      orl    P1,#40h                    
+      orl    P1,#80h                    
+      mov    R0,#6Eh                    
+      mov    @R0,#0FCh                  
+      mov    R0,#6Fh                    
+      mov    @R0,#0E7h                  
+      mov    R0,#55h                    
+      mov    @R0,#0FFh                  
+W0936:
+      mov    R0,#55h                    
+      mov    A,@R0                      
+      jz     W094D                      
+      mov    R1,#31h                    
+      mov    A,@R1                      
+      jb0    W0949                      
+      mov    R1,#6Fh                    
+      mov    A,@R1                      
+      jnz    W094D                      
+      mov    @R0,#00h                   
+      jmp    W014D                      
+
+W0949:
+      mov    R0,#6Fh                    
+      mov    @R0,#0E7h                  
+W094D:
+      mov    R0,#31h                    
+      mov    A,@R0                      
+      anl    A,#05h                     
+      xrl    A,#05h                     
+      jnz    W0963                      
+      in     A,P2                       
+      jb3    W0963                      
+      mov    A,R2                       
+      add    A,#0A0h                    
+      jnc    W09A2                      
+      mov    R0,#4Ch                    
+      mov    @R0,#0FFh                  
+      ret                               
+
+W0963:
+      mov    R0,#4Ch                    
+      mov    A,@R0                      
+      jz     W09A2                      
+      mov    @R0,#00h                   
+      orl    P1,#40h                    
+      orl    P1,#80h                    
+      mov    R0,#6Fh                    
+      mov    @R0,#0E7h                  
+      mov    R0,#52h                    
+      mov    @R0,#98h                   
+      ret                               
+
+W0977:
+      mov    A,@R0                      
+      jnz    W09A2                      
+      mov    R0,#31h                    
+      mov    A,@R1                      
+      jb1    W0998                      
+      jb2    W099C                      
+      mov    A,@R0                      
+      jb1    W0990                      
+W0984:
+      anl    P1,#0BFh                   
+W0986:
+      mov    R0,#5Eh                    
+      mov    A,@R0                      
+      jnz    W09A2                      
+      anl    P1,#7Fh                    
+      mov    @R1,#00h                   
+      ret                               
+
+W0990:
+      jb5    W0995                      
+      mov    @R1,#03h                   
+      ret                               
+
+W0995:
+      mov    @R1,#05h                   
+      ret                               
+
+W0998:
+      mov    A,@R0                      
+      jb5    W0984                      
+      ret                               
+
+W099C:
+      anl    P1,#0BFh                   
+      mov    A,@R0                      
+      cpl    A                          
+      jb1    W0986                      
+W09A2:
+      ret                               
+
+      sel    RB0                        
+      mov    A,#0F9h                    
+      outl   P1,A                       
+      orl    P2,#5Fh                    
+      mov    R0,#30h                    
+      mov    @R0,#15h                   
+      mov    R1,#2Fh                    
+      mov    @R1,#05h                   
+      mov    R0,#7Dh                    
+      mov    @R0,#01h                   
+      mov    R0,#6Eh                    
+      mov    @R0,#6Ah                   
+      mov    R0,#5Eh                    
+      mov    @R0,#0C4h                  
+      mov    R0,#2Ch                    
+      mov    @R0,#32h                   
+      inc    R0                         
+      mov    @R0,#32h                   
+      mov    R0,#5Ch                    
+      mov    @R0,#0E2h                  
+      mov    R0,#5Dh                    
+      mov    @R0,#88h                   
+      mov    R2,#06h                    
+      mov    R0,#3Eh                    
+      mov    @R0,#0F5h                  
+      mov    R0,#5Ah                    
+      mov    @R0,#0FEh                  
+      ret                               
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      sel    MB0                        
+      jmp    W0411                      
+
+      sel    RB1                        
+      mov    R3,#00h                    
+      sel    RB0                        
+      mov    R0,#33h                    
+      mov    A,R2                       
+      add    A,#0EBh                    
+      jc     W0A0F                      
+      mov    @R0,#01h                   
+      jmp    W0215+1                    
+
+W0A0F:
+      mov    A,R2                       
+      add    A,#0EAh                    
+      jnc    W0A16                      
+      mov    @R0,#00h                   
+W0A16:
+      mov    R0,#56h                    
+      mov    R1,#6Ch                    
+      mov    A,@R0                      
+      jb7    W0A36                      
+      mov    R0,#50h                    
+      mov    A,@R0                      
+      cpl    A                          
+      jb0    W0A27                      
+      mov    R0,#7Ch                    
+      jmp    W0230                      
+
+W0A27:
+      mov    R0,#46h                    
+      mov    A,@R0                      
+      jz     W0A40                      
+      jmp    W022D+1                    
+
+      mov    R0,#6Ah                    
+      mov    A,@R0                      
+      mov    @R1,A                      
+      jb7    W0A87                      
+      jmp    W0400                      ; Restart
+
+W0A36:
+      mov    @R0,#00h                   
+      mov    R0,#71h                    
+      mov    @R0,#0F9h                  
+      mov    R0,#6Ah                    
+      mov    A,@R0                      
+      mov    @R1,A                      
+W0A40:
+      mov    R0,#39h                    
+      mov    A,@R0                      
+      swap   A                          
+      orl    A,#01h                     
+      mov    @R0,A                      
+      mov    R0,#31h                    
+      mov    A,@R0                      
+      anl    A,#0Fh                     
+      xrl    A,#03h                     
+      jz     W0A56                      
+      xrl    A,#02h                     
+      jnz    W0A66                      
+      jmp    W028A+1                    
+
+W0A56:
+      mov    R0,#61h                    
+      mov    A,R2                       
+      add    A,#0EAh                    
+      jc     W0A62                      
+      mov    @R1,#01h                   
+      mov    @R0,#02h                   
+      ret                               
+
+W0A62:
+      mov    @R1,#04h                   
+      jmp    W0400                      ; Restart
+
+W0A66:
+      mov    A,@R0                      
+      anl    A,#0Bh                     
+      xrl    A,#08h                     
+      mov    R0,#33h                    
+      jnz    W0A82                      
+      mov    A,@R0                      
+      jz     W0A89                      
+      in     A,P2                       
+      jb2    W0A7B                      
+      ins    A,BUS                      
+      cpl    A                          
+      jb7    W0A7B                      
+      jmp    W03DD                      
+
+W0A7B:
+      mov    @R1,#0FCh                  
+      mov    R0,#61h                    
+      mov    @R0,#02h                   
+      ret                               
+
+W0A82:
+      mov    A,@R0                      
+      jz     W0A89                      
+      jmp    W03DD                      
+
+W0A87:
+      jmp    W03C5+1                    
+
+W0A89:
+      jmp    W0300                      ; Frequency Data
+
+      mov    A,R2                       
+      add    A,#0D2h                    
+      jnc    W0A94                      
+      mov    @R1,#0FCh                  
+      jmp    W0400                      ; Restart
+
+W0A94:
+      jmp    W03DD                      
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      sel    MB0                        
+      jmp    W0411                      
+
+      sel    RB0                        
+      mov    R1,#6Dh                    
+      mov    R0,#31h                    
+      mov    A,@R0                      
+      anl    A,#0Ah                     
+      xrl    A,#0Ah                     
+      jz     W0B23                      
+      in     A,P2                       
+      jb2    W0B13                      
+W0B0F:
+      mov    R2,#06h                    
+      jmp    W0325                      
+
+W0B13:
+      jb3    W0B0F                      
+      mov    A,@R0                      
+      anl    A,#3Eh                     
+      xrl    A,#38h                     
+      jnz    W0B0F                      
+      ins    A,BUS                      
+      jb6    W0B0F                      
+      mov    R2,#04h                    
+      jmp    W0325                      
+
+W0B23:
+      mov    R2,#0Ch                    
+      mov    R0,#31h                    
+      mov    A,@R0                      
+      anl    A,#05h                     
+      xrl    A,#05h                     
+      jnz    W0B51                      
+      mov    A,@R1                      
+      jb7    W0B3B                      
+      cpl    A                          
+      mov    R0,#72h                    
+      jb0    W0B4B                      
+      mov    A,@R0                      
+      jnz    W0B5D                      
+      mov    @R1,#80h                   
+W0B3B:
+      mov    R1,#6Ch                    
+      mov    A,R4                       
+      jb2    W0BDD                      
+      in     A,P2                       
+      jb3    W0B47                      
+      mov    @R1,#0F7h                  
+      jmp    W0400                      ; Restart
+
+W0B47:
+      mov    @R1,#0F3h                  
+      jmp    W0400                      ; Restart
+
+W0B4B:
+      mov    @R1,#01h                   
+      mov    @R0,#0F6h                  
+      jmp    W035D                      
+
+W0B51:
+      mov    A,@R1                      
+      mov    @R1,#00h                   
+      jb7    W0BD7                      
+      mov    R0,#39h                    
+      mov    A,@R0                      
+      mov    @R0,#00h                   
+      jb4    W0BD7                      
+W0B5D:
+      mov    R0,#5Ah                    
+      mov    R1,#6Ch                    
+      mov    A,@R0                      
+      mov    R0,#79h                    
+      jz     W0B6A                      
+      mov    @R0,#00h                   
+      jmp    W03AB                      
+
+W0B6A:
+      mov    A,@R0                      
+      jnt0   W0BA9                      
+      orl    A,#80h                     
+      mov    @R0,A                      
+      jmp    W0374                      
+
+W0B72:
+      mov    @R0,#00h                   
+      sel    RB0                        
+      mov    R0,#4Dh                    
+      mov    @R0,#01h                   
+      mov    R0,#71h                    
+      mov    @R0,#0F4h                  
+      mov    R0,#31h                    
+      mov    A,@R1                      
+      jb7    W0BA4                      
+      mov    A,R4                       
+      jb0    W0B87                      
+      jmp    W0397+1                    
+
+W0B87:
+      mov    A,R4                       
+      anl    A,#0FEh                    
+      mov    R4,A                       
+      mov    A,@R0                      
+      jb0    W0B93                      
+      mov    A,@R1                      
+      add    A,#0FCh                    
+      jmp    W039E+1                    
+
+W0B93:
+      mov    A,@R1                      
+      add    A,#0FDh                    
+      jmp    W039E+1                    
+
+      mov    A,@R1                      
+      add    A,#0FEh                    
+      jmp    W039E+1                    
+
+W0B9D:
+      mov    A,@R1                      
+      dec    A                          
+      mov    @R1,A                      
+      jb7    W0BC6                      
+      jmp    W0400                      ; Restart
+
+W0BA4:
+      mov    A,@R0                      
+      jb0    W0B9D                      
+      jmp    W0397+1                    
+
+W0BA9:
+      jb0    W0B72                      
+      mov    R0,#71h                    
+      mov    A,@R0                      
+      jnz    W0BD5                      
+      mov    A,R4                       
+      orl    A,#01h                     
+      mov    R4,A                       
+      mov    @R0,#0F9h                  
+      mov    A,@R1                      
+      add    A,#01h                     
+      mov    @R1,A                      
+      jb7    W0BD5                      
+      mov    A,R6                       
+      cpl    A                          
+      inc    A                          
+      add    A,@R1                      
+      jnc    W0BD5                      
+      mov    A,R6                       
+      mov    @R1,A                      
+      jmp    W0400                      ; Restart
+
+W0BC6:
+      add    A,#09h                     
+      jc     W0BD5                      
+      mov    @R1,#0F6h                  
+      mov    R0,#46h                    
+      mov    A,@R0                      
+      jnz    W0BD5                      
+      mov    R1,#5Ah                    
+      mov    @R1,#0FCh                  
+W0BD5:
+      jmp    W0400                      ; Restart
+
+W0BD7:
+      mov    R1,#6Ch                    
+      mov    A,R6                       
+      mov    @R1,A                      
+      jmp    W0400                      ; Restart
+
+W0BDD:
+      mov    @R1,#00h                   
+      mov    R0,#61h                    
+      mov    @R0,#00h                   
+      ret                               
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      sel    MB0                        
+      jmp    W0411                      
+
+      sel    MB0                        
+      call   W0060                      
+      sel    MB1                        
+      sel    RB0                        
+      mov    R0,#63h                    
+      mov    R1,#64h                    
+      mov    A,@R1                      
+      jnz    W0C11                      
+      mov    A,@R0                      
+      add    A,#89h                     
+      jnc    W0C41                      
+W0C11:
+      mov    R3,#00h                    
+      mov    A,@R1                      
+      jz     W0C28                      
+      mov    @R1,#02h                   
+      mov    R3,#10h                    
+      dec    A                          
+      jz     W0C28                      
+      mov    @R1,#04h                   
+      mov    R3,#20h                    
+      dec    A                          
+      jz     W0C28                      
+      mov    @R1,#06h                   
+      mov    R3,#30h                    
+W0C28:
+      mov    A,@R0                      
+      add    A,#88h                     
+      jnc    W0C2F                      
+      inc    @R1                        
+      mov    @R0,A                      
+W0C2F:
+      mov    A,R7                       
+      add    A,@R0                      
+      mov    @R0,A                      
+      jnc    W0C3B                      
+      inc    @R1                        
+      inc    @R1                        
+      add    A,#10h                     
+      mov    @R0,A                      
+      jmp    W0441                      
+
+W0C3B:
+      add    A,#88h                     
+      jnc    W0C41                      
+      inc    @R1                        
+      mov    @R0,A                      
+W0C41:
+      mov    R1,#7Ah                    
+      mov    R0,#6Ch                    
+      mov    A,@R0                      
+      jb7    W0C4A                      
+      jmp    W044C                      
+
+W0C4A:
+      cpl    A                          
+      inc    A                          
+      mov    R7,A                       
+      sel    RB0                        
+      mov    @R1,A                      
+      mov    R1,#64h                    
+      mov    R0,#63h                    
+      mov    A,R7                       
+      jz     W0CBE                      
+      clr    A                          
+W0C57:
+      add    A,@R1                      
+      djnz   R7,W0C57                   
+      mov    @R1,A                      
+      sel    MB0                        
+      call   W0060                      
+      sel    MB1                        
+      mov    R1,#64h                    
+      mov    R0,#7Ah                    
+      mov    A,@R0                      
+      mov    R0,#63h                    
+      mov    R7,A                       
+      clr    A                          
+W0C68:
+      add    A,@R0                      
+      jnc    W0C6F                      
+      inc    @R1                        
+      inc    @R1                        
+      add    A,#10h                     
+W0C6F:
+      djnz   R7,W0C68                   
+      mov    @R0,A                      
+      add    A,#88h                     
+      jnc    W0C79                      
+      inc    @R1                        
+      jmp    W0472                      
+
+W0C79:
+      add    A,#78h                     
+      mov    R0,#7Ah                    
+      rl     A                          
+      mov    @R0,A                      
+      mov    R1,#6Ch                    
+      mov    A,@R1                      
+      mov    R1,#64h                    
+      jb7    W0C9C                      
+      inc    @R1                        
+      mov    A,@R0                      
+      add    A,#80h                     
+      jc     W0C94                      
+      add    A,#10h                     
+      jc     W0C96                      
+      add    A,#0F0h                    
+      jmp    W0497                      
+
+W0C94:
+      add    A,#10h                     
+W0C96:
+      inc    @R1                        
+      add    A,#10h                     
+      cpl    A                          
+      jmp    W04AE+1                    
+
+W0C9C:
+      mov    A,@R0                      
+      add    A,#80h                     
+      jc     W0CAF                      
+      mov    @R0,A                      
+      mov    A,@R1                      
+      dec    A                          
+      jb7    W0CAC                      
+      mov    @R1,A                      
+      mov    A,@R0                      
+      add    A,#0F0h                    
+      jmp    W04AE+1                    
+
+W0CAC:
+      clr    A                          
+      jmp    W04BE                      
+
+W0CAF:
+      sel    RB1                        
+      add    A,#0F1h                    
+      jnc    W0CB7                      
+      inc    R7                         
+      jmp    W04B0                      
+
+W0CB7:
+      add    A,#07h                     
+      jnc    W0CBC                      
+      inc    R7                         
+W0CBC:
+      sel    RB0                        
+      mov    A,@R1                      
+W0CBE:
+      mov    R0,#61h                    
+      mov    @R0,A                      
+      ret                               
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      sel    MB0                        
+      jmp    W0411                      
+
+      sel    RB0                        
+      mov    R1,#70h                    
+      mov    R0,#56h                    
+      mov    A,@R0                      
+      jb1    W0D61                      
+      jb2    W0D90                      
+      ins    A,BUS                      
+      jb1    W0D97                      
+      cpl    A                          
+      jb5    W0D97                      
+      mov    R1,#35h                    
+      mov    A,@R1                      
+      jb2    W0D17                      
+      jmp    W0597                      
+
+W0D17:
+      ins    A,BUS                      
+      jb2    W0D97                      
+      jb0    W0D4B                      
+      mov    R1,#43h                    
+      mov    @R1,#0E2h                  
+      mov    R1,#44h                    
+      mov    @R1,#0ECh                  
+      mov    @R0,#02h                   
+      mov    R0,#6Ch                    
+      mov    A,@R0                      
+      mov    R1,#4Fh                    
+      mov    @R1,A                      
+      mov    R1,#70h                    
+      mov    A,@R1                      
+      mov    R1,#3Fh                    
+      jnz    W0D41                      
+      mov    @R1,#01h                   
+      mov    A,@R0                      
+      add    A,#0F8h                    
+      mov    R0,#6Ah                    
+      mov    @R0,A                      
+      mov    R0,#70h                    
+      mov    @R0,#0CEh                  
+      jmp    W0558                      
+
+W0D41:
+      mov    @R1,#00h                   
+      mov    A,@R0                      
+      add    A,#0FCh                    
+      mov    R0,#6Ah                    
+      mov    @R0,A                      
+      jmp    W0558                      
+
+W0D4B:
+      mov    @R0,#04h                   
+      mov    R0,#6Ch                    
+      mov    A,@R0                      
+      mov    R1,#4Fh                    
+      mov    @R1,A                      
+      add    A,#0F4h                    
+      mov    R0,#6Ah                    
+      mov    @R0,A                      
+      mov    R0,#45h                    
+      mov    @R0,#0CEh                  
+      mov    R0,#46h                    
+      mov    @R0,#0CAh                  
+W0D60:
+      ret                               
+
+W0D61:
+      mov    R1,#44h                    
+      mov    A,@R1                      
+      jz     W0D7D                      
+      ins    A,BUS                      
+      jb0    W0D6A                      
+      ret                               
+
+W0D6A:
+      mov    @R0,#04h                   
+      mov    R0,#3Fh                    
+      mov    A,@R0                      
+      mov    R0,#6Ah                    
+      jz     W0D78                      
+      mov    A,@R0                      
+      add    A,#0FCh                    
+      mov    @R0,A                      
+      ret                               
+
+W0D78:
+      mov    A,@R0                      
+      add    A,#0F8h                    
+      mov    @R0,A                      
+      ret                               
+
+W0D7D:
+      mov    R1,#43h                    
+      mov    A,@R1                      
+      jnz    W0D60                      
+      mov    R1,#4Fh                    
+      mov    A,@R1                      
+      mov    R1,#6Ah                    
+      mov    @R1,A                      
+      mov    @R0,#80h                   
+      mov    R0,#46h                    
+      mov    @R0,#0FCh                  
+      jmp    W0597                      
+
+W0D90:
+      mov    R1,#45h                    
+      mov    A,@R1                      
+      jnz    W0D60                      
+      jmp    W0582                      
+
+W0D97:
+      mov    R0,#35h                    
+      ins    A,BUS                      
+      mov    @R0,A                      
+      ret                               
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      sel    MB0                        
+      jmp    W0411                      
+
+      mov    R1,#6Fh                    
+      jb7    W0E3D                      
+      jb6    W0E31                      
+      jb5    W0E16                      
+      mov    A,@R1                      
+      jnz    W0E15                      
+      mov    A,@R0                      
+      orl    A,#20h                     
+      mov    @R0,A                      
+      mov    @R1,#0EBh                  
+      mov    R1,#7Ch                    
+      mov    @R1,#1Fh                   
+W0E15:
+      ret                               
+
+W0E16:
+      mov    A,@R1                      
+      jz     W0E24                      
+      mov    R1,#4Dh                    
+      mov    A,@R1                      
+      jz     W0E15                      
+      mov    R1,#6Fh                    
+      mov    @R1,#0FCh                  
+      orl    P1,#0C0h                   
+W0E24:
+      mov    R1,#7Ch                    
+      mov    @R1,#06h                   
+      mov    R1,#79h                    
+      mov    @R1,#00h                   
+      mov    A,@R0                      
+      orl    A,#40h                     
+      mov    @R0,A                      
+      ret                               
+
+W0E31:
+      mov    A,@R1                      
+      jnz    W0E15                      
+      anl    P1,#3Fh                    
+      mov    @R1,#0FBh                  
+      mov    A,@R0                      
+      orl    A,#80h                     
+      mov    @R0,A                      
+      ret                               
+
+W0E3D:
+      mov    A,@R1                      
+      jnz    W0E15                      
+      mov    A,@R0                      
+      jb3    W0E46                      
+      mov    @R0,#08h                   
+      ret                               
+
+W0E46:
+      mov    @R0,#02h                   
+      ret                               
+
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      mov    A,R7                       
+      sel    MB0                        
+      jmp    W0411                      
+
+      nop                               
+      nop                               
+      nop                               
+      nop                               
+      nop                               
+      nop                               
+      nop                               
+      nop                               
+      nop                               
+      nop                               
+      nop                               
+      nop                               
+      nop                               
+      nop                               
+      nop                               
+      sel    MB0                        
+      jmp    W0411                      
+
+      outl   P1,A                       
+      mov    R1,#01h                    
+      call   W00C2                      
+      anl    P1,#0BFh                   
+      mov    R1,#02h                    
+      call   W00C2                      
+      ret                               
+
+      djnz   R7,W0F29                   
+      in     A,P2                       
+      jb7    W0F27                      
+      orl    P2,#80h                    
+      jmp    W0729                      
+
+W0F27:
+      anl    P2,#7Fh                    
+W0F29:
+      ret                               
+
+      mov    R1,#7Eh                    
+      mov    @R1,#2Eh                   
+      inc    R1                         
+      mov    @R1,#0D2h                  
+      ins    A,BUS                      
+      anl    A,#3Fh                     
+      xrl    A,#02h                     
+      jz     W0F41                      
+      mov    A,#9Fh                     
+      jni    W0F3E                      
+      mov    A,#0DFh                    
+W0F3E:
+      outl   P2,A                       
+      jmp    W07C2+1                    
+
+W0F41:
+      anl    P2,#5Fh                    
+      in     A,P1                       
+      swap   A                          
+      orl    A,#0Fh                     
+      outl   P1,A                       
+      ins    A,BUS                      
+      jb7    W0F4F                      
+      orl    P2,#10h                    
+      jmp    W0751                      
+
+W0F4F:
+      anl    P2,#0EFh                   
+      call   W071E                      
+      jni    W0F57                      
+      jmp    W0743                      
+
+W0F57:
+      in     A,P2                       
+      swap   A                          
+      orl    A,#0Fh                     
+      outl   P1,A                       
+      ins    A,BUS                      
+      jb6    W0F63                      
+      orl    P2,#10h                    
+      jmp    W0764+1                    
+
+W0F63:
+      anl    P2,#0EFh                   
+      jt1    W0F6B                      
+      orl    P2,#40h                    
+      jmp    W076D                      
+
+W0F6B:
+      anl    P2,#0BFh                   
+      call   W071E                      
+      jni    W0F57                      
+      orl    P2,#3Fh                    
+W0F73:
+      call   W071E                      
+      ins    A,BUS                      
+      anl    A,#3Fh                     
+      jz     W0F73                      
+      anl    P2,#0DFh                   
+W0F7C:
+      ins    A,BUS                      
+      jb4    W0F83                      
+      orl    P2,#10h                    
+      jmp    W0785                      
+
+W0F83:
+      anl    P2,#0EFh                   
+      jb5    W0F8B                      
+      orl    P2,#48h                    
+      jmp    W078D                      
+
+W0F8B:
+      anl    P2,#0B7h                   
+      orl    A,#0F0h                    
+      mov    R0,A                       
+      swap   A                          
+      anl    A,R0                       
+      outl   P1,A                       
+      call   W071E                      
+      jni    W0F7C                      
+W0F97:
+      jnt0   W0F9D                      
+      anl    P2,#0BFh                   
+      jmp    W079E+1                    
+
+W0F9D:
+      orl    P2,#40h                    
+      call   W071E                      
+      ins    A,BUS                      
+      anl    A,#3Fh                     
+      jz     W0F97                      
+      orl    P2,#5Fh                    
+W0FA8:
+      mov    A,#28h                     
+      swap   A                          
+      outl   P1,A                       
+      cpl    A                          
+      jb0    W0FB1                      
+      anl    P2,#0EFh                   
+W0FB1:
+      jb1    W0FB5                      
+      anl    P2,#0F7h                   
+W0FB5:
+      call   W071E                      
+      jni    W0FA8                      
+      anl    P2,#7Fh                    
+      mov    R3,#00h                    
+W0FBD:
+      djnz   R7,W0FBD                   
+      mov    A,#9Fh                     
+      jmp    W07FC                      
+
+      mov    A,#0FFh                    
+      outl   P1,A                       
+      mov    R1,#28h                    
+      call   W00C2                      
+      in     A,P2                       
+      swap   A                          
+      rr     A                          
+      orl    A,#4Fh                     
+      call   W0712                      
+      in     A,P2                       
+      swap   A                          
+      orl    A,#6Fh                     
+      mov    R2,A                       
+      ins    A,BUS                      
+      jb6    W0FDD                      
+      mov    A,R2                       
+      anl    A,#0DFh                    
+      mov    R2,A                       
+W0FDD:
+      mov    A,R2                       
+      call   W0712                      
+      mov    A,#0EFh                    
+      rl     A                          
+      mov    R2,A                       
+      ins    A,BUS                      
+      jb7    W0FEB                      
+      mov    A,R2                       
+      anl    A,#7Fh                     
+      mov    R2,A                       
+W0FEB:
+      mov    A,R2                       
+      call   W0712                      
+      mov    A,#0F8h                    
+      swap   A                          
+      jb6    W0FF7                      
+      anl    A,#7Fh                     
+      orl    A,#40h                     
+W0FF7:
+      call   W0712                      
+      mov    A,#0FFh                    
+      outl   P1,A                       
+      outl   P2,A                       
+      sel    MB1                        
+      jmp    W07FE                      
+
